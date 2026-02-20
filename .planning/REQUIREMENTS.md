@@ -60,13 +60,13 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 
 ### References
 
-- [ ] **REF-01**: Add fork note to model-profiles.md about frontmatter model field
-- [ ] **REF-02**: Add rule #6 to checkpoints.md about auto-handled checkpoints
-- [ ] **REF-03**: Add fork note to questioning.md about autonomous mode skip
+- [x] **REF-01**: Add fork note to model-profiles.md about frontmatter model field
+- [x] **REF-02**: Add rule #6 to checkpoints.md about auto-handled checkpoints
+- [x] **REF-03**: Add fork note to questioning.md about autonomous mode skip
 
 ### Installer
 
-- [ ] **INST-01**: Add pilot-gsd fork documentation comment to bin/install.js
+- [x] **INST-01**: Add pilot-gsd fork documentation comment to bin/install.js
 
 ### Debug Command Special Case
 
@@ -122,10 +122,10 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 | WFLOW-14 | Phase 4 | Complete |
 | WFLOW-15 | Phase 4 | Complete |
 | WFLOW-16 | Phase 4 | Complete |
-| REF-01 | Phase 5 | Pending |
-| REF-02 | Phase 5 | Pending |
-| REF-03 | Phase 5 | Pending |
-| INST-01 | Phase 5 | Pending |
+| REF-01 | Phase 5 | Complete |
+| REF-02 | Phase 5 | Complete |
+| REF-03 | Phase 5 | Complete |
+| INST-01 | Phase 5 | Complete |
 
 **Coverage:**
 - v1 requirements: 36 total
@@ -134,4 +134,4 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 
 ---
 *Requirements defined: 2026-02-20*
-*Last updated: 2026-02-20 after Phase 4 completion*
+*Last updated: 2026-02-20 after Phase 5 completion*
