@@ -125,7 +125,11 @@ This IS the execution instructions. Follow exactly. If plan references CONTEXT.m
 node ~/.claude/get-shit-done/bin/gsd-tools.cjs phases list --type summaries --raw
 # Extract the second-to-last summary from the JSON result
 ```
-If previous SUMMARY has unresolved "Issues Encountered" or "Next Phase Readiness" blockers: AskUserQuestion(header="Previous Issues", options: "Proceed anyway" | "Address first" | "Review previous").
+If previous SUMMARY has unresolved "Issues Encountered" or "Next Phase Readiness" blockers:
+
+**If auto mode:** Log warning and proceed anyway. Note in SUMMARY.md that previous issues were auto-bypassed.
+
+**If interactive:** AskUserQuestion(header="Previous Issues", options: "Proceed anyway" | "Address first" | "Review previous").
 </step>
 
 <step name="execute">

@@ -83,8 +83,22 @@ Wait for confirmation before proceeding.
 
 **If plans incomplete:**
 
+<if mode="yolo" AND="workflow.auto_advance true">
+
+```
+⚠️ Auto-mode: Phase [X] has incomplete plans — marking complete anyway.
+Incomplete: {list incomplete plans}
+Reason: autonomous mode auto-advances; queue runner handles retries at pipeline level.
+```
+
+Mark phase complete. Log the incomplete plans in STATE.md under Accumulated Context > Concerns. Proceed to cleanup_handoff step.
+
+</if>
+
+<if mode="interactive" OR="auto_advance false">
+
 **SAFETY RAIL: always_confirm_destructive applies here.**
-Skipping incomplete plans is destructive — ALWAYS prompt regardless of mode.
+Skipping incomplete plans is destructive — prompt for confirmation.
 
 Present:
 
@@ -103,6 +117,8 @@ Options:
 ```
 
 Wait for user decision.
+
+</if>
 
 </step>
 

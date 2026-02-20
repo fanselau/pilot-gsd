@@ -15,8 +15,11 @@ Parse `$ARGUMENTS` for:
 - `--full` flag → store as `$FULL_MODE` (true/false)
 - Remaining text → use as `$DESCRIPTION` if non-empty
 
-If `$DESCRIPTION` is empty after parsing, prompt user interactively:
+If `$DESCRIPTION` is empty after parsing:
 
+**If running autonomously (< /dev/null or no TTY):** Exit with error: `❌ Quick task requires a description. Usage: /gsd-quick <description>`
+
+**If interactive:** Prompt user:
 ```
 AskUserQuestion(
   header: "Quick Task",
