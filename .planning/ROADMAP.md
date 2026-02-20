@@ -17,13 +17,14 @@ Plans:
 - No `/gsd:` or `~/.claude/` references remain in agent body text
 - Agent files parse correctly (valid YAML frontmatter)
 
-### Phase 2: Command Frontmatter Migration
+### Phase 2: Command Frontmatter Migration ✓
 **Goal:** All 30 command files use opencode-native frontmatter format with AskUserQuestion removed
+**Status:** Complete (verified 2026-02-20)
 **Requirements:** CMD-01, CMD-02, CMD-03, CMD-04, CMD-05, CMD-06
 **Plans:** 2 plans
 Plans:
 - [x] 02-01-PLAN.md — Migrate 16 non-AskUserQuestion command frontmatters and body text references
-- [ ] 02-02-PLAN.md — Migrate 14 AskUserQuestion command frontmatters (remove AskUserQuestion) + debug.md body fix
+- [x] 02-02-PLAN.md — Migrate 14 AskUserQuestion command frontmatters (remove AskUserQuestion) + debug.md body fix
 **Success Criteria:**
 - All command files have no `name:` field
 - All command files have `tools:` as YAML object (not `allowed-tools:` list)
@@ -65,4 +66,4 @@ Plans:
 
 ---
 *Roadmap created: 2026-02-20*
-*Last updated: 2026-02-20 after Phase 1 completion*
+*Last updated: 2026-02-20 after Phase 2 completion*
