@@ -16,7 +16,9 @@ Find current phase directory from most recently modified files:
 ls -lt .planning/phases/*/PLAN.md 2>/dev/null | head -1 | grep -oP 'phases/\K[^/]+'
 ```
 
-If no active phase detected, ask user which phase they're pausing work on.
+If no active phase detected:
+  **If auto mode:** Detect current phase from STATE.md. If STATE.md has no active phase, exit with error: `❌ No active phase detected. Cannot pause.`
+  **If interactive:** Ask user which phase they're pausing work on.
 </step>
 
 <step name="gather">

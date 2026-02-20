@@ -417,7 +417,9 @@ Orchestrator: ~10-15% context. Subagents: fresh 200k each. No polling (Task bloc
 
 <failure_handling>
 - **classifyHandoffIfNeeded false failure:** Agent reports "failed" but error is `classifyHandoffIfNeeded is not defined` → Claude Code bug, not GSD. Spot-check (SUMMARY exists, commits present) → if pass, treat as success
-- **Agent fails mid-plan:** Missing SUMMARY.md → report, ask user how to proceed
+- **Agent fails mid-plan:** Missing SUMMARY.md → report failure.
+  **If auto mode:** Log failure and continue with remaining plans in the wave.
+  **If interactive:** Ask user how to proceed.
 - **Dependency chain breaks:** Wave 1 fails → Wave 2 dependents likely fail → user chooses attempt or skip
 - **All agents in wave fail:** Systemic issue → stop, report for investigation
 - **Checkpoint unresolvable:** "Skip this plan?" or "Abort phase execution?" → record partial progress in STATE.md

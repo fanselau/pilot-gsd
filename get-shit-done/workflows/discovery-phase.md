@@ -214,7 +214,10 @@ Write `.planning/phases/XX-name/DISCOVERY.md`:
 After creating DISCOVERY.md, check confidence level.
 
 If confidence is LOW:
-Use AskUserQuestion:
+
+**If auto mode:** Use defaults and continue — proceed anyway with caveats. Log: `ℹ Discovery confidence LOW — proceeding with caveats in auto mode.`
+
+**If interactive:** Use AskUserQuestion:
 
 - header: "Low Conf."
 - question: "Discovery confidence is LOW: [reason]. How would you like to proceed?"

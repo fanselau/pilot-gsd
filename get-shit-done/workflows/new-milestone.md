@@ -26,6 +26,10 @@ Read all files referenced by the invoking prompt's execution_context before star
 - Present summary for confirmation
 
 **If no context file:**
+
+**If auto mode:** Skip deep questioning — extract context from provided document and continue. If no document provided, exit with error: `❌ new-milestone requires MILESTONE-CONTEXT.md or a document argument in auto mode.`
+
+**If interactive:**
 - Present what shipped in last milestone
 - Ask: "What do you want to build next?"
 - Use AskUserQuestion to explore features, priorities, constraints, scope
@@ -84,7 +88,9 @@ Extract from init JSON: `researcher_model`, `synthesizer_model`, `roadmapper_mod
 
 ## 8. Research Decision
 
-AskUserQuestion: "Research the domain ecosystem for new features before defining requirements?"
+**If auto mode:** Default to "Research first" without asking.
+
+**If interactive:** AskUserQuestion: "Research the domain ecosystem for new features before defining requirements?"
 - "Research first (Recommended)" — Discover patterns, features, architecture for NEW capabilities
 - "Skip research" — Go straight to requirements
 
@@ -207,7 +213,9 @@ Present features by category:
 
 **If no research:** Gather requirements through conversation. Ask: "What are the main things users need to do with [new features]?" Clarify, probe for related capabilities, group into categories.
 
-**Scope each category** via AskUserQuestion (multiSelect: true, header max 12 chars):
+**If auto mode:** Auto-include all table stakes features, include features mentioned in document, defer unmentioned differentiators. Skip per-category AskUserQuestion loops. Skip gap identification — proceed with discovered requirements.
+
+**If interactive:** **Scope each category** via AskUserQuestion (multiSelect: true, header max 12 chars):
 - "[Feature 1]" — [brief description]
 - "[Feature 2]" — [brief description]
 - "None for this milestone" — Defer entire category
@@ -320,7 +328,9 @@ Success criteria:
 2. [criterion]
 ```
 
-**Ask for approval** via AskUserQuestion:
+**If auto mode:** Auto-approve and commit directly.
+
+**If interactive:** **Ask for approval** via AskUserQuestion:
 - "Approve" — Commit and continue
 - "Adjust phases" — Tell me what to change
 - "Review full file" — Show raw ROADMAP.md

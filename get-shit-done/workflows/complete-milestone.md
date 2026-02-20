@@ -382,9 +382,11 @@ Extract from result: `version`, `date`, `phases`, `plans`, `tasks`, `accomplishm
 
 Verify: `✅ Milestone archived to .planning/milestones/`
 
-**Phase archival (optional):** After archival completes, ask the user:
+**Phase archival (optional):** After archival completes:
 
-AskUserQuestion(header="Archive Phases", question="Archive phase directories to milestones/?", options: "Yes — move to milestones/v[X.Y]-phases/" | "Skip — keep phases in place")
+**If auto mode:** Auto-approve — archive phases to milestones/ directory.
+
+**If interactive:** AskUserQuestion(header="Archive Phases", question="Archive phase directories to milestones/?", options: "Yes — move to milestones/v[X.Y]-phases/" | "Skip — keep phases in place")
 
 If "Yes": move phase directories to the milestone archive:
 ```bash
@@ -504,7 +506,9 @@ Options:
 3. **Keep branches** — Leave for manual handling
 ```
 
-AskUserQuestion with options: Squash merge (Recommended), Merge with history, Delete without merging, Keep branches.
+**If auto mode:** Auto-select squash merge (recommended option).
+
+**If interactive:** AskUserQuestion with options: Squash merge (Recommended), Merge with history, Delete without merging, Keep branches.
 
 **Squash merge:**
 
