@@ -5,6 +5,9 @@
 ### Phase 1: Agent Frontmatter Migration
 **Goal:** All 11 agent files use opencode-native frontmatter format with explicit model assignments
 **Requirements:** AGENT-01, AGENT-02, AGENT-03, AGENT-04, AGENT-05, AGENT-06
+**Plans:** 1 plan
+Plans:
+- [ ] 01-01-PLAN.md — Migrate all 11 agent frontmatters (6 opus + 5 sonnet) and body text references
 **Success Criteria:**
 - All agent files have no `name:` field
 - All agent files have `model:` field (opus or sonnet per assignment table)
@@ -57,4 +60,4 @@
 
 ---
 *Roadmap created: 2026-02-20*
-*Last updated: 2026-02-20 after initialization*
+*Last updated: 2026-02-20 after Phase 1 planning*
