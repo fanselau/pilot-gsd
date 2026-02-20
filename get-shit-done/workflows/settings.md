@@ -33,7 +33,9 @@ Parse current values (default to `true` if not present):
 </step>
 
 <step name="present_settings">
-Use AskUserQuestion with current values pre-selected:
+**If auto mode:** Skip settings UI — settings can only be changed interactively. Exit with message: `ℹ Settings changes require interactive mode. Current settings are in .planning/config.json`
+
+**If interactive:** Use AskUserQuestion with current values pre-selected:
 
 ```
 AskUserQuestion([
@@ -120,7 +122,9 @@ Write updated config to `.planning/config.json`.
 </step>
 
 <step name="save_as_defaults">
-Ask whether to save these settings as global defaults for future projects:
+**If auto mode:** Skip — settings workflow exited at present_settings step.
+
+**If interactive:** Ask whether to save these settings as global defaults for future projects:
 
 ```
 AskUserQuestion([

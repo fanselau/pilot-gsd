@@ -63,7 +63,9 @@ Format age as relative time from created timestamp.
 </step>
 
 <step name="handle_selection">
-Wait for user to reply with a number.
+**If auto mode:** Select first/highest priority todo and continue.
+
+**If interactive:** Wait for user to reply with a number.
 
 If valid: load selected todo, proceed.
 If invalid: "Invalid selection. Reply with a number (1-[N]) or `q` to exit."
@@ -99,6 +101,8 @@ If `.planning/ROADMAP.md` exists:
 </step>
 
 <step name="offer_actions">
+**If auto mode:** Select first/highest priority action — "Work on it now" (move to done, start working) and continue.
+
 **If todo maps to a roadmap phase:**
 
 Use AskUserQuestion:

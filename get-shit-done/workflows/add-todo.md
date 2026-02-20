@@ -69,7 +69,9 @@ If potential duplicate found:
 1. Read the existing todo
 2. Compare scope
 
-If overlapping, use AskUserQuestion:
+**If auto mode:** Auto-merge overlapping todos and continue. Update the existing todo with the new context (equivalent to "Replace") and proceed to create_file step.
+
+**If interactive:** Use AskUserQuestion:
 - header: "Duplicate?"
 - question: "Similar todo exists: [title]. What would you like to do?"
 - options:
