@@ -53,6 +53,9 @@ If `context_path` is not null, display: `Using phase context from: ${context_pat
 
 **If `context_path` is null (no CONTEXT.md exists):**
 
+**If `--auto` flag or `workflow.auto_advance` is true:** Continue without context (proceed to step 5). Log: `ℹ No CONTEXT.md — planning from research + requirements only.`
+
+**Otherwise (interactive mode):**
 Use AskUserQuestion:
 - header: "No context"
 - question: "No CONTEXT.md found for Phase {X}. Plans will use research and requirements only — your design preferences won't be included. Continue or capture context first?"
@@ -134,7 +137,9 @@ Task(
 ls "${PHASE_DIR}"/*-PLAN.md 2>/dev/null
 ```
 
-**If exists:** Offer: 1) Add more plans, 2) View existing, 3) Replan from scratch.
+**If exists AND auto mode (`--auto` or `workflow.auto_advance`):** Replan from scratch — delete existing plans in phase directory and continue to Step 7.
+
+**If exists AND interactive mode:** Offer: 1) Add more plans, 2) View existing, 3) Replan from scratch.
 
 ## 7. Use Context Paths from INIT
 
