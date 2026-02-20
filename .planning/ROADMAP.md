@@ -1,0 +1,60 @@
+# Roadmap
+
+## Milestone: autonomy-fork-v1
+
+### Phase 1: Agent Frontmatter Migration
+**Goal:** All 11 agent files use opencode-native frontmatter format with explicit model assignments
+**Requirements:** AGENT-01, AGENT-02, AGENT-03, AGENT-04, AGENT-05, AGENT-06
+**Success Criteria:**
+- All agent files have no `name:` field
+- All agent files have `model:` field (opus or sonnet per assignment table)
+- All agent files have `tools:` as YAML object (not comma-separated string)
+- All agent files have `color:` as hex value
+- No `/gsd:` or `~/.claude/` references remain in agent body text
+- Agent files parse correctly (valid YAML frontmatter)
+
+### Phase 2: Command Frontmatter Migration
+**Goal:** All 30 command files use opencode-native frontmatter format with AskUserQuestion removed
+**Requirements:** CMD-01, CMD-02, CMD-03, CMD-04, CMD-05, CMD-06
+**Success Criteria:**
+- All command files have no `name:` field
+- All command files have `tools:` as YAML object (not `allowed-tools:` list)
+- No command file includes `AskUserQuestion` in its tools
+- No `@~/.claude/` references remain in command files
+- No `/gsd:` references remain in command body text
+- debug.md body text has autonomous selection replacing AskUserQuestion instruction
+- Command files parse correctly (valid YAML frontmatter)
+
+### Phase 3: Global Search-and-Replace + Templates
+**Goal:** All path references and slash command syntax updated across entire repo; config template updated
+**Requirements:** WFLOW-17, WFLOW-18, TMPL-01
+**Success Criteria:**
+- `grep -rn '~/.claude/' --include='*.md' --include='*.json'` returns 0 results (excluding .git/)
+- `grep -rn '/gsd:' --include='*.md'` returns 0 results (excluding .git/)
+- templates/config.json has yolo mode, all gates off, auto_advance true
+- All `@` path references use `./.opencode/` prefix
+
+### Phase 4: Workflow Interactivity Stripping
+**Goal:** All workflow AskUserQuestion calls are either removed or guarded with auto-mode bypasses
+**Requirements:** WFLOW-01 through WFLOW-16
+**Success Criteria:**
+- new-project.md Step 2a uses hardcoded defaults (no AskUserQuestion)
+- plan-phase.md has auto-mode guards for CONTEXT.md check and existing plans
+- transition.md auto-advances on incomplete plans in yolo mode
+- quick.md errors on empty description in autonomous mode
+- execute-plan.md auto-bypasses previous issues in auto mode
+- All remaining AskUserQuestion calls in workflow files have auto-mode guards
+- No unguarded AskUserQuestion exists in any autonomous code path
+
+### Phase 5: References + Installer Documentation
+**Goal:** Documentation updated with fork-specific notes; installer has pilot-gsd comment
+**Requirements:** REF-01, REF-02, REF-03, INST-01
+**Success Criteria:**
+- model-profiles.md has note about frontmatter model field precedence
+- checkpoints.md has rule #6 about auto-handled checkpoints
+- questioning.md has note about autonomous mode skip
+- bin/install.js has pilot-gsd fork documentation comment
+
+---
+*Roadmap created: 2026-02-20*
+*Last updated: 2026-02-20 after initialization*
