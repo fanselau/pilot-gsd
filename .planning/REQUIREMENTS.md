@@ -18,11 +18,11 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 
 ### Command Frontmatter
 
-- [ ] **CMD-01**: Remove `name:` field from all 30 command files
-- [ ] **CMD-02**: Convert `allowed-tools:` list to `tools:` object format in all 30 commands
-- [ ] **CMD-03**: Remove `AskUserQuestion` from tools in all 16 commands that have it
-- [ ] **CMD-04**: Replace `@~/.claude/` with `@./.opencode/` in all command execution_context blocks
-- [ ] **CMD-05**: Replace `/gsd:` with `/gsd-` in all command body text
+- [x] **CMD-01**: Remove `name:` field from all 30 command files
+- [x] **CMD-02**: Convert `allowed-tools:` list to `tools:` object format in all 30 commands
+- [x] **CMD-03**: Remove `AskUserQuestion` from tools in all 16 commands that have it
+- [x] **CMD-04**: Replace `@~/.claude/` with `@./.opencode/` in all command execution_context blocks
+- [x] **CMD-05**: Replace `/gsd:` with `/gsd-` in all command body text
 
 ### Workflow Interactivity — Critical
 
@@ -70,7 +70,7 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 
 ### Debug Command Special Case
 
-- [ ] **CMD-06**: Replace "Use AskUserQuestion for each:" in debug.md body with autonomous selection text
+- [x] **CMD-06**: Replace "Use AskUserQuestion for each:" in debug.md body with autonomous selection text
 
 ## v2 Requirements
 
@@ -97,12 +97,12 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 | AGENT-04 | Phase 1 | Complete |
 | AGENT-05 | Phase 1 | Complete |
 | AGENT-06 | Phase 1 | Complete |
-| CMD-01 | Phase 2 | Pending |
-| CMD-02 | Phase 2 | Pending |
-| CMD-03 | Phase 2 | Pending |
-| CMD-04 | Phase 2 | Pending |
-| CMD-05 | Phase 2 | Pending |
-| CMD-06 | Phase 2 | Pending |
+| CMD-01 | Phase 2 | Complete |
+| CMD-02 | Phase 2 | Complete |
+| CMD-03 | Phase 2 | Complete |
+| CMD-04 | Phase 2 | Complete |
+| CMD-05 | Phase 2 | Complete |
+| CMD-06 | Phase 2 | Complete |
 | WFLOW-17 | Phase 3 | Pending |
 | WFLOW-18 | Phase 3 | Pending |
 | TMPL-01 | Phase 3 | Pending |
@@ -134,4 +134,4 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 
 ---
 *Requirements defined: 2026-02-20*
-*Last updated: 2026-02-20 after Phase 1 completion*
+*Last updated: 2026-02-20 after Phase 2 completion*
