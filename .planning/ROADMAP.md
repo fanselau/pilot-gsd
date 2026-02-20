@@ -67,6 +67,9 @@ Plans:
 ### Phase 5: References + Installer Documentation
 **Goal:** Documentation updated with fork-specific notes; installer has pilot-gsd comment
 **Requirements:** REF-01, REF-02, REF-03, INST-01
+**Plans:** 1 plan
+Plans:
+- [ ] 05-01-PLAN.md — Add fork notes to 3 reference files + installer comment
 **Success Criteria:**
 - model-profiles.md has note about frontmatter model field precedence
 - checkpoints.md has rule #6 about auto-handled checkpoints
