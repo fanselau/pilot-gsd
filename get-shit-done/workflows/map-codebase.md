@@ -26,7 +26,7 @@ Documents are reference material for Claude when planning/executing. Always incl
 Load codebase mapping context:
 
 ```bash
-INIT=$(node ~/.claude/get-shit-done/bin/gsd-tools.cjs init map-codebase)
+INIT=$(node ./.opencode/get-shit-done/bin/gsd-tools.cjs init map-codebase)
 ```
 
 Extract from init JSON: `mapper_model`, `commit_docs`, `codebase_dir`, `existing_maps`, `has_maps`, `codebase_dir_exists`.
@@ -250,7 +250,7 @@ Continue to commit_codebase_map.
 Commit the codebase map:
 
 ```bash
-node ~/.claude/get-shit-done/bin/gsd-tools.cjs commit "docs: map existing codebase" --files .planning/codebase/*.md
+node ./.opencode/get-shit-done/bin/gsd-tools.cjs commit "docs: map existing codebase" --files .planning/codebase/*.md
 ```
 
 Continue to offer_next.
@@ -285,14 +285,14 @@ Created .planning/codebase/:
 
 **Initialize project** — use codebase context for planning
 
-`/gsd:new-project`
+`/gsd-new-project`
 
 <sub>`/clear` first → fresh context window</sub>
 
 ---
 
 **Also available:**
-- Re-run mapping: `/gsd:map-codebase`
+- Re-run mapping: `/gsd-map-codebase`
 - Review specific file: `cat .planning/codebase/STACK.md`
 - Edit any document before proceeding
 

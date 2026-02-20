@@ -17,7 +17,7 @@ Read all files referenced by the invoking prompt's execution_context before star
 - Read PROJECT.md (existing project, validated requirements, decisions)
 - Read MILESTONES.md (what shipped previously)
 - Read STATE.md (pending todos, blockers)
-- Check for MILESTONE-CONTEXT.md (from /gsd:discuss-milestone)
+- Check for MILESTONE-CONTEXT.md (from /gsd-discuss-milestone)
 
 ## 2. Gather Milestone Goals
 
@@ -75,13 +75,13 @@ Keep Accumulated Context section from previous milestone.
 Delete MILESTONE-CONTEXT.md if exists (consumed).
 
 ```bash
-node ~/.claude/get-shit-done/bin/gsd-tools.cjs commit "docs: start milestone v[X.Y] [Name]" --files .planning/PROJECT.md .planning/STATE.md
+node ./.opencode/get-shit-done/bin/gsd-tools.cjs commit "docs: start milestone v[X.Y] [Name]" --files .planning/PROJECT.md .planning/STATE.md
 ```
 
 ## 7. Load Context and Resolve Models
 
 ```bash
-INIT=$(node ~/.claude/get-shit-done/bin/gsd-tools.cjs init new-milestone)
+INIT=$(node ./.opencode/get-shit-done/bin/gsd-tools.cjs init new-milestone)
 ```
 
 Extract from init JSON: `researcher_model`, `synthesizer_model`, `roadmapper_model`, `commit_docs`, `research_enabled`, `current_milestone`, `project_exists`, `roadmap_exists`.
@@ -94,14 +94,14 @@ Extract from init JSON: `researcher_model`, `synthesizer_model`, `roadmapper_mod
 - "Research first (Recommended)" — Discover patterns, features, architecture for NEW capabilities
 - "Skip research" — Go straight to requirements
 
-**Persist choice to config** (so future `/gsd:plan-phase` honors it):
+**Persist choice to config** (so future `/gsd-plan-phase` honors it):
 
 ```bash
 # If "Research first": persist true
-node ~/.claude/get-shit-done/bin/gsd-tools.cjs config-set workflow.research true
+node ./.opencode/get-shit-done/bin/gsd-tools.cjs config-set workflow.research true
 
 # If "Skip research": persist false
-node ~/.claude/get-shit-done/bin/gsd-tools.cjs config-set workflow.research false
+node ./.opencode/get-shit-done/bin/gsd-tools.cjs config-set workflow.research false
 ```
 
 **If "Research first":**
@@ -144,7 +144,7 @@ Focus ONLY on what's needed for the NEW features.
 
 <output>
 Write to: .planning/research/{FILE}
-Use template: ~/.claude/get-shit-done/templates/research-project/{FILE}
+Use template: ./.opencode/get-shit-done/templates/research-project/{FILE}
 </output>
 ", subagent_type="gsd-project-researcher", model="{researcher_model}", description="{DIMENSION} research")
 ```
@@ -173,7 +173,7 @@ Synthesize research outputs into SUMMARY.md.
 </files_to_read>
 
 Write to: .planning/research/SUMMARY.md
-Use template: ~/.claude/get-shit-done/templates/research-project/SUMMARY.md
+Use template: ./.opencode/get-shit-done/templates/research-project/SUMMARY.md
 Commit after writing.
 ", subagent_type="gsd-research-synthesizer", model="{synthesizer_model}", description="Synthesize research")
 ```
@@ -261,7 +261,7 @@ If "adjust": Return to scoping.
 
 **Commit requirements:**
 ```bash
-node ~/.claude/get-shit-done/bin/gsd-tools.cjs commit "docs: define milestone v[X.Y] requirements" --files .planning/REQUIREMENTS.md
+node ./.opencode/get-shit-done/bin/gsd-tools.cjs commit "docs: define milestone v[X.Y] requirements" --files .planning/REQUIREMENTS.md
 ```
 
 ## 10. Create Roadmap
@@ -340,7 +340,7 @@ Success criteria:
 
 **Commit roadmap** (after approval):
 ```bash
-node ~/.claude/get-shit-done/bin/gsd-tools.cjs commit "docs: create milestone v[X.Y] roadmap ([N] phases)" --files .planning/ROADMAP.md .planning/STATE.md .planning/REQUIREMENTS.md
+node ./.opencode/get-shit-done/bin/gsd-tools.cjs commit "docs: create milestone v[X.Y] roadmap ([N] phases)" --files .planning/ROADMAP.md .planning/STATE.md .planning/REQUIREMENTS.md
 ```
 
 ## 11. Done
@@ -365,11 +365,11 @@ node ~/.claude/get-shit-done/bin/gsd-tools.cjs commit "docs: create milestone v[
 
 **Phase [N]: [Phase Name]** — [Goal]
 
-`/gsd:discuss-phase [N]` — gather context and clarify approach
+`/gsd-discuss-phase [N]` — gather context and clarify approach
 
 <sub>`/clear` first → fresh context window</sub>
 
-Also: `/gsd:plan-phase [N]` — skip discussion, plan directly
+Also: `/gsd-plan-phase [N]` — skip discussion, plan directly
 ```
 
 </process>
@@ -386,7 +386,7 @@ Also: `/gsd:plan-phase [N]` — skip discussion, plan directly
 - [ ] User feedback incorporated (if any)
 - [ ] ROADMAP.md phases continue from previous milestone
 - [ ] All commits made (if planning docs committed)
-- [ ] User knows next step: `/gsd:discuss-phase [N]`
+- [ ] User knows next step: `/gsd-discuss-phase [N]`
 
 **Atomic commits:** Each phase commits its artifacts immediately.
 </success_criteria>

@@ -23,7 +23,7 @@ Check if `--auto` flag is present in $ARGUMENTS.
 
 **Document requirement:**
 Auto mode requires an idea document — either:
-- File reference: `/gsd:new-project --auto @prd.md`
+- File reference: `/gsd-new-project --auto @prd.md`
 - Pasted/written text in the prompt
 
 If no document content provided, error:
@@ -32,8 +32,8 @@ If no document content provided, error:
 Error: --auto requires an idea document.
 
 Usage:
-  /gsd:new-project --auto @your-idea.md
-  /gsd:new-project --auto [paste or write your idea here]
+  /gsd-new-project --auto @your-idea.md
+  /gsd-new-project --auto [paste or write your idea here]
 
 The document should describe what you want to build.
 ```
@@ -46,12 +46,12 @@ The document should describe what you want to build.
 **MANDATORY FIRST STEP — Execute these checks before ANY user interaction:**
 
 ```bash
-INIT=$(node ~/.claude/get-shit-done/bin/gsd-tools.cjs init new-project)
+INIT=$(node ./.opencode/get-shit-done/bin/gsd-tools.cjs init new-project)
 ```
 
 Parse JSON for: `researcher_model`, `synthesizer_model`, `roadmapper_model`, `commit_docs`, `project_exists`, `has_codebase_map`, `planning_exists`, `has_existing_code`, `has_package_file`, `is_brownfield`, `needs_codebase_map`, `has_git`, `project_path`.
 
-**If `project_exists` is true:** Error — project already initialized. Use `/gsd:progress`.
+**If `project_exists` is true:** Error — project already initialized. Use `/gsd-progress`.
 
 **If `has_git` is false:** Initialize git:
 ```bash
@@ -68,12 +68,12 @@ Use AskUserQuestion:
 - header: "Codebase"
 - question: "I detected existing code in this directory. Would you like to map the codebase first?"
 - options:
-  - "Map codebase first" — Run /gsd:map-codebase to understand existing architecture (Recommended)
+  - "Map codebase first" — Run /gsd-map-codebase to understand existing architecture (Recommended)
   - "Skip mapping" — Proceed with project initialization
 
 **If "Map codebase first":**
 ```
-Run `/gsd:map-codebase` first, then return to `/gsd:new-project`
+Run `/gsd-map-codebase` first, then return to `/gsd-new-project`
 ```
 Exit command.
 
@@ -111,13 +111,13 @@ Proceed to Step 3 (skip brownfield offer in auto mode — already handled in Ste
 
 ```bash
 mkdir -p .planning
-node ~/.claude/get-shit-done/bin/gsd-tools.cjs commit "chore: add project config" --files .planning/config.json
+node ./.opencode/get-shit-done/bin/gsd-tools.cjs commit "chore: add project config" --files .planning/config.json
 ```
 
 **Persist auto-advance to config (survives context compaction):**
 
 ```bash
-node ~/.claude/get-shit-done/bin/gsd-tools.cjs config-set workflow.auto_advance true
+node ./.opencode/get-shit-done/bin/gsd-tools.cjs config-set workflow.auto_advance true
 ```
 
 Proceed to Step 4 (skip Steps 3 and 5).
@@ -261,7 +261,7 @@ Do not compress. Capture everything gathered.
 
 ```bash
 mkdir -p .planning
-node ~/.claude/get-shit-done/bin/gsd-tools.cjs commit "docs: initialize project" --files .planning/PROJECT.md
+node ./.opencode/get-shit-done/bin/gsd-tools.cjs commit "docs: initialize project" --files .planning/PROJECT.md
 ```
 
 ## 5. Workflow Preferences
@@ -413,10 +413,10 @@ Create `.planning/config.json` with all settings:
 **Commit config.json:**
 
 ```bash
-node ~/.claude/get-shit-done/bin/gsd-tools.cjs commit "chore: add project config" --files .planning/config.json
+node ./.opencode/get-shit-done/bin/gsd-tools.cjs commit "chore: add project config" --files .planning/config.json
 ```
 
-**Note:** Run `/gsd:settings` anytime to update these preferences.
+**Note:** Run `/gsd-settings` anytime to update these preferences.
 
 ## 5.5. Resolve Model Profile
 
@@ -467,7 +467,7 @@ Display spawning indicator:
 Spawn 4 parallel gsd-project-researcher agents with path references:
 
 ```
-Task(prompt="First, read ~/.claude/agents/gsd-project-researcher.md for your role and instructions.
+Task(prompt="First, read ./.opencode/agents/gsd-project-researcher.md for your role and instructions.
 
 <research_type>
 Project Research — Stack dimension for [domain].
@@ -503,11 +503,11 @@ Your STACK.md feeds into roadmap creation. Be prescriptive:
 
 <output>
 Write to: .planning/research/STACK.md
-Use template: ~/.claude/get-shit-done/templates/research-project/STACK.md
+Use template: ./.opencode/get-shit-done/templates/research-project/STACK.md
 </output>
 ", subagent_type="general-purpose", model="{researcher_model}", description="Stack research")
 
-Task(prompt="First, read ~/.claude/agents/gsd-project-researcher.md for your role and instructions.
+Task(prompt="First, read ./.opencode/agents/gsd-project-researcher.md for your role and instructions.
 
 <research_type>
 Project Research — Features dimension for [domain].
@@ -543,11 +543,11 @@ Your FEATURES.md feeds into requirements definition. Categorize clearly:
 
 <output>
 Write to: .planning/research/FEATURES.md
-Use template: ~/.claude/get-shit-done/templates/research-project/FEATURES.md
+Use template: ./.opencode/get-shit-done/templates/research-project/FEATURES.md
 </output>
 ", subagent_type="general-purpose", model="{researcher_model}", description="Features research")
 
-Task(prompt="First, read ~/.claude/agents/gsd-project-researcher.md for your role and instructions.
+Task(prompt="First, read ./.opencode/agents/gsd-project-researcher.md for your role and instructions.
 
 <research_type>
 Project Research — Architecture dimension for [domain].
@@ -583,11 +583,11 @@ Your ARCHITECTURE.md informs phase structure in roadmap. Include:
 
 <output>
 Write to: .planning/research/ARCHITECTURE.md
-Use template: ~/.claude/get-shit-done/templates/research-project/ARCHITECTURE.md
+Use template: ./.opencode/get-shit-done/templates/research-project/ARCHITECTURE.md
 </output>
 ", subagent_type="general-purpose", model="{researcher_model}", description="Architecture research")
 
-Task(prompt="First, read ~/.claude/agents/gsd-project-researcher.md for your role and instructions.
+Task(prompt="First, read ./.opencode/agents/gsd-project-researcher.md for your role and instructions.
 
 <research_type>
 Project Research — Pitfalls dimension for [domain].
@@ -623,7 +623,7 @@ Your PITFALLS.md prevents mistakes in roadmap/planning. For each pitfall:
 
 <output>
 Write to: .planning/research/PITFALLS.md
-Use template: ~/.claude/get-shit-done/templates/research-project/PITFALLS.md
+Use template: ./.opencode/get-shit-done/templates/research-project/PITFALLS.md
 </output>
 ", subagent_type="general-purpose", model="{researcher_model}", description="Pitfalls research")
 ```
@@ -645,7 +645,7 @@ Synthesize research outputs into SUMMARY.md.
 
 <output>
 Write to: .planning/research/SUMMARY.md
-Use template: ~/.claude/get-shit-done/templates/research-project/SUMMARY.md
+Use template: ./.opencode/get-shit-done/templates/research-project/SUMMARY.md
 Commit after writing.
 </output>
 ", subagent_type="gsd-research-synthesizer", model="{synthesizer_model}", description="Synthesize research")
@@ -810,7 +810,7 @@ If "adjust": Return to scoping.
 **Commit requirements:**
 
 ```bash
-node ~/.claude/get-shit-done/bin/gsd-tools.cjs commit "docs: define v1 requirements" --files .planning/REQUIREMENTS.md
+node ./.opencode/get-shit-done/bin/gsd-tools.cjs commit "docs: define v1 requirements" --files .planning/REQUIREMENTS.md
 ```
 
 ## 8. Create Roadmap
@@ -940,7 +940,7 @@ Use AskUserQuestion:
 **Commit roadmap (after approval or auto mode):**
 
 ```bash
-node ~/.claude/get-shit-done/bin/gsd-tools.cjs commit "docs: create roadmap ([N] phases)" --files .planning/ROADMAP.md .planning/STATE.md .planning/REQUIREMENTS.md
+node ./.opencode/get-shit-done/bin/gsd-tools.cjs commit "docs: create roadmap ([N] phases)" --files .planning/ROADMAP.md .planning/STATE.md .planning/REQUIREMENTS.md
 ```
 
 ## 9. Done
@@ -973,7 +973,7 @@ Present completion summary:
 ╚══════════════════════════════════════════╝
 ```
 
-Exit skill and invoke SlashCommand("/gsd:discuss-phase 1 --auto")
+Exit skill and invoke SlashCommand("/gsd-discuss-phase 1 --auto")
 
 **If interactive mode:**
 
@@ -984,14 +984,14 @@ Exit skill and invoke SlashCommand("/gsd:discuss-phase 1 --auto")
 
 **Phase 1: [Phase Name]** — [Goal from ROADMAP.md]
 
-/gsd:discuss-phase 1 — gather context and clarify approach
+/gsd-discuss-phase 1 — gather context and clarify approach
 
 <sub>/clear first → fresh context window</sub>
 
 ---
 
 **Also available:**
-- /gsd:plan-phase 1 — skip discussion, plan directly
+- /gsd-plan-phase 1 — skip discussion, plan directly
 
 ───────────────────────────────────────────────────────────────
 ```
@@ -1032,7 +1032,7 @@ Exit skill and invoke SlashCommand("/gsd:discuss-phase 1 --auto")
 - [ ] ROADMAP.md created with phases, requirement mappings, success criteria
 - [ ] STATE.md initialized
 - [ ] REQUIREMENTS.md traceability updated
-- [ ] User knows next step is `/gsd:discuss-phase 1`
+- [ ] User knows next step is `/gsd-discuss-phase 1`
 
 **Atomic commits:** Each phase commits its artifacts immediately. If context is lost, artifacts persist.
 

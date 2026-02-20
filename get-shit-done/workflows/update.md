@@ -17,8 +17,8 @@ Detect whether GSD is installed locally or globally by checking both locations:
 if [ -f ./.claude/get-shit-done/VERSION ]; then
   cat ./.claude/get-shit-done/VERSION
   echo "LOCAL"
-elif [ -f ~/.claude/get-shit-done/VERSION ]; then
-  cat ~/.claude/get-shit-done/VERSION
+elif [ -f ./.opencode/get-shit-done/VERSION ]; then
+  cat ./.opencode/get-shit-done/VERSION
   echo "GLOBAL"
 else
   echo "UNKNOWN"
@@ -122,7 +122,7 @@ Exit.
 - `get-shit-done/` will be wiped and replaced
 - `agents/gsd-*` files will be replaced
 
-(Paths are relative to your install location: `~/.claude/` for global, `./.claude/` for local)
+(Paths are relative to your install location: `./.opencode/` for global, `./.claude/` for local)
 
 Your custom files in other locations are preserved:
 - Custom commands not in `commands/gsd/` ✓
@@ -130,7 +130,7 @@ Your custom files in other locations are preserved:
 - Custom hooks ✓
 - Your CLAUDE.md files ✓
 
-If you've modified any GSD files directly, they'll be automatically backed up to `gsd-local-patches/` and can be reapplied with `/gsd:reapply-patches` after the update.
+If you've modified any GSD files directly, they'll be automatically backed up to `gsd-local-patches/` and can be reapplied with `/gsd-reapply-patches` after the update.
 ```
 
 **If auto mode:** Auto-approve update and continue.
@@ -168,7 +168,7 @@ rm -f ./.claude/cache/gsd-update-check.json
 
 **If GLOBAL install:**
 ```bash
-rm -f ~/.claude/cache/gsd-update-check.json
+rm -f ./.opencode/cache/gsd-update-check.json
 ```
 (Paths are templated at install time for runtime compatibility)
 </step>
@@ -197,7 +197,7 @@ Check for gsd-local-patches/backup-meta.json in the config directory.
 
 ```
 Local patches were backed up before the update.
-Run /gsd:reapply-patches to merge your modifications into the new version.
+Run /gsd-reapply-patches to merge your modifications into the new version.
 ```
 
 **If no patches:** Continue normally.

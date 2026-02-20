@@ -146,3 +146,7 @@ Loop until "Create PROJECT.md" selected.
 </anti_patterns>
 
 </questioning_guide>
+
+---
+## pilot-gsd Fork Note
+In the pilot-gsd fork, all AskUserQuestion calls are stripped or guarded with auto-mode bypasses. In autonomous mode, questions are never presented to the user — the agent uses sensible defaults or skips the question entirely.

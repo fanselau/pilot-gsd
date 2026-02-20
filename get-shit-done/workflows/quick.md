@@ -46,12 +46,12 @@ If `$FULL_MODE`:
 **Step 2: Initialize**
 
 ```bash
-INIT=$(node ~/.claude/get-shit-done/bin/gsd-tools.cjs init quick "$DESCRIPTION")
+INIT=$(node ./.opencode/get-shit-done/bin/gsd-tools.cjs init quick "$DESCRIPTION")
 ```
 
 Parse JSON for: `planner_model`, `executor_model`, `checker_model`, `verifier_model`, `commit_docs`, `next_num`, `slug`, `date`, `timestamp`, `quick_dir`, `task_dir`, `roadmap_exists`, `planning_exists`.
 
-**If `roadmap_exists` is false:** Error — Quick mode requires an active project with ROADMAP.md. Run `/gsd:new-project` first.
+**If `roadmap_exists` is false:** Error — Quick mode requires an active project with ROADMAP.md. Run `/gsd-new-project` first.
 
 Quick tasks can run mid-phase - validation only checks ROADMAP.md exists, not phase status.
 
@@ -225,7 +225,7 @@ Return what changed.
 
 ```
 Task(
-  prompt="First, read ~/.claude/agents/gsd-planner.md for your role and instructions.\n\n" + revision_prompt,
+  prompt="First, read ./.opencode/agents/gsd-planner.md for your role and instructions.\n\n" + revision_prompt,
   subagent_type="general-purpose",
   model="{planner_model}",
   description="Revise quick plan: ${DESCRIPTION}"
@@ -395,7 +395,7 @@ Build file list:
 - If `$FULL_MODE` and verification file exists: `${QUICK_DIR}/${next_num}-VERIFICATION.md`
 
 ```bash
-node ~/.claude/get-shit-done/bin/gsd-tools.cjs commit "docs(quick-${next_num}): ${DESCRIPTION}" --files ${file_list}
+node ./.opencode/get-shit-done/bin/gsd-tools.cjs commit "docs(quick-${next_num}): ${DESCRIPTION}" --files ${file_list}
 ```
 
 Get final commit hash:
@@ -419,7 +419,7 @@ Commit: ${commit_hash}
 
 ---
 
-Ready for next task: /gsd:quick
+Ready for next task: /gsd-quick
 ```
 
 **If NOT `$FULL_MODE`:**
@@ -435,7 +435,7 @@ Commit: ${commit_hash}
 
 ---
 
-Ready for next task: /gsd:quick
+Ready for next task: /gsd-quick
 ```
 
 </process>

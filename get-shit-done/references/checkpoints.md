@@ -774,3 +774,7 @@ Checkpoints formalize human-in-the-loop points for verification and decisions, n
 - Code correctness (tests and static analysis)
 - Anything automatable via CLI/API
 </summary>
+
+---
+## pilot-gsd Fork Note
+In the pilot-gsd fork, checkpoints are auto-handled in autonomous mode. The pipeline never blocks on checkpoint confirmation — it proceeds automatically. Rule #6: All checkpoint types are auto-resolved when running under Pilot.
