@@ -81,106 +81,29 @@ Exit command.
 
 ## 2a. Auto Mode Config (auto mode only)
 
-**If auto mode:** Collect config settings upfront before processing the idea document.
+**If auto mode:** Use optimal defaults without asking. No questions — fully autonomous.
 
-YOLO mode is implicit (auto = YOLO). Ask remaining config questions:
+YOLO mode is implicit (auto = YOLO).
 
-**Round 1 — Core settings (3 questions, no Mode question):**
-
-```
-AskUserQuestion([
-  {
-    header: "Depth",
-    question: "How thorough should planning be?",
-    multiSelect: false,
-    options: [
-      { label: "Quick (Recommended)", description: "Ship fast (3-5 phases, 1-3 plans each)" },
-      { label: "Standard", description: "Balanced scope and speed (5-8 phases, 3-5 plans each)" },
-      { label: "Comprehensive", description: "Thorough coverage (8-12 phases, 5-10 plans each)" }
-    ]
-  },
-  {
-    header: "Execution",
-    question: "Run plans in parallel?",
-    multiSelect: false,
-    options: [
-      { label: "Parallel (Recommended)", description: "Independent plans run simultaneously" },
-      { label: "Sequential", description: "One plan at a time" }
-    ]
-  },
-  {
-    header: "Git Tracking",
-    question: "Commit planning docs to git?",
-    multiSelect: false,
-    options: [
-      { label: "Yes (Recommended)", description: "Planning docs tracked in version control" },
-      { label: "No", description: "Keep .planning/ local-only (add to .gitignore)" }
-    ]
-  }
-])
-```
-
-**Round 2 — Workflow agents (same as Step 5):**
-
-```
-AskUserQuestion([
-  {
-    header: "Research",
-    question: "Research before planning each phase? (adds tokens/time)",
-    multiSelect: false,
-    options: [
-      { label: "Yes (Recommended)", description: "Investigate domain, find patterns, surface gotchas" },
-      { label: "No", description: "Plan directly from requirements" }
-    ]
-  },
-  {
-    header: "Plan Check",
-    question: "Verify plans will achieve their goals? (adds tokens/time)",
-    multiSelect: false,
-    options: [
-      { label: "Yes (Recommended)", description: "Catch gaps before execution starts" },
-      { label: "No", description: "Execute plans without verification" }
-    ]
-  },
-  {
-    header: "Verifier",
-    question: "Verify work satisfies requirements after each phase? (adds tokens/time)",
-    multiSelect: false,
-    options: [
-      { label: "Yes (Recommended)", description: "Confirm deliverables match phase goals" },
-      { label: "No", description: "Trust execution, skip verification" }
-    ]
-  },
-  {
-    header: "AI Models",
-    question: "Which AI models for planning agents?",
-    multiSelect: false,
-    options: [
-      { label: "Balanced (Recommended)", description: "Sonnet for most agents — good quality/cost ratio" },
-      { label: "Quality", description: "Opus for research/roadmap — higher cost, deeper analysis" },
-      { label: "Budget", description: "Haiku where possible — fastest, lowest cost" }
-    ]
-  }
-])
-```
-
-Create `.planning/config.json` with mode set to "yolo":
+Create `.planning/config.json` with autonomous defaults:
 
 ```json
 {
   "mode": "yolo",
-  "depth": "[selected]",
-  "parallelization": true|false,
-  "commit_docs": true|false,
-  "model_profile": "quality|balanced|budget",
+  "depth": "quick",
+  "parallelization": true,
+  "commit_docs": true,
+  "model_profile": "balanced",
   "workflow": {
-    "research": true|false,
-    "plan_check": true|false,
-    "verifier": true|false,
+    "research": true,
+    "plan_check": true,
+    "verifier": true,
     "auto_advance": true
   }
 }
 ```
+
+Proceed to Step 3 (skip brownfield offer in auto mode — already handled in Step 2).
 
 **If commit_docs = No:** Add `.planning/` to `.gitignore`.
 
