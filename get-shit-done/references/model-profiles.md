@@ -1,3 +1,7 @@
+> **pilot-gsd fork:** Models are set directly in agent frontmatter (`model:` field).
+> The profile system below is preserved for upstream compatibility but is not used
+> when agents have explicit model assignments. The frontmatter `model:` takes precedence.
+
 # Model Profiles
 
 Model profiles control which Claude model each GSD agent uses. This allows balancing quality vs token spend.

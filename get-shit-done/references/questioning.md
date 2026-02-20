@@ -1,3 +1,6 @@
+> **pilot-gsd fork:** This reference is only used in interactive mode (discuss-phase).
+> Autonomous pipeline commands (new-project --auto, plan-phase --auto) skip all questioning.
+
 <questioning_guide>
 
 Project initialization is dream extraction, not requirements gathering. You're helping the user discover and articulate what they want to build. This isn't a contract negotiation — it's collaborative thinking.
