@@ -49,6 +49,11 @@ Plans:
 ### Phase 4: Workflow Interactivity Stripping
 **Goal:** All workflow AskUserQuestion calls are either removed or guarded with auto-mode bypasses
 **Requirements:** WFLOW-01 through WFLOW-16
+**Plans:** 3 plans
+Plans:
+- [ ] 04-01-PLAN.md — Strip interactivity from critical workflows (new-project.md, plan-phase.md)
+- [ ] 04-02-PLAN.md — Strip interactivity from medium-priority workflows (transition.md, quick.md, execute-plan.md)
+- [ ] 04-03-PLAN.md — Add auto-mode guards to 10 low-priority workflow files
 **Success Criteria:**
 - new-project.md Step 2a uses hardcoded defaults (no AskUserQuestion)
 - plan-phase.md has auto-mode guards for CONTEXT.md check and existing plans
@@ -69,4 +74,4 @@ Plans:
 
 ---
 *Roadmap created: 2026-02-20*
-*Last updated: 2026-02-20 after Phase 2 completion*
+*Last updated: 2026-02-20 after Phase 4 planning*
