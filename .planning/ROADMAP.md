@@ -37,6 +37,9 @@ Plans:
 ### Phase 3: Global Search-and-Replace + Templates
 **Goal:** All path references and slash command syntax updated across entire repo; config template updated
 **Requirements:** WFLOW-17, WFLOW-18, TMPL-01
+**Plans:** 1 plan
+Plans:
+- [ ] 03-01-PLAN.md — Global sed replacements (path refs + slash commands) and config template update
 **Success Criteria:**
 - `grep -rn '~/.claude/' --include='*.md' --include='*.json'` returns 0 results (excluding .git/)
 - `grep -rn '/gsd:' --include='*.md'` returns 0 results (excluding .git/)
