@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 
+// NOTE (pilot-gsd fork): The Pilot CLI manages installation via symlinks.
+// `pilot setup` symlinks from this repo into project .opencode/ directories.
+// This installer is preserved for standalone/upstream-compatible use.
+// For pilot users: run `pilot setup` instead of this installer.
+
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
