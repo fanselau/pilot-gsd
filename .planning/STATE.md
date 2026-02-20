@@ -27,7 +27,7 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 
 ### Phase 4: Workflow Interactivity Stripping
 - **Status:** in_progress
-- **Plans:** 2/3
+- **Plans:** 2/3 (04-01, 04-02 complete; 04-03 pending)
 - **Requirements:** WFLOW-01 through WFLOW-16
 
 ### Phase 5: References + Installer Documentation
@@ -46,6 +46,7 @@ Progress: [█████░░░░░] 5/7 plans (71%)
 | No deviations needed for command migration (16 non-AskUserQuestion files) | 02-01 | All changes were mechanical format conversions per requirements spec |
 | No deviations needed for AskUserQuestion command migration (14 files) | 02-02 | Mechanical removal of AskUserQuestion + format conversions per requirements spec |
 | No deviations needed for medium-priority workflow stripping (3 files) | 04-02 | Exact before/after replacements per requirements spec sections 3c, 3d, 3e |
+| Steps 5-8 in new-project.md already had auto-mode guards | 04-01 | Only Step 2a needed replacement; WFLOW-07/WFLOW-08 were pre-satisfied |
 
 ### Concerns
 (None)
@@ -58,10 +59,10 @@ Progress: [█████░░░░░] 5/7 plans (71%)
 
 ## Session Continuity
 
-Last session: 2026-02-20T18:30:57Z
-Stopped at: Completed 04-02-PLAN.md, ready for 04-03-PLAN.md
+Last session: 2026-02-20T18:31:14Z
+Stopped at: Completed 04-01-PLAN.md (04-02 also complete; 04-03 remaining)
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-02-20 after 04-02 completion*
+*Last updated: 2026-02-20 after 04-01 completion*
