@@ -1,14 +1,14 @@
 # State
 
 ## Current Milestone: autonomy-fork-v1
-## Current Phase: 3
+## Current Phase: 4
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Phase 2 — Command Frontmatter Migration
+**Current focus:** Phase 4 — Workflow Interactivity Stripping
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** complete
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Requirements:** WFLOW-17, WFLOW-18, TMPL-01
 
 ### Phase 4: Workflow Interactivity Stripping
-- **Status:** not_started
-- **Plans:** 0/0
+- **Status:** in_progress
+- **Plans:** 2/3
 - **Requirements:** WFLOW-01 through WFLOW-16
 
 ### Phase 5: References + Installer Documentation
@@ -35,7 +35,7 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Plans:** 0/0
 - **Requirements:** REF-01, REF-02, REF-03, INST-01
 
-Progress: [███░░░░░░░] 3/7 plans (43%)
+Progress: [█████░░░░░] 5/7 plans (71%)
 
 ## Accumulated Context
 
@@ -45,6 +45,7 @@ Progress: [███░░░░░░░] 3/7 plans (43%)
 | No deviations needed for agent migration | 01-01 | All changes were mechanical format conversions per requirements spec |
 | No deviations needed for command migration (16 non-AskUserQuestion files) | 02-01 | All changes were mechanical format conversions per requirements spec |
 | No deviations needed for AskUserQuestion command migration (14 files) | 02-02 | Mechanical removal of AskUserQuestion + format conversions per requirements spec |
+| No deviations needed for medium-priority workflow stripping (3 files) | 04-02 | Exact before/after replacements per requirements spec sections 3c, 3d, 3e |
 
 ### Concerns
 (None)
@@ -57,10 +58,10 @@ Progress: [███░░░░░░░] 3/7 plans (43%)
 
 ## Session Continuity
 
-Last session: 2026-02-20T15:21:09Z
-Stopped at: Phase 2 complete, Phase 3 ready for planning
+Last session: 2026-02-20T18:30:57Z
+Stopped at: Completed 04-02-PLAN.md, ready for 04-03-PLAN.md
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-02-20 after Phase 2 completion (02-02)*
+*Last updated: 2026-02-20 after 04-02 completion*
