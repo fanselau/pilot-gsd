@@ -22,7 +22,7 @@ Plans:
 **Requirements:** CMD-01, CMD-02, CMD-03, CMD-04, CMD-05, CMD-06
 **Plans:** 2 plans
 Plans:
-- [ ] 02-01-PLAN.md — Migrate 16 non-AskUserQuestion command frontmatters and body text references
+- [x] 02-01-PLAN.md — Migrate 16 non-AskUserQuestion command frontmatters and body text references
 - [ ] 02-02-PLAN.md — Migrate 14 AskUserQuestion command frontmatters (remove AskUserQuestion) + debug.md body fix
 **Success Criteria:**
 - All command files have no `name:` field
