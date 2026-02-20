@@ -8,7 +8,7 @@
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Phase 5 — References + Installer Documentation
+**Current focus:** Milestone complete — all phases done
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** complete
@@ -31,11 +31,11 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Requirements:** WFLOW-01 through WFLOW-16
 
 ### Phase 5: References + Installer Documentation
-- **Status:** not_started
-- **Plans:** 0/0
+- **Status:** complete
+- **Plans:** 1/1
 - **Requirements:** REF-01, REF-02, REF-03, INST-01
 
-Progress: [██████░░░░] 6/7 plans (86%)
+Progress: [██████████] 7/7 plans (100%)
 
 ## Accumulated Context
 
@@ -50,6 +50,7 @@ Progress: [██████░░░░] 6/7 plans (86%)
 | Settings workflow exits entirely in auto mode | 04-03 | Inherently interactive — no reasonable default action |
 | Pause-work detects phase from STATE.md in auto mode | 04-03 | Avoids stdin hang while maintaining functionality |
 | Execute-phase logs failure and continues in auto mode | 04-03 | Pipeline keeps moving; queue runner handles retries |
+| Replaced upstream checkpoints.md rule #5 with fork version | 05-01 | Fork version more explicit about human-action skipping in autonomous mode |
 
 ### Concerns
 (None)
@@ -62,10 +63,10 @@ Progress: [██████░░░░] 6/7 plans (86%)
 
 ## Session Continuity
 
-Last session: 2026-02-20T18:33:22Z
-Stopped at: Phase 4 complete, Phase 5 ready for planning
+Last session: 2026-02-20T18:59:47Z
+Stopped at: Completed 05-01-PLAN.md — Phase 5 complete, milestone complete
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-02-20 after Phase 4 completion (04-03)*
+*Last updated: 2026-02-20 after Phase 5 completion (05-01)*

@@ -64,12 +64,13 @@ Plans:
 - All remaining AskUserQuestion calls in workflow files have auto-mode guards
 - No unguarded AskUserQuestion exists in any autonomous code path
 
-### Phase 5: References + Installer Documentation
+### Phase 5: References + Installer Documentation ✓
 **Goal:** Documentation updated with fork-specific notes; installer has pilot-gsd comment
+**Status:** Complete (2026-02-20)
 **Requirements:** REF-01, REF-02, REF-03, INST-01
 **Plans:** 1 plan
 Plans:
-- [ ] 05-01-PLAN.md — Add fork notes to 3 reference files + installer comment
+- [x] 05-01-PLAN.md — Add fork notes to 3 reference files + installer comment
 **Success Criteria:**
 - model-profiles.md has note about frontmatter model field precedence
 - checkpoints.md has rule #6 about auto-handled checkpoints
