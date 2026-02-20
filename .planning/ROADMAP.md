@@ -34,7 +34,7 @@ Plans:
 - debug.md body text has autonomous selection replacing AskUserQuestion instruction
 - Command files parse correctly (valid YAML frontmatter)
 
-### Phase 3: Global Search-and-Replace + Templates
+### Phase 3: Global Search-and-Replace + Templates ✓
 **Goal:** All path references and slash command syntax updated across entire repo; config template updated
 **Requirements:** WFLOW-17, WFLOW-18, TMPL-01
 **Plans:** 1 plan
