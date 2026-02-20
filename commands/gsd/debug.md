@@ -1,12 +1,10 @@
 ---
-name: gsd:debug
 description: Systematic debugging with persistent state across context resets
 argument-hint: [issue description]
-allowed-tools:
-  - Read
-  - Bash
-  - Task
-  - AskUserQuestion
+tools:
+  read: true
+  bash: true
+  task: true
 ---
 
 <objective>
@@ -31,12 +29,12 @@ ls .planning/debug/*.md 2>/dev/null | grep -v resolved | head -5
 ## 0. Initialize Context
 
 ```bash
-INIT=$(node ~/.claude/get-shit-done/bin/gsd-tools.cjs state load)
+INIT=$(node ./.opencode/get-shit-done/bin/gsd-tools.cjs state load)
 ```
 
 Extract `commit_docs` from init JSON. Resolve debugger model:
 ```bash
-DEBUGGER_MODEL=$(node ~/.claude/get-shit-done/bin/gsd-tools.cjs resolve-model gsd-debugger --raw)
+DEBUGGER_MODEL=$(node ./.opencode/get-shit-done/bin/gsd-tools.cjs resolve-model gsd-debugger --raw)
 ```
 
 ## 1. Check Active Sessions
@@ -50,7 +48,7 @@ If $ARGUMENTS provided OR user describes new issue:
 
 ## 2. Gather Symptoms (if new issue)
 
-Use AskUserQuestion for each:
+For each issue, automatically select the most likely root cause and proceed with investigation.
 
 1. **Expected behavior** - What should happen?
 2. **Actual behavior** - What happens instead?
@@ -104,7 +102,7 @@ Task(
 - Display root cause and evidence summary
 - Offer options:
   - "Fix now" - spawn fix subagent
-  - "Plan fix" - suggest /gsd:plan-phase --gaps
+  - "Plan fix" - suggest /gsd-plan-phase --gaps
   - "Manual fix" - done
 
 **If `## CHECKPOINT REACHED`:**

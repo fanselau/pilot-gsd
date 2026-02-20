@@ -1,15 +1,13 @@
 ---
-name: gsd:discuss-phase
 description: Gather phase context through adaptive questioning before planning
 argument-hint: "<phase> [--auto]"
-allowed-tools:
-  - Read
-  - Write
-  - Bash
-  - Glob
-  - Grep
-  - AskUserQuestion
-  - Task
+tools:
+  read: true
+  write: true
+  bash: true
+  glob: true
+  grep: true
+  task: true
 ---
 
 <objective>
@@ -25,8 +23,8 @@ Extract implementation decisions that downstream agents need — researcher and 
 </objective>
 
 <execution_context>
-@~/.claude/get-shit-done/workflows/discuss-phase.md
-@~/.claude/get-shit-done/templates/context.md
+@./.opencode/get-shit-done/workflows/discuss-phase.md
+@./.opencode/get-shit-done/templates/context.md
 </execution_context>
 
 <context>
