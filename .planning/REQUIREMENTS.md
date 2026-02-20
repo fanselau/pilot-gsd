@@ -26,28 +26,28 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 
 ### Workflow Interactivity — Critical
 
-- [ ] **WFLOW-01**: Replace AskUserQuestion rounds in new-project.md Step 2a with hardcoded defaults
-- [ ] **WFLOW-02**: Add auto-mode guard for missing CONTEXT.md in plan-phase.md Step 4
-- [ ] **WFLOW-03**: Add auto-mode guard for existing plans in plan-phase.md Step 6
-- [ ] **WFLOW-04**: Auto-advance on incomplete plans in transition.md (yolo mode)
+- [x] **WFLOW-01**: Replace AskUserQuestion rounds in new-project.md Step 2a with hardcoded defaults
+- [x] **WFLOW-02**: Add auto-mode guard for missing CONTEXT.md in plan-phase.md Step 4
+- [x] **WFLOW-03**: Add auto-mode guard for existing plans in plan-phase.md Step 6
+- [x] **WFLOW-04**: Auto-advance on incomplete plans in transition.md (yolo mode)
 
 ### Workflow Interactivity — Medium
 
-- [ ] **WFLOW-05**: Error on empty description instead of prompting in quick.md
-- [ ] **WFLOW-06**: Auto-bypass previous issues check in execute-plan.md
-- [ ] **WFLOW-07**: Add auto-mode guard to new-project.md Step 5 (config settings)
-- [ ] **WFLOW-08**: Add auto-mode guards to new-project.md Steps 7, 8+ (various AskUserQuestion calls)
+- [x] **WFLOW-05**: Error on empty description instead of prompting in quick.md
+- [x] **WFLOW-06**: Auto-bypass previous issues check in execute-plan.md
+- [x] **WFLOW-07**: Add auto-mode guard to new-project.md Step 5 (config settings)
+- [x] **WFLOW-08**: Add auto-mode guards to new-project.md Steps 7, 8+ (various AskUserQuestion calls)
 
 ### Workflow Interactivity — Low Priority
 
-- [ ] **WFLOW-09**: Add auto-mode guard to add-todo.md (overlapping todos)
-- [ ] **WFLOW-10**: Add auto-mode guard to check-todos.md (todo selection)
-- [ ] **WFLOW-11**: Add auto-mode guard to cleanup.md (archive confirmation)
-- [ ] **WFLOW-12**: Add auto-mode guards to complete-milestone.md (archive/branch decisions)
-- [ ] **WFLOW-13**: Add auto-mode guard to discovery-phase.md
-- [ ] **WFLOW-14**: Add auto-mode guards to new-milestone.md (multiple AskUserQuestion calls)
-- [ ] **WFLOW-15**: Add auto-mode guard to execute-phase.md workflow (agent failure handling)
-- [ ] **WFLOW-16**: Add auto-mode guard to pause-work.md (phase detection)
+- [x] **WFLOW-09**: Add auto-mode guard to add-todo.md (overlapping todos)
+- [x] **WFLOW-10**: Add auto-mode guard to check-todos.md (todo selection)
+- [x] **WFLOW-11**: Add auto-mode guard to cleanup.md (archive confirmation)
+- [x] **WFLOW-12**: Add auto-mode guards to complete-milestone.md (archive/branch decisions)
+- [x] **WFLOW-13**: Add auto-mode guard to discovery-phase.md
+- [x] **WFLOW-14**: Add auto-mode guards to new-milestone.md (multiple AskUserQuestion calls)
+- [x] **WFLOW-15**: Add auto-mode guard to execute-phase.md workflow (agent failure handling)
+- [x] **WFLOW-16**: Add auto-mode guard to pause-work.md (phase detection)
 
 ### Workflow Global Changes
 
@@ -106,22 +106,22 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 | WFLOW-17 | Phase 3 | Pending |
 | WFLOW-18 | Phase 3 | Pending |
 | TMPL-01 | Phase 3 | Pending |
-| WFLOW-01 | Phase 4 | Pending |
-| WFLOW-02 | Phase 4 | Pending |
-| WFLOW-03 | Phase 4 | Pending |
-| WFLOW-04 | Phase 4 | Pending |
-| WFLOW-05 | Phase 4 | Pending |
-| WFLOW-06 | Phase 4 | Pending |
-| WFLOW-07 | Phase 4 | Pending |
-| WFLOW-08 | Phase 4 | Pending |
-| WFLOW-09 | Phase 4 | Pending |
-| WFLOW-10 | Phase 4 | Pending |
-| WFLOW-11 | Phase 4 | Pending |
-| WFLOW-12 | Phase 4 | Pending |
-| WFLOW-13 | Phase 4 | Pending |
-| WFLOW-14 | Phase 4 | Pending |
-| WFLOW-15 | Phase 4 | Pending |
-| WFLOW-16 | Phase 4 | Pending |
+| WFLOW-01 | Phase 4 | Complete |
+| WFLOW-02 | Phase 4 | Complete |
+| WFLOW-03 | Phase 4 | Complete |
+| WFLOW-04 | Phase 4 | Complete |
+| WFLOW-05 | Phase 4 | Complete |
+| WFLOW-06 | Phase 4 | Complete |
+| WFLOW-07 | Phase 4 | Complete |
+| WFLOW-08 | Phase 4 | Complete |
+| WFLOW-09 | Phase 4 | Complete |
+| WFLOW-10 | Phase 4 | Complete |
+| WFLOW-11 | Phase 4 | Complete |
+| WFLOW-12 | Phase 4 | Complete |
+| WFLOW-13 | Phase 4 | Complete |
+| WFLOW-14 | Phase 4 | Complete |
+| WFLOW-15 | Phase 4 | Complete |
+| WFLOW-16 | Phase 4 | Complete |
 | REF-01 | Phase 5 | Pending |
 | REF-02 | Phase 5 | Pending |
 | REF-03 | Phase 5 | Pending |
@@ -134,4 +134,4 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 
 ---
 *Requirements defined: 2026-02-20*
-*Last updated: 2026-02-20 after Phase 2 completion*
+*Last updated: 2026-02-20 after Phase 4 completion*
