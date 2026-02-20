@@ -1,14 +1,14 @@
 # State
 
 ## Current Milestone: autonomy-fork-v1
-## Current Phase: 4
+## Current Phase: 5
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Phase 4 — Workflow Interactivity Stripping
+**Current focus:** Phase 5 — References + Installer Documentation
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** complete
@@ -26,8 +26,8 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Requirements:** WFLOW-17, WFLOW-18, TMPL-01
 
 ### Phase 4: Workflow Interactivity Stripping
-- **Status:** in_progress
-- **Plans:** 2/3 (04-01, 04-02 complete; 04-03 pending)
+- **Status:** complete
+- **Plans:** 3/3
 - **Requirements:** WFLOW-01 through WFLOW-16
 
 ### Phase 5: References + Installer Documentation
@@ -35,7 +35,7 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Plans:** 0/0
 - **Requirements:** REF-01, REF-02, REF-03, INST-01
 
-Progress: [█████░░░░░] 5/7 plans (71%)
+Progress: [██████░░░░] 6/7 plans (86%)
 
 ## Accumulated Context
 
@@ -47,6 +47,9 @@ Progress: [█████░░░░░] 5/7 plans (71%)
 | No deviations needed for AskUserQuestion command migration (14 files) | 02-02 | Mechanical removal of AskUserQuestion + format conversions per requirements spec |
 | No deviations needed for medium-priority workflow stripping (3 files) | 04-02 | Exact before/after replacements per requirements spec sections 3c, 3d, 3e |
 | Steps 5-8 in new-project.md already had auto-mode guards | 04-01 | Only Step 2a needed replacement; WFLOW-07/WFLOW-08 were pre-satisfied |
+| Settings workflow exits entirely in auto mode | 04-03 | Inherently interactive — no reasonable default action |
+| Pause-work detects phase from STATE.md in auto mode | 04-03 | Avoids stdin hang while maintaining functionality |
+| Execute-phase logs failure and continues in auto mode | 04-03 | Pipeline keeps moving; queue runner handles retries |
 
 ### Concerns
 (None)
@@ -59,10 +62,10 @@ Progress: [█████░░░░░] 5/7 plans (71%)
 
 ## Session Continuity
 
-Last session: 2026-02-20T18:31:14Z
-Stopped at: Completed 04-01-PLAN.md (04-02 also complete; 04-03 remaining)
+Last session: 2026-02-20T18:33:22Z
+Stopped at: Phase 4 complete, Phase 5 ready for planning
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-02-20 after 04-01 completion*
+*Last updated: 2026-02-20 after Phase 4 completion (04-03)*
