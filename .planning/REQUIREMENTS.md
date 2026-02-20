@@ -9,12 +9,12 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 
 ### Agent Frontmatter
 
-- [ ] **AGENT-01**: Remove `name:` field from all 11 agent files
-- [ ] **AGENT-02**: Add `model:` field (opus for 6 code/research agents, sonnet for 5 verification agents)
-- [ ] **AGENT-03**: Convert `tools:` from comma-separated string to object format in all 11 agents
-- [ ] **AGENT-04**: Change `color:` from name to hex value in all 11 agents
-- [ ] **AGENT-05**: Replace `/gsd:` with `/gsd-` in all agent body text
-- [ ] **AGENT-06**: Replace `~/.claude/` with `./.opencode/` in all agent body text
+- [x] **AGENT-01**: Remove `name:` field from all 11 agent files
+- [x] **AGENT-02**: Add `model:` field (opus for 6 code/research agents, sonnet for 5 verification agents)
+- [x] **AGENT-03**: Convert `tools:` from comma-separated string to object format in all 11 agents
+- [x] **AGENT-04**: Change `color:` from name to hex value in all 11 agents
+- [x] **AGENT-05**: Replace `/gsd:` with `/gsd-` in all agent body text
+- [x] **AGENT-06**: Replace `~/.claude/` with `./.opencode/` in all agent body text
 
 ### Command Frontmatter
 
@@ -91,12 +91,12 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AGENT-01 | Phase 1 | Pending |
-| AGENT-02 | Phase 1 | Pending |
-| AGENT-03 | Phase 1 | Pending |
-| AGENT-04 | Phase 1 | Pending |
-| AGENT-05 | Phase 1 | Pending |
-| AGENT-06 | Phase 1 | Pending |
+| AGENT-01 | Phase 1 | Complete |
+| AGENT-02 | Phase 1 | Complete |
+| AGENT-03 | Phase 1 | Complete |
+| AGENT-04 | Phase 1 | Complete |
+| AGENT-05 | Phase 1 | Complete |
+| AGENT-06 | Phase 1 | Complete |
 | CMD-01 | Phase 2 | Pending |
 | CMD-02 | Phase 2 | Pending |
 | CMD-03 | Phase 2 | Pending |
@@ -134,4 +134,4 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 
 ---
 *Requirements defined: 2026-02-20*
-*Last updated: 2026-02-20 after initial definition*
+*Last updated: 2026-02-20 after Phase 1 completion*
