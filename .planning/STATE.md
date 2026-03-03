@@ -3,6 +3,10 @@
 ## Current Milestone: autonomy-fork-v1
 ## Current Phase: 3
 
+## Current Position
+
+**Next Phase:** Phase 6 - Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools (`.planning/phases/06-workflow-enforcement-execute-phase-plan-phase-must-use-gsd-tools/`)
+
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
@@ -52,6 +56,9 @@ Progress: [██████████] 8/8 plans (100%)
 | Execute-phase logs failure and continues in auto mode | 04-03 | Pipeline keeps moving; queue runner handles retries |
 | Replaced upstream checkpoints.md rule #5 with fork version | 05-01 | Fork version more explicit about human-action skipping in autonomous mode |
 | Extended .claude/ replacement to also catch .claude/ without ~/ prefix | 03-01 | Plan's sed targeted ~/.claude/ (0 hits) but .claude/ had 8 hits in 3 files |
+
+### Roadmap Evolution
+- Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
 
 ### Concerns
 (None)

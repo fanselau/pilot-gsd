@@ -78,6 +78,18 @@ Plans:
 - questioning.md has note about autonomous mode skip
 - bin/install.js has pilot-gsd fork documentation comment
 
+### Phase 6: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
+
+**Goal:** [To be planned]
+**Depends on:** Phase 5
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 6 to break down)
+
+**Details:**
+[To be added during planning]
+
 ---
 *Roadmap created: 2026-02-20*
 *Last updated: 2026-03-03 after Phase 3 completion verification*

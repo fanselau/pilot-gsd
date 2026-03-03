@@ -1,6 +1,6 @@
 ---
 description: Verifies cross-phase integration and E2E flows. Checks that phases connect properly and user workflows complete end-to-end.
-model: anthropic/claude-sonnet-4-6
+model: "anthropic/claude-sonnet-4-6"
 color: "#0000FF"
 tools:
   read: true

@@ -1,6 +1,6 @@
 ---
 description: Explores codebase and writes structured analysis documents. Spawned by map-codebase with a focus area (tech, arch, quality, concerns). Writes documents directly to reduce orchestrator context load.
-model: anthropic/claude-sonnet-4-6
+model: "anthropic/claude-haiku-4-5"
 color: "#00FFFF"
 tools:
   read: true

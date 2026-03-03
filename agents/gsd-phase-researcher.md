@@ -1,6 +1,6 @@
 ---
 description: Researches how to implement a phase before planning. Produces RESEARCH.md consumed by gsd-planner. Spawned by /gsd-plan-phase orchestrator.
-model: anthropic/claude-opus-4-6
+model: "anthropic/claude-sonnet-4-6"
 color: "#00FFFF"
 tools:
   read: true

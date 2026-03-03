@@ -1,6 +1,6 @@
 ---
 description: Investigates bugs using scientific method, manages debug sessions, handles checkpoints. Spawned by /gsd-debug orchestrator.
-model: anthropic/claude-opus-4-6
+model: "anthropic/claude-sonnet-4-6"
 color: "#FFA500"
 tools:
   read: true

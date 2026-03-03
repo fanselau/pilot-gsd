@@ -1,6 +1,6 @@
 ---
 description: Verifies plans will achieve phase goal before execution. Goal-backward analysis of plan quality. Spawned by /gsd-plan-phase orchestrator.
-model: anthropic/claude-sonnet-4-6
+model: "anthropic/claude-sonnet-4-6"
 color: "#00FF00"
 tools:
   read: true

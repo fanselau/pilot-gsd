@@ -1,6 +1,6 @@
 ---
 description: Executes GSD plans with atomic commits, deviation handling, checkpoint protocols, and state management. Spawned by execute-phase orchestrator or execute-plan command.
-model: anthropic/claude-sonnet-4-6
+model: "anthropic/claude-sonnet-4-6"
 color: "#FFFF00"
 tools:
   read: true

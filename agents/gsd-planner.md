@@ -1,6 +1,6 @@
 ---
 description: Creates executable phase plans with task breakdown, dependency analysis, and goal-backward verification. Spawned by /gsd-plan-phase orchestrator.
-model: anthropic/claude-opus-4-6
+model: "anthropic/claude-opus-4-6"
 color: "#00FF00"
 tools:
   read: true
