@@ -1,18 +1,21 @@
 # State
 
 ## Current Milestone: autonomy-fork-v1
-## Current Phase: 3
+## Current Phase: 8
 
 ## Current Position
 
-**Next Phase:** Phase 6 - Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools (`.planning/phases/06-workflow-enforcement-execute-phase-plan-phase-must-use-gsd-tools/`)
+Phase: 8 (Workflow Enforcement)
+Plan: 1 of 2 in current phase
+Status: In progress
+Last activity: 2026-03-03 - Completed 08-01-PLAN.md
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Phase 3 complete — global replacements and config template done
+**Current focus:** Phase 8 in progress — gsd-tools smart slug generation and --from-requirement done
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** complete
@@ -39,7 +42,11 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Plans:** 1/1
 - **Requirements:** REF-01, REF-02, REF-03, INST-01
 
-Progress: [██████████] 8/8 plans (100%)
+### Phase 8: Workflow Enforcement
+- **Status:** in progress
+- **Plans:** 1/2
+
+Progress: [█████████░] 9/10 plans (90%)
 
 ## Accumulated Context
 
@@ -56,9 +63,13 @@ Progress: [██████████] 8/8 plans (100%)
 | Execute-phase logs failure and continues in auto mode | 04-03 | Pipeline keeps moving; queue runner handles retries |
 | Replaced upstream checkpoints.md rule #5 with fork version | 05-01 | Fork version more explicit about human-action skipping in autonomous mode |
 | Extended .claude/ replacement to also catch .claude/ without ~/ prefix | 03-01 | Plan's sed targeted ~/.claude/ (0 hits) but .claude/ had 8 hits in 3 files |
+| resolveDescriptionFromPath is separate from generateSlugInternal | 08-01 | Keeps slug generation pure; file-path logic is a wrapper |
+| File content copied (not symlinked) for REQUIREMENT.md | 08-01 | Avoids cross-project-boundary issues with symlinks |
 
 ### Roadmap Evolution
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
+- Phase 7 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
+- Phase 8 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
 
 ### Concerns
 (None)
@@ -71,10 +82,10 @@ Progress: [██████████] 8/8 plans (100%)
 
 ## Session Continuity
 
-Last session: 2026-03-03T11:07:42Z
-Stopped at: Completed 03-01-PLAN.md — Phase 3 complete
+Last session: 2026-03-03T13:20:24Z
+Stopped at: Completed 08-01-PLAN.md
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-03-03 after Phase 3 completion (03-01)*
+*Last updated: 2026-03-03 after 08-01 completion*
