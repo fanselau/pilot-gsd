@@ -1,14 +1,14 @@
 # State
 
 ## Current Milestone: autonomy-fork-v1
-## Current Phase: 5
+## Current Phase: 3
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Milestone complete — all phases done
+**Current focus:** Phase 3 complete — global replacements and config template done
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** complete
@@ -21,8 +21,8 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Requirements:** CMD-01, CMD-02, CMD-03, CMD-04, CMD-05, CMD-06
 
 ### Phase 3: Global Search-and-Replace + Templates
-- **Status:** not_started
-- **Plans:** 0/0
+- **Status:** complete
+- **Plans:** 1/1
 - **Requirements:** WFLOW-17, WFLOW-18, TMPL-01
 
 ### Phase 4: Workflow Interactivity Stripping
@@ -35,7 +35,7 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Plans:** 1/1
 - **Requirements:** REF-01, REF-02, REF-03, INST-01
 
-Progress: [██████████] 7/7 plans (100%)
+Progress: [██████████] 8/8 plans (100%)
 
 ## Accumulated Context
 
@@ -51,6 +51,7 @@ Progress: [██████████] 7/7 plans (100%)
 | Pause-work detects phase from STATE.md in auto mode | 04-03 | Avoids stdin hang while maintaining functionality |
 | Execute-phase logs failure and continues in auto mode | 04-03 | Pipeline keeps moving; queue runner handles retries |
 | Replaced upstream checkpoints.md rule #5 with fork version | 05-01 | Fork version more explicit about human-action skipping in autonomous mode |
+| Extended .claude/ replacement to also catch .claude/ without ~/ prefix | 03-01 | Plan's sed targeted ~/.claude/ (0 hits) but .claude/ had 8 hits in 3 files |
 
 ### Concerns
 (None)
@@ -63,10 +64,10 @@ Progress: [██████████] 7/7 plans (100%)
 
 ## Session Continuity
 
-Last session: 2026-02-20T18:59:47Z
-Stopped at: Completed 05-01-PLAN.md — Phase 5 complete, milestone complete
+Last session: 2026-03-03T11:07:42Z
+Stopped at: Completed 03-01-PLAN.md — Phase 3 complete
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-02-20 after Phase 5 completion (05-01)*
+*Last updated: 2026-03-03 after Phase 3 completion (03-01)*
