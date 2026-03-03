@@ -102,15 +102,16 @@ Plans:
 **Details:**
 [To be added during planning]
 
-### Phase 8: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
+### Phase 8: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools ✓
 
 **Goal:** gsd-tools.cjs handles file paths in slug generation, supports --from-requirement flag, and searchPhaseInDir has fuzzy matching fallback for padding mismatches
+**Status:** Complete (2026-03-03)
 **Depends on:** Phase 7
 **Plans:** 2 plans
 
 Plans:
-- [ ] 08-01-PLAN.md — Fix slug generation for file paths + add --from-requirement flag to phase add
-- [ ] 08-02-PLAN.md — Add fuzzy matching fallback to searchPhaseInDir
+- [x] 08-01-PLAN.md — Fix slug generation for file paths + add --from-requirement flag to phase add
+- [x] 08-02-PLAN.md — Add fuzzy matching fallback to searchPhaseInDir
 
 ---
 *Roadmap created: 2026-02-20*
