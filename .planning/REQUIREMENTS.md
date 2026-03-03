@@ -51,12 +51,12 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 
 ### Workflow Global Changes
 
-- [ ] **WFLOW-17**: Replace `~/.claude/` with `./.opencode/` in all workflow files
-- [ ] **WFLOW-18**: Replace `/gsd:` with `/gsd-` in all workflow files
+- [x] **WFLOW-17**: Replace `~/.claude/` with `./.opencode/` in all workflow files
+- [x] **WFLOW-18**: Replace `/gsd:` with `/gsd-` in all workflow files
 
 ### Templates
 
-- [ ] **TMPL-01**: Update config.json template — yolo mode, all gates off, auto_advance true
+- [x] **TMPL-01**: Update config.json template — yolo mode, all gates off, auto_advance true
 
 ### References
 
@@ -103,9 +103,9 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 | CMD-04 | Phase 2 | Complete |
 | CMD-05 | Phase 2 | Complete |
 | CMD-06 | Phase 2 | Complete |
-| WFLOW-17 | Phase 3 | Pending |
-| WFLOW-18 | Phase 3 | Pending |
-| TMPL-01 | Phase 3 | Pending |
+| WFLOW-17 | Phase 3 | Complete |
+| WFLOW-18 | Phase 3 | Complete |
+| TMPL-01 | Phase 3 | Complete |
 | WFLOW-01 | Phase 4 | Complete |
 | WFLOW-02 | Phase 4 | Complete |
 | WFLOW-03 | Phase 4 | Complete |
@@ -134,4 +134,4 @@ Requirements for the autonomy-first fork. Each maps to roadmap phases.
 
 ---
 *Requirements defined: 2026-02-20*
-*Last updated: 2026-02-20 after Phase 5 completion*
+*Last updated: 2026-03-03 after Phase 3 completion verification*
