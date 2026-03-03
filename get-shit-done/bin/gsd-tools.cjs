@@ -32,6 +32,7 @@
  * Phase Operations:
  *   phase next-decimal <phase>         Calculate next decimal phase number
  *   phase add <description>            Append new phase to roadmap + create dir
+ *     [--from-requirement]              Copy file as REQUIREMENT.md in phase dir
  *   phase insert <after> <description> Insert decimal phase after existing
  *   phase remove <phase> [--force]     Remove phase, renumber all subsequent
  *   phase complete <phase>             Mark phase done, update state + roadmap
@@ -5204,7 +5205,9 @@ async function main() {
       if (subcommand === 'next-decimal') {
         cmdPhaseNextDecimal(cwd, args[2], raw);
       } else if (subcommand === 'add') {
-        cmdPhaseAdd(cwd, args.slice(2).join(' '), raw);
+        const fromRequirement = args.includes('--from-requirement');
+        const addArgs = args.slice(2).filter(a => a !== '--from-requirement');
+        cmdPhaseAdd(cwd, addArgs.join(' '), raw, fromRequirement);
       } else if (subcommand === 'insert') {
         cmdPhaseInsert(cwd, args[2], args.slice(3).join(' '), raw);
       } else if (subcommand === 'remove') {
