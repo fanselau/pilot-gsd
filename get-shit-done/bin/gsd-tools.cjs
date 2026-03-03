@@ -4114,7 +4114,21 @@ function searchPhaseInDir(baseDir, relBase, normalized) {
   try {
     const entries = fs.readdirSync(baseDir, { withFileTypes: true });
     const dirs = entries.filter(e => e.isDirectory()).map(e => e.name).sort();
-    const match = dirs.find(d => d.startsWith(normalized));
+    let match = dirs.find(d => d.startsWith(normalized));
+    let matchStrategy = 'exact';
+
+    if (!match) {
+      // Fuzzy fallback: strip leading zeros from both sides and match on numeric prefix
+      const normalizedNum = normalized.replace(/^0+/, '') || '0';
+      match = dirs.find(d => {
+        const dirNum = d.match(/^0*(\d+(?:\.\d+)?)/);
+        return dirNum && dirNum[1] === normalizedNum;
+      });
+      if (match) {
+        matchStrategy = 'fuzzy';
+      }
+    }
+
     if (!match) return null;
 
     const dirMatch = match.match(/^(\d+(?:\.\d+)?)-?(.*)/);
@@ -4139,6 +4153,7 @@ function searchPhaseInDir(baseDir, relBase, normalized) {
 
     return {
       found: true,
+      match_strategy: matchStrategy,
       directory: path.join(relBase, match),
       phase_number: phaseNumber,
       phase_name: phaseName,
