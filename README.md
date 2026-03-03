@@ -98,7 +98,7 @@ npx get-shit-done-cc@latest
 ```bash
 # Claude Code
 npx get-shit-done-cc --claude --global   # Install to ./.opencode/
-npx get-shit-done-cc --claude --local    # Install to ./.claude/
+npx get-shit-done-cc --claude --local    # Install to ./.opencode/
 
 # OpenCode (open source, free models)
 npx get-shit-done-cc --opencode --global # Install to ~/.config/opencode/
@@ -126,7 +126,7 @@ cd get-shit-done
 node bin/install.js --claude --local
 ```
 
-Installs to `./.claude/` for testing modifications before contributing.
+Installs to `./.opencode/` for testing modifications before contributing.
 
 </details>
 
@@ -144,7 +144,7 @@ claude --dangerously-skip-permissions
 <details>
 <summary><strong>Alternative: Granular Permissions</strong></summary>
 
-If you prefer not to use that flag, add this to your project's `.claude/settings.json`:
+If you prefer not to use that flag, add this to your project's `.opencode/settings.json`:
 
 ```json
 {
@@ -587,7 +587,7 @@ At milestone completion, GSD offers squash merge (recommended) or merge with his
 
 GSD's codebase mapping and analysis commands read files to understand your project. **Protect files containing secrets** by adding them to Claude Code's deny list:
 
-1. Open Claude Code settings (`.claude/settings.json` or global)
+1. Open Claude Code settings (`.opencode/settings.json` or global)
 2. Add sensitive file patterns to the deny list:
 
 ```json
@@ -616,7 +616,7 @@ This prevents Claude from reading these files entirely, regardless of what comma
 
 **Commands not found after install?**
 - Restart Claude Code to reload slash commands
-- Verify files exist in `./.opencode/commands/gsd/` (global) or `./.claude/commands/gsd/` (local)
+- Verify files exist in `./.opencode/commands/gsd/` (global) or `./.opencode/commands/gsd/` (local)
 
 **Commands not working as expected?**
 - Run `/gsd-help` to verify installation

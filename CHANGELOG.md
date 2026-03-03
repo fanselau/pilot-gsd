@@ -907,7 +907,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 - Parallel-first planning with dependency graphs
 - Checkpoint-resume capability for long-running phases
-- `.claude/rules/` directory for auto-loaded contribution rules
+- `.opencode/rules/` directory for auto-loaded contribution rules
 
 ### Changed
 - execute-phase uses wave-based blocking execution
