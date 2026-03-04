@@ -9,6 +9,16 @@ tools:
   grep: true
   task: true
 ---
+
+> **DEPRECATED (pilot-gsd fork):** This single-session orchestrator is broken. Task() subagents
+> don't get command inlining — `/gsd-add-phase`, `/gsd-plan-phase`, and `/gsd-execute-phase`
+> are received as literal text, not executed as commands. The subagent goes rogue.
+>
+> **Use instead:** Pilot's runner handles the full lifecycle as separate sessions:
+> `add-phase` → `plan-phase` → `execute-phase`
+>
+> This file is preserved for reference only. Do not invoke `/gsd-phase`.
+
 <objective>
 Orchestrate a complete phase lifecycle (add→plan→execute) in a single session using Task() subagents for each step.
 
