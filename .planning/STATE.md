@@ -8,7 +8,7 @@
 Phase: 8 (Workflow Enforcement)
 Plan: 2 of 2 in current phase
 Status: Phase complete
-Last activity: 2026-03-03 - Completed 08-02-PLAN.md
+Last activity: 2026-03-04 - Completed quick task 001: requirements/remove-plan-phase-auto-advance.md
 
 ## Project Reference
 
@@ -81,11 +81,11 @@ Progress: [██████████] 10/10 plans (100%)
 - Frontmatter migration pattern: remove name:, add model:, convert color to hex, convert tools to YAML object
 - Body text replacement pattern: /gsd: to /gsd-, ~/.claude/ to ./.opencode/
 
-## Quick Tasks
+### Quick Tasks Completed
 
-| ID  | Name                                | Status   | Completed  |
-|-----|-------------------------------------|----------|------------|
-| 001 | Remove plan-phase auto-advance      | complete | 2026-03-04 |
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 001 | requirements/remove-plan-phase-auto-advance.md | 2026-03-04 | 270892d | [001-requirements-remove-plan-phase-auto-adva](./quick/001-requirements-remove-plan-phase-auto-adva/) |
 
 ## Session Continuity
 
@@ -95,4 +95,4 @@ Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-03-03 after 08-02 completion*
+*Last updated: 2026-03-04 after quick-001 completion*
