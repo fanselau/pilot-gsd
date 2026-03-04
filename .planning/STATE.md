@@ -81,10 +81,16 @@ Progress: [██████████] 10/10 plans (100%)
 - Frontmatter migration pattern: remove name:, add model:, convert color to hex, convert tools to YAML object
 - Body text replacement pattern: /gsd: to /gsd-, ~/.claude/ to ./.opencode/
 
+## Quick Tasks
+
+| ID  | Name                                | Status   | Completed  |
+|-----|-------------------------------------|----------|------------|
+| 001 | Remove plan-phase auto-advance      | complete | 2026-03-04 |
+
 ## Session Continuity
 
-Last session: 2026-03-03T13:22:50Z
-Stopped at: Completed 08-02-PLAN.md
+Last session: 2026-03-04T16:08:00Z
+Stopped at: Completed quick/001 (remove plan-phase auto-advance)
 Resume file: None
 
 ---
