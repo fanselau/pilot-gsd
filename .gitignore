@@ -19,3 +19,6 @@ animation/
 reports/
 RAILROAD_ARCHITECTURE.md
 .opencode/
+
+# Planning documents (local development artifacts)
+.planning/
