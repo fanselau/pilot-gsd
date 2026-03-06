@@ -1,21 +1,21 @@
 # State
 
 ## Current Milestone: autonomy-fork-v1
-## Current Phase: 8
+## Current Phase: 9
 
 ## Current Position
 
-Phase: 8 (Workflow Enforcement)
-Plan: 2 of 2 in current phase
-Status: Phase complete
-Last activity: 2026-03-05 - Completed quick task 003: rewrite gsd-delegate.md with clean v2 prompt
+Phase: 9 (Pilot-GSD Prompt Hardening & Cleanup)
+Plan: 1 of 2 in current phase
+Status: In progress
+Last activity: 2026-03-06 - Completed 09-01: @ reference audit and dead file deletion
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Phase 8 complete — gsd-tools slug generation, --from-requirement flag, and fuzzy phase matching all done
+**Current focus:** Phase 9 in progress — prompt hardening and cleanup; 09-01 complete (22 dead files deleted, @ refs verified)
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** complete
@@ -46,7 +46,11 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Status:** complete
 - **Plans:** 2/2
 
-Progress: [██████████] 10/10 plans (100%)
+### Phase 9: Pilot-GSD Prompt Hardening & Cleanup
+- **Status:** in progress
+- **Plans:** 1/2
+
+Progress: [███████████░] 11/12 plans (92%)
 
 ## Accumulated Context
 
@@ -66,6 +70,8 @@ Progress: [██████████] 10/10 plans (100%)
 | resolveDescriptionFromPath is separate from generateSlugInternal | 08-01 | Keeps slug generation pure; file-path logic is a wrapper |
 | File content copied (not symlinked) for REQUIREMENT.md | 08-01 | Avoids cross-project-boundary issues with symlinks |
 | Exact-then-fuzzy matching for searchPhaseInDir | 08-02 | Handles padding mismatches without breaking existing exact matches |
+| Verify @ by exact path match not keyword search | 09-01 | Prose mentions of file concepts ≠ @ file references; distinguished safely |
+| .opencode/ gitignored — disk deletions not in git | 09-01 | File deletions applied to disk only; empty commits used as task markers |
 
 ### Roadmap Evolution
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
@@ -92,10 +98,10 @@ Progress: [██████████] 10/10 plans (100%)
 
 ## Session Continuity
 
-Last session: 2026-03-05T00:00:00Z
-Stopped at: Completed quick/003 (rewrite gsd-delegate.md with clean v2 prompt)
+Last session: 2026-03-06T08:31:13Z
+Stopped at: Completed 09-01-PLAN.md (@ reference audit + 22 dead files deleted)
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-03-05 after quick-003 completion*
+*Last updated: 2026-03-06 after 09-01 completion*
