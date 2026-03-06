@@ -56,7 +56,7 @@ You are roadmapping for ONE person (the user) and ONE implementer (Claude).
 
 ## Anti-Enterprise
 
-NEVER include phases for:
+Phases are for delivering working software only. Exclude:
 - Team coordination, stakeholder management
 - Sprint ceremonies, retrospectives
 - Documentation for documentation's sake
@@ -66,7 +66,7 @@ If it sounds like corporate PM theater, delete it.
 
 ## Requirements Drive Structure
 
-**Derive phases from requirements. Don't impose structure.**
+**Derive phases from requirements. Let the work determine structure.**
 
 Bad: "Every project needs Setup → Core → Features → Polish"
 Good: "These 12 requirements cluster into 4 natural delivery boundaries"
@@ -207,7 +207,7 @@ Read depth from config.json. Depth controls compression tolerance.
 | Standard | 5-8 | Balanced grouping |
 | Comprehensive | 8-12 | Let natural boundaries stand |
 
-**Key:** Derive phases from work, then apply depth as compression guidance. Don't pad small projects or compress complex ones.
+**Key:** Derive phases from work, then apply depth as compression guidance. Keep plan count proportional to actual work scope.
 
 ## Good Phase Patterns
 
@@ -271,7 +271,7 @@ Options:
 3. Defer to v2 (update REQUIREMENTS.md)
 ```
 
-**Do not proceed until coverage = 100%.**
+**Reach 100% coverage before proceeding.**
 
 ## Traceability Update
 
@@ -585,35 +585,35 @@ When unable to proceed:
 
 </structured_returns>
 
-<anti_patterns>
+<guardrails>
 
-## What Not to Do
+## Patterns to Avoid
 
-**Don't impose arbitrary structure:**
-- Bad: "All projects need 5-7 phases"
-- Good: Derive phases from requirements
+**Structure:** Let requirements determine structure.
+- Avoid: "All projects need 5-7 phases"
+- Prefer: Derive phases from requirements
 
-**Don't use horizontal layers:**
-- Bad: Phase 1: Models, Phase 2: APIs, Phase 3: UI
-- Good: Phase 1: Complete Auth feature, Phase 2: Complete Content feature
+**Phase shape:** Use vertical feature slices.
+- Avoid: Phase 1: Models, Phase 2: APIs, Phase 3: UI
+- Prefer: Phase 1: Complete Auth feature, Phase 2: Complete Content feature
 
-**Don't skip coverage validation:**
-- Bad: "Looks like we covered everything"
-- Good: Explicit mapping of every requirement to exactly one phase
+**Coverage:** Validate explicitly before proceeding.
+- Avoid: "Looks like we covered everything"
+- Prefer: Explicit mapping of every requirement to exactly one phase
 
-**Don't write vague success criteria:**
-- Bad: "Authentication works"
-- Good: "User can log in with email/password and stay logged in across sessions"
+**Success criteria:** Make them observable and testable.
+- Avoid: "Authentication works"
+- Prefer: "User can log in with email/password and stay logged in across sessions"
 
-**Don't add project management artifacts:**
-- Bad: Time estimates, Gantt charts, resource allocation, risk matrices
-- Good: Phases, goals, requirements, success criteria
+**Scope:** Include only delivery artifacts.
+- Avoid: Time estimates, Gantt charts, resource allocation, risk matrices
+- Prefer: Phases, goals, requirements, success criteria
 
-**Don't duplicate requirements across phases:**
-- Bad: AUTH-01 in Phase 2 AND Phase 3
-- Good: AUTH-01 in Phase 2 only
+**Requirement assignment:** Each requirement belongs to exactly one phase.
+- Avoid: AUTH-01 in Phase 2 AND Phase 3
+- Prefer: AUTH-01 in Phase 2 only
 
-</anti_patterns>
+</guardrails>
 
 <success_criteria>
 

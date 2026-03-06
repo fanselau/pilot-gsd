@@ -31,7 +31,7 @@ Before executing, discover project context:
 1. List available skills (subdirectories)
 2. Read `SKILL.md` for each skill (lightweight index ~130 lines)
 3. Load specific `rules/*.md` files as needed during implementation
-4. Do NOT load full `AGENTS.md` files (100KB+ context cost)
+4. Load only `SKILL.md` files (full `AGENTS.md` files incur 100KB+ context cost)
 5. Follow skill rules relevant to your current task
 
 This ensures project-specific patterns, conventions, and best practices are applied during execution.
@@ -167,14 +167,14 @@ No user permission needed for Rules 1-3.
 **SCOPE BOUNDARY:**
 Only auto-fix issues DIRECTLY caused by the current task's changes. Pre-existing warnings, linting errors, or failures in unrelated files are out of scope.
 - Log out-of-scope discoveries to `deferred-items.md` in the phase directory
-- Do NOT fix them
-- Do NOT re-run builds hoping they resolve themselves
+- Leave them logged only — fixing them is out of scope for this task
+- Move on after logging; re-running builds to find more issues is out of scope
 
 **FIX ATTEMPT LIMIT:**
 Track auto-fix attempts per task. After 3 auto-fix attempts on a single task:
 - STOP fixing — document remaining issues in SUMMARY.md under "Deferred Issues"
 - Continue to the next task (or return checkpoint if blocked)
-- Do NOT restart the build to find more issues
+- Continue to the next task; additional build runs to find more issues are out of scope
 </deviation_rules>
 
 <authentication_gates>
@@ -211,7 +211,7 @@ Before any `checkpoint:human-verify`, ensure verification environment is ready. 
 For full automation-first patterns, server lifecycle, CLI handling:
 **See @./.opencode/get-shit-done/references/checkpoints.md**
 
-**Quick reference:** Users NEVER run CLI commands. Users ONLY visit URLs, click UI, evaluate visuals, provide secrets. Claude does all automation.
+**Quick reference:** Claude runs all CLI commands. Users visit URLs, click UI, evaluate visuals, and provide secrets. Claude handles all automation.
 
 ---
 
@@ -274,7 +274,7 @@ Completed Tasks table gives continuation agent context. Commit hashes verify wor
 If spawned as continuation agent (`<completed_tasks>` in prompt):
 
 1. Verify previous commits exist: `git log --oneline -5`
-2. DO NOT redo completed tasks
+2. Start from the resume point — completed tasks are already committed
 3. Start from resume point in prompt
 4. Handle based on checkpoint type: after human-action → verify it worked; after human-verify → continue; after decision → implement selected option
 5. If another checkpoint hit → return with ALL completed tasks (previous + new)
@@ -299,7 +299,7 @@ After each task completes (verification passed, done criteria met), commit immed
 
 **1. Check modified files:** `git status --short`
 
-**2. Stage task-related files individually** (NEVER `git add .` or `git add -A`):
+**2. Stage task-related files individually** (use explicit file paths for each file):
 ```bash
 git add src/api/auth.ts
 git add src/types/user.ts
@@ -330,7 +330,7 @@ git commit -m "{type}({phase}-{plan}): {concise task description}
 <summary_creation>
 After all tasks complete, create `{phase}-{plan}-SUMMARY.md` at `.planning/phases/XX-name/`.
 
-**ALWAYS use the Write tool to create files** — never use `Bash(cat << 'EOF')` or heredoc commands for file creation.
+**ALWAYS use the Write tool to create files** — use the Write tool exclusively, even for file creation that could use heredoc commands.
 
 **Use template:** @./.opencode/get-shit-done/templates/summary.md
 
@@ -377,7 +377,7 @@ git log --oneline --all | grep -q "{hash}" && echo "FOUND: {hash}" || echo "MISS
 
 **3. Append result to SUMMARY.md:** `## Self-Check: PASSED` or `## Self-Check: FAILED` with missing items listed.
 
-Do NOT skip. Do NOT proceed to state updates if self-check fails.
+Run this every time. Proceed to state updates only after self-check passes.
 </self_check>
 
 <state_updates>

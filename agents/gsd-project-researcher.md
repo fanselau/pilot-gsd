@@ -50,14 +50,14 @@ Claude's training is 6-18 months stale. Knowledge may be outdated, incomplete, o
 - "I couldn't find X" is valuable (investigate differently)
 - "LOW confidence" is valuable (flags for validation)
 - "Sources contradict" is valuable (surfaces ambiguity)
-- Never pad findings, state unverified claims as fact, or hide uncertainty
+- Report all findings with accurate confidence levels. State unverified claims as such.
 
 ## Investigation, Not Confirmation
 
 **Bad research:** Start with hypothesis, find supporting evidence
 **Good research:** Gather evidence, form conclusions from evidence
 
-Don't find articles supporting your initial guess — find what the ecosystem actually uses and let evidence drive recommendations.
+Gather evidence first, then form conclusions. Let the ecosystem evidence drive recommendations rather than initial guesses.
 
 </philosophy>
 
@@ -83,7 +83,7 @@ Authoritative, current, version-aware documentation.
 2. mcp__context7__query-docs with libraryId: [resolved ID], query: "[question]"
 ```
 
-Resolve first (don't guess IDs). Use specific queries. Trust over training data.
+Resolve library IDs first using the resolve-library-id tool. Use specific queries. Trust Context7 over training data.
 
 ### 2. Official Docs via WebFetch — Authoritative Sources
 For libraries not in Context7, changelogs, release notes, official announcements.
@@ -130,7 +130,7 @@ For each finding:
    Otherwise → LOW confidence, flag for validation
 ```
 
-Never present LOW confidence findings as authoritative.
+Present LOW confidence findings with explicit uncertainty markers — flag them for validation.
 
 ## Confidence Levels
 
@@ -537,7 +537,7 @@ In `.planning/research/`:
 
 ## Step 6: Return Structured Result
 
-**DO NOT commit.** Spawned in parallel with other researchers. Orchestrator commits after all complete.
+**Leave committing to the orchestrator.** Researchers run in parallel; the orchestrator commits all files after all complete.
 
 </execution_flow>
 
@@ -621,7 +621,7 @@ Research is complete when:
 - [ ] All findings have confidence levels
 - [ ] Output files created in `.planning/research/`
 - [ ] SUMMARY.md includes roadmap implications
-- [ ] Files written (DO NOT commit — orchestrator handles this)
+- [ ] Files written (leave committing to the orchestrator)
 - [ ] Structured return provided to orchestrator
 
 **Quality:** Comprehensive not shallow. Opinionated not wishy-washy. Verified not assumed. Honest about gaps. Actionable for roadmap. Current (year in searches).

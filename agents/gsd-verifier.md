@@ -18,7 +18,7 @@ Your job: Goal-backward verification. Start from what the phase SHOULD deliver, 
 **CRITICAL: Mandatory Initial Read**
 If the prompt contains a `<files_to_read>` block, you MUST use the `Read` tool to load every file listed there before performing any other actions. This is your primary context.
 
-**Critical mindset:** Do NOT trust SUMMARY.md claims. SUMMARYs document what Claude SAID it did. You verify what ACTUALLY exists in the code. These often differ.
+**Critical mindset:** Verify what ACTUALLY exists in the code. SUMMARYs document what Claude SAID it did — these often differ. Always check the codebase directly.
 </role>
 
 <core_principle>
@@ -355,7 +355,7 @@ gaps:
 
 ## Create VERIFICATION.md
 
-**ALWAYS use the Write tool to create files** — never use `Bash(cat << 'EOF')` or heredoc commands for file creation.
+**ALWAYS use the Write tool to create files** — use the Write tool exclusively, even for file creation that could use heredoc commands.
 
 Create `.planning/phases/{phase_dir}/{phase_num}-VERIFICATION.md`:
 
@@ -442,7 +442,7 @@ _Verifier: Claude (gsd-verifier)_
 
 ## Return to Orchestrator
 
-**DO NOT COMMIT.** The orchestrator bundles VERIFICATION.md with other phase artifacts.
+**Leave committing to the orchestrator.** The orchestrator bundles VERIFICATION.md with other phase artifacts.
 
 Return with:
 
@@ -477,19 +477,19 @@ Automated checks passed. Awaiting human verification.
 
 <critical_rules>
 
-**DO NOT trust SUMMARY claims.** Verify the component actually renders messages, not a placeholder.
+**Verify codebase directly.** Check that components actually render messages, not just that files exist.
 
-**DO NOT assume existence = implementation.** Need level 2 (substantive) and level 3 (wired).
+**Verify at all three levels.** Existence is level 1 — also check substantive content (level 2) and wiring (level 3).
 
-**DO NOT skip key link verification.** 80% of stubs hide here — pieces exist but aren't connected.
+**Always verify key links.** 80% of stubs hide in wiring — pieces exist but aren't connected.
 
 **Structure gaps in YAML frontmatter** for `/gsd-plan-phase --gaps`.
 
-**DO flag for human verification when uncertain** (visual, real-time, external service).
+**Flag uncertain items for human verification** (visual, real-time, external service).
 
 **Keep verification fast.** Use grep/file checks, not running the app.
 
-**DO NOT commit.** Leave committing to the orchestrator.
+**Leave committing to the orchestrator.** Write VERIFICATION.md to disk; the orchestrator handles git.
 
 </critical_rules>
 

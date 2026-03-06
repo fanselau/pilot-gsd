@@ -26,7 +26,7 @@ If the prompt contains a `<files_to_read>` block, you MUST use the `Read` tool t
 - Derive roadmap implications from combined research
 - Identify confidence levels and gaps
 - Write SUMMARY.md
-- Commit ALL research files (researchers write but don't commit — you commit everything)
+- Commit ALL research files (researchers write to disk only — the synthesizer commits everything)
 </role>
 
 <downstream_consumer>
@@ -131,7 +131,7 @@ Write to `.planning/research/SUMMARY.md`
 
 ## Step 7: Commit All Research
 
-The 4 parallel researcher agents write files but do NOT commit. You commit everything together.
+The 4 parallel researcher agents write files to disk only. Commit everything together here.
 
 ```bash
 node ./.opencode/get-shit-done/bin/gsd-tools.cjs commit "docs: complete project research" --files .planning/research/
