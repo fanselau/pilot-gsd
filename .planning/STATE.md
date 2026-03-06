@@ -8,14 +8,14 @@
 Phase: 9 (Pilot-GSD Prompt Hardening & Cleanup)
 Plan: 6 of 6 in current phase (09-06 added)
 Status: Phase complete — milestone complete
-Last activity: 2026-03-06 - Completed 09-06: slim all .opencode/command/ files to thin routing layers
+Last activity: 2026-03-06 - Completed 09-05: final validation sweep — all 6 Phase 9 checks pass
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Milestone autonomy-fork-v1 complete — all plans across 9 phases done; Phase 9 finished with 09-01 (dead files), 09-02 (root agents/), 09-03 (.opencode/agents/), 09-04a (commands/ + .opencode/command/), 09-04b (workflows/, references/, templates/), and 09-06 (.opencode/command/ deduplication — 13 files slimmed)
+**Current focus:** Milestone autonomy-fork-v1 complete — all plans across 9 phases done; Phase 9 finished with 09-01 (dead files), 09-02 (root agents/), 09-03 (.opencode/agents/), 09-04a (commands/ + .opencode/command/), 09-04b (workflows/, references/, templates/), 09-06 (.opencode/command/ deduplication — 13 files slimmed), and 09-05 (final validation sweep — all 6 checks pass)
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** complete
@@ -81,6 +81,7 @@ Progress: [████████████████] 16/16 plans (100%)
 | anti_patterns renamed to constraints in remove-phase.md | 09-04b | Consistent with positive framing established in 09-02/09-04a |
 | gsd-planner agent and plan-phase.md workflow are complementary, not duplicated | 09-06 | Agent is planning METHODOLOGY (task sizing, wave design, specificity); workflow is ORCHESTRATION (spawn order, context loading, revision loop) |
 | gsd-verify-auto, gsd-delegate, gsd-research-phase, gsd-debug left unchanged | 09-06 | At parity with commands/ counterparts or pilot-specific inline implementations with no workflow target |
+| Remaining negative-pattern hits confirmed as non-instruction contexts | 09-05 | Code comments, YAML data values, pedagogical text, conditional clauses are not behavioral instructions |
 
 ### Roadmap Evolution
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
@@ -108,9 +109,9 @@ Progress: [████████████████] 16/16 plans (100%)
 ## Session Continuity
 
 Last session: 2026-03-06
-Stopped at: Completed 09-06-PLAN.md (.opencode/command/ deduplication — 13 files slimmed to thin routing layers)
+Stopped at: Completed 09-05-PLAN.md (final validation sweep — all 6 Phase 9 checks pass)
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-03-06 after 09-04b completion*
+*Last updated: 2026-03-06 after 09-05 completion*
