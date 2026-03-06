@@ -122,7 +122,7 @@ Plans:
 Plans:
 - [x] 09-01-PLAN.md — Audit @ references and delete 22 dead files (~4,669 lines) — Complete 2026-03-06
 - [x] 09-02-PLAN.md — Rewrite negative instructions to positive framing in agents/ (root) — Complete 2026-03-06
-- [ ] 09-03-PLAN.md — Rewrite negative instructions to positive framing in .opencode/agents/
+- [x] 09-03-PLAN.md — Rewrite negative instructions to positive framing in .opencode/agents/ — Complete 2026-03-06
 - [ ] 09-04a-PLAN.md — Rewrite negative instructions in command files (commands/ and .opencode/command/)
 - [ ] 09-04b-PLAN.md — Rewrite negative instructions in workflows, references, and templates
 - [ ] 09-05-PLAN.md — Final comprehensive validation sweep
@@ -130,4 +130,4 @@ Plans:
 
 ---
 *Roadmap created: 2026-02-20*
-*Last updated: 2026-03-06 after 09-02 completion*
+*Last updated: 2026-03-06 after 09-03 completion*

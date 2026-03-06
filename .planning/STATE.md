@@ -6,16 +6,16 @@
 ## Current Position
 
 Phase: 9 (Pilot-GSD Prompt Hardening & Cleanup)
-Plan: 2 of 2 in current phase
+Plan: 3 of 3 in current phase
 Status: Phase complete
-Last activity: 2026-03-06 - Completed 09-02: negative instruction rewrite (all 11 agent files)
+Last activity: 2026-03-06 - Completed 09-03: negative instruction rewrite (.opencode/agents/ — all 11 files)
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Milestone autonomy-fork-v1 complete — all 12 plans across 9 phases done; Phase 9 finished with 09-01 (dead files) and 09-02 (negative instructions rewritten)
+**Current focus:** Milestone autonomy-fork-v1 complete — all 13 plans across 9 phases done; Phase 9 finished with 09-01 (dead files), 09-02 (root agents/ negative instructions), and 09-03 (.opencode/agents/ negative instructions)
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** complete
@@ -48,9 +48,9 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 
 ### Phase 9: Pilot-GSD Prompt Hardening & Cleanup
 - **Status:** complete
-- **Plans:** 2/2
+- **Plans:** 3/3
 
-Progress: [████████████] 12/12 plans (100%)
+Progress: [█████████████] 13/13 plans (100%)
 
 ## Accumulated Context
 
@@ -74,6 +74,7 @@ Progress: [████████████] 12/12 plans (100%)
 | .opencode/ gitignored — disk deletions not in git | 09-01 | File deletions applied to disk only; empty commits used as task markers |
 | Skip non-instruction occurrences in negative pattern rewrite | 09-02 | Code blocks, quoted examples, descriptive text, section titles, and column headers are not behavioral instructions |
 | anti_patterns sections renamed to guardrails | 09-02 | Consistent with positive framing throughout; two files updated (gsd-plan-checker, gsd-roadmapper) |
+| Non-instruction negative words preserved in .opencode/agents/ | 09-03 | Code blocks, quoted strings, descriptive text, column headers, YAML example strings are not behavioral instructions |
 
 ### Roadmap Evolution
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
@@ -101,7 +102,7 @@ Progress: [████████████] 12/12 plans (100%)
 ## Session Continuity
 
 Last session: 2026-03-06
-Stopped at: Completed 09-02-PLAN.md (negative instruction rewrite — all 11 agent files)
+Stopped at: Completed 09-03-PLAN.md (negative instruction rewrite — .opencode/agents/ all 11 files)
 Resume file: None
 
 ---
