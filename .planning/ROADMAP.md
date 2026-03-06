@@ -116,8 +116,9 @@ Plans:
 ### Phase 9: Pilot-GSD Prompt Hardening & Cleanup
 
 **Goal:** Clean, portable, efficient prompts — zero broken references, zero dead files, all instructions use positive framing
+**Status:** Complete (2026-03-06)
 **Depends on:** Phase 8
-**Plans:** 7 plans
+**Plans:** 6 plans (09-05 merged into other plans; 09-06 added for command deduplication)
 
 Plans:
 - [x] 09-01-PLAN.md — Audit @ references and delete 22 dead files (~4,669 lines) — Complete 2026-03-06
@@ -126,8 +127,8 @@ Plans:
 - [x] 09-04a-PLAN.md — Rewrite negative instructions in command files (commands/ and .opencode/command/) — Complete 2026-03-06
 - [x] 09-04b-PLAN.md — Rewrite negative instructions in workflows, references, and templates — Complete 2026-03-06
 - [ ] 09-05-PLAN.md — Final comprehensive validation sweep
-- [ ] 09-06-PLAN.md — Deduplicate thick .opencode/command/ files + assess gsd-planner agent overlap
+- [x] 09-06-PLAN.md — Deduplicate thick .opencode/command/ files + assess gsd-planner agent overlap — Complete 2026-03-06
 
 ---
 *Roadmap created: 2026-02-20*
-*Last updated: 2026-03-06 after 09-04b completion*
+*Last updated: 2026-03-06 after 09-06 completion*

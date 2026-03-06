@@ -6,16 +6,16 @@
 ## Current Position
 
 Phase: 9 (Pilot-GSD Prompt Hardening & Cleanup)
-Plan: 5 of 5 in current phase (04b added)
+Plan: 6 of 6 in current phase (09-06 added)
 Status: Phase complete — milestone complete
-Last activity: 2026-03-06 - Completed 09-04b: negative instruction rewrite (workflows/, references/, templates/ — 13 files)
+Last activity: 2026-03-06 - Completed 09-06: slim all .opencode/command/ files to thin routing layers
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Milestone autonomy-fork-v1 complete — all plans across 9 phases done; Phase 9 finished with 09-01 (dead files), 09-02 (root agents/), 09-03 (.opencode/agents/), 09-04a (commands/ + .opencode/command/), and 09-04b (workflows/, references/, templates/)
+**Current focus:** Milestone autonomy-fork-v1 complete — all plans across 9 phases done; Phase 9 finished with 09-01 (dead files), 09-02 (root agents/), 09-03 (.opencode/agents/), 09-04a (commands/ + .opencode/command/), 09-04b (workflows/, references/, templates/), and 09-06 (.opencode/command/ deduplication — 13 files slimmed)
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** complete
@@ -48,9 +48,9 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 
 ### Phase 9: Pilot-GSD Prompt Hardening & Cleanup
 - **Status:** complete
-- **Plans:** 5/5
+- **Plans:** 6/6
 
-Progress: [███████████████] 15/15 plans (100%)
+Progress: [████████████████] 16/16 plans (100%)
 
 ## Accumulated Context
 
@@ -79,6 +79,8 @@ Progress: [███████████████] 15/15 plans (100%)
 | Non-instruction negatives preserved in commands/ and .opencode/command/ | 09-04a | YAML reason: fields, rhetorical questions, rationale text, backtick-quoted section names are not behavioral instructions |
 | Non-instruction negatives preserved in workflows/, references/, templates/ | 09-04b | YAML example content, descriptive parentheticals, code block comments, and "whenever" false positives are not behavioral instructions |
 | anti_patterns renamed to constraints in remove-phase.md | 09-04b | Consistent with positive framing established in 09-02/09-04a |
+| gsd-planner agent and plan-phase.md workflow are complementary, not duplicated | 09-06 | Agent is planning METHODOLOGY (task sizing, wave design, specificity); workflow is ORCHESTRATION (spawn order, context loading, revision loop) |
+| gsd-verify-auto, gsd-delegate, gsd-research-phase, gsd-debug left unchanged | 09-06 | At parity with commands/ counterparts or pilot-specific inline implementations with no workflow target |
 
 ### Roadmap Evolution
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
@@ -106,7 +108,7 @@ Progress: [███████████████] 15/15 plans (100%)
 ## Session Continuity
 
 Last session: 2026-03-06
-Stopped at: Completed 09-04b-PLAN.md (negative instruction rewrite — workflows/, references/, templates/)
+Stopped at: Completed 09-06-PLAN.md (.opencode/command/ deduplication — 13 files slimmed to thin routing layers)
 Resume file: None
 
 ---
