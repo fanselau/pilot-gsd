@@ -134,13 +134,14 @@ Plans:
 **Goal:** Merge upstream/main (707 commits) into dev branch — infrastructure/tooling matches upstream, core prompting flow preserved exactly, system works end-to-end
 **Depends on:** Phase 9
 **Requirements:** requirements/upstream-sync.md
-**Plans:** 2/3 plans executed
+**Status:** Complete (2026-03-06)
+**Plans:** 3/3 plans executed
 
 Plans:
-- [ ] 10-01-PLAN.md — Pre-merge system audit: classify every file (ours-only/upstream-take/ours-modified/shared)
-- [ ] 10-02-PLAN.md — Execute git merge upstream/main with audit-guided conflict resolution
-- [ ] 10-03-PLAN.md — Post-merge integrity verification + sync .opencode/ directory
+- [x] 10-01-PLAN.md — Pre-merge system audit: classify every file (ours-only/upstream-take/ours-modified/shared) — Complete 2026-03-06
+- [x] 10-02-PLAN.md — Execute git merge upstream/main with audit-guided conflict resolution — Complete 2026-03-06
+- [x] 10-03-PLAN.md — Post-merge integrity verification + sync .opencode/ directory — Complete 2026-03-06
 
 ---
 *Roadmap created: 2026-02-20*
-*Last updated: 2026-03-06 — Phase 10 added*
+*Last updated: 2026-03-06 — Phase 10 complete (upstream sync done)*
