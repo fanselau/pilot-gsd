@@ -18,7 +18,7 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 **Current focus:** Milestone autonomy-fork-v1 complete — all plans across 9 phases done; Phase 9 finished with 09-01 (dead files), 09-02 (root agents/), 09-03 (.opencode/agents/), 09-04a (commands/ + .opencode/command/), 09-04b (workflows/, references/, templates/), 09-06 (.opencode/command/ deduplication — 13 files slimmed), and 09-05 (final validation sweep — all 6 checks pass)
 
 ### Phase 1: Agent Frontmatter Migration
-- **Status:** complete
+- **Status:** Milestone complete
 - **Plans:** 1/1
 - **Requirements:** AGENT-01, AGENT-02, AGENT-03, AGENT-04, AGENT-05, AGENT-06
 
