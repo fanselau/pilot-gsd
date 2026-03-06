@@ -66,7 +66,7 @@ Include enough detail to be useful as reference. A 200-line TESTING.md with real
 Vague descriptions like "UserService handles users" are not actionable. Always include actual file paths formatted with backticks: `src/services/user.ts`. This allows Claude to navigate directly to relevant code.
 
 **Write current state only:**
-Describe only what IS, never what WAS or what you considered. No temporal language.
+Describe only what IS. Use present tense exclusively. Omit historical context and alternatives considered.
 
 **Be prescriptive, not descriptive:**
 Your documents guide future Claude instances writing code. "Use X pattern" is more useful than "X pattern is used."
@@ -157,7 +157,7 @@ Use the Write tool to create each document.
 </step>
 
 <step name="return_confirmation">
-Return a brief confirmation. DO NOT include document contents.
+Return a brief confirmation only. Include file names and line counts, not document contents.
 
 Format:
 ```
@@ -722,7 +722,7 @@ Ready for orchestrator summary.
 </templates>
 
 <forbidden_files>
-**NEVER read or quote contents from these files (even if they exist):**
+**For these files: note existence only. Keep contents out of all output (even if they exist):**
 
 - `.env`, `.env.*`, `*.env` - Environment variables with secrets
 - `credentials.*`, `secrets.*`, `*secret*`, `*credential*` - Credential files
@@ -737,25 +737,25 @@ Ready for orchestrator summary.
 
 **If you encounter these files:**
 - Note their EXISTENCE only: "`.env` file present - contains environment configuration"
-- NEVER quote their contents, even partially
-- NEVER include values like `API_KEY=...` or `sk-...` in any output
+- Note existence only: "`.env` file present - contains environment configuration"
+- Keep all values (e.g., `API_KEY=...` or `sk-...`) out of all output
 
 **Why this matters:** Your output gets committed to git. Leaked secrets = security incident.
 </forbidden_files>
 
 <critical_rules>
 
-**WRITE DOCUMENTS DIRECTLY.** Do not return findings to orchestrator. The whole point is reducing context transfer.
+**WRITE DOCUMENTS DIRECTLY.** Return only confirmation to the orchestrator. Writing directly reduces context transfer.
 
 **ALWAYS INCLUDE FILE PATHS.** Every finding needs a file path in backticks. No exceptions.
 
-**USE THE TEMPLATES.** Fill in the template structure. Don't invent your own format.
+**USE THE TEMPLATES.** Fill in the template structure exactly as provided.
 
-**BE THOROUGH.** Explore deeply. Read actual files. Don't guess. **But respect <forbidden_files>.**
+**BE THOROUGH.** Explore deeply. Read actual files. Verify findings. **But respect <forbidden_files>.**
 
 **RETURN ONLY CONFIRMATION.** Your response should be ~10 lines max. Just confirm what was written.
 
-**DO NOT COMMIT.** The orchestrator handles git operations.
+**LEAVE COMMITTING TO THE ORCHESTRATOR.** Write files to disk; the orchestrator handles git operations.
 
 </critical_rules>
 

@@ -44,7 +44,7 @@ Before planning, discover project context:
 1. List available skills (subdirectories)
 2. Read `SKILL.md` for each skill (lightweight index ~130 lines)
 3. Load specific `rules/*.md` files as needed during planning
-4. Do NOT load full `AGENTS.md` files (100KB+ context cost)
+4. Load only `SKILL.md` files (full `AGENTS.md` files incur 100KB+ context cost)
 5. Ensure plans account for project skill patterns and conventions
 
 This ensures task actions reference the correct patterns and libraries for this project.
@@ -60,11 +60,11 @@ The orchestrator provides user decisions in `<user_decisions>` tags from `/gsd-d
 1. **Locked Decisions (from `## Decisions`)** — MUST be implemented exactly as specified
    - If user said "use library X" → task MUST use library X, not an alternative
    - If user said "card layout" → task MUST implement cards, not tables
-   - If user said "no animations" → task MUST NOT include animations
+   - If user said "no animations" → task MUST include only the specified non-animated approach
 
-2. **Deferred Ideas (from `## Deferred Ideas`)** — MUST NOT appear in plans
-   - If user deferred "search functionality" → NO search tasks allowed
-   - If user deferred "dark mode" → NO dark mode tasks allowed
+2. **Deferred Ideas (from `## Deferred Ideas`)** — Keep these out of plans entirely
+   - If user deferred "search functionality" → include only non-search tasks
+   - If user deferred "dark mode" → include only the non-dark-mode approach
 
 3. **Claude's Discretion (from `## Claude's Discretion`)** — Use your judgment
    - Make reasonable choices and document in task actions
@@ -232,7 +232,7 @@ For each external service, determine:
 2. **Account setup** — Does user need to create an account?
 3. **Dashboard config** — What must be configured in external UI?
 
-Record in `user_setup` frontmatter. Only include what Claude literally cannot do. Do NOT surface in planning output — execute-plan handles presentation.
+Record in `user_setup` frontmatter. Only include what Claude literally cannot do. Leave presentation to execute-plan — omit user_setup from planning output.
 
 </task_breakdown>
 
@@ -338,7 +338,7 @@ Plans should complete within ~50% context (not 80%). No context anxiety, quality
 | Standard | 3-5 | 2-3 |
 | Comprehensive | 5-10 | 2-3 |
 
-Derive plans from actual work. Depth determines compression tolerance, not a target. Don't pad small work to hit a number. Don't compress complex work to look efficient.
+Derive plans from actual work. Depth determines compression tolerance, not a target. Keep plans sized to the actual work — small projects stay small, complex projects stay comprehensive.
 
 ## Context Per Task Estimates
 
@@ -370,7 +370,7 @@ wave: N                     # Execution wave (1, 2, 3...)
 depends_on: []              # Plan IDs this plan requires
 files_modified: []          # Files this plan touches
 autonomous: true            # false if plan has checkpoints
-requirements: []            # REQUIRED — Requirement IDs from ROADMAP this plan addresses. MUST NOT be empty.
+requirements: []            # REQUIRED — Requirement IDs from ROADMAP this plan addresses. Always populate with at least one ID.
 user_setup: []              # Human-required setup (omit if empty)
 
 must_haves:
@@ -614,7 +614,7 @@ Action has NO CLI/API and requires human-only interaction.
 
 Use ONLY for: Email verification links, SMS 2FA codes, manual account approvals, credit card 3D Secure flows.
 
-Do NOT use for: Deploying (use CLI), creating webhooks (use API), creating databases (use provider CLI), running builds/tests (use Bash), creating files (use Write).
+Reserve for auth gates and truly unavoidable steps only. Use CLI for deploying, API for webhooks and databases, Bash for builds/tests, Write for file creation.
 
 ## Authentication Gates
 
@@ -624,7 +624,7 @@ When Claude tries CLI/API and gets auth error → creates checkpoint → user au
 
 **DO:** Automate everything before checkpoint, be specific ("Visit https://myapp.vercel.app" not "check deployment"), number verification steps, state expected outcomes.
 
-**DON'T:** Ask human to do work Claude can automate, mix multiple verifications, place checkpoints before automation completes.
+**GUIDELINE:** Automate all work Claude can do before checkpoints. Keep each checkpoint to a single verification. Place checkpoints only after automation completes.
 
 ## Anti-Patterns
 
@@ -811,7 +811,7 @@ Group by plan, dimension, severity.
 
 **DO:** Edit specific flagged sections, preserve working parts, update waves if dependencies change.
 
-**DO NOT:** Rewrite entire plans for minor issues, add unnecessary tasks, break existing working plans.
+**Scope discipline:** Make targeted edits for flagged issues only. Preserve working parts of existing plans.
 
 ### Step 5: Validate Changes
 
@@ -962,7 +962,7 @@ cat "$phase_dir"/*-RESEARCH.md 2>/dev/null   # From /gsd-research-phase
 cat "$phase_dir"/*-DISCOVERY.md 2>/dev/null  # From mandatory discovery
 ```
 
-**If CONTEXT.md exists (has_context=true from init):** Honor user's vision, prioritize essential features, respect boundaries. Locked decisions — do not revisit.
+**If CONTEXT.md exists (has_context=true from init):** Honor user's vision, prioritize essential features, respect boundaries. Locked decisions are final — implement them exactly as specified.
 
 **If RESEARCH.md exists (has_research=true from init):** Use standard_stack, architecture_patterns, dont_hand_roll, common_pitfalls.
 </step>
@@ -1026,7 +1026,7 @@ Present breakdown with wave structure. Wait for confirmation in interactive mode
 <step name="write_phase_prompt">
 Use template structure for each PLAN.md.
 
-**ALWAYS use the Write tool to create files** — never use `Bash(cat << 'EOF')` or heredoc commands for file creation.
+**ALWAYS use the Write tool to create files** — use the Write tool exclusively, even for file creation that could use heredoc commands.
 
 Write to `.planning/phases/XX-name/{phase}-{NN}-PLAN.md`
 

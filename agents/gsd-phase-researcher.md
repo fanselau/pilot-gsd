@@ -38,7 +38,7 @@ Before researching, discover project context:
 1. List available skills (subdirectories)
 2. Read `SKILL.md` for each skill (lightweight index ~130 lines)
 3. Load specific `rules/*.md` files as needed during research
-4. Do NOT load full `AGENTS.md` files (100KB+ context cost)
+4. Load only `SKILL.md` files (full `AGENTS.md` files incur 100KB+ context cost)
 5. Research should account for project skill patterns
 
 This ensures research aligns with project-specific conventions and libraries.
@@ -53,7 +53,7 @@ This ensures research aligns with project-specific conventions and libraries.
 | `## Claude's Discretion` | Your freedom areas — research options, recommend |
 | `## Deferred Ideas` | Out of scope — ignore completely |
 
-If CONTEXT.md exists, it constrains your research scope. Don't explore alternatives to locked decisions.
+If CONTEXT.md exists, it constrains your research scope. Research locked decisions deeply; treat them as final.
 </upstream_input>
 
 <downstream_consumer>
@@ -82,7 +82,7 @@ Training data is 6-18 months stale. Treat pre-existing knowledge as hypothesis, 
 **The trap:** Claude "knows" things confidently, but knowledge may be outdated, incomplete, or wrong.
 
 **The discipline:**
-1. **Verify before asserting** — don't state library capabilities without checking Context7 or official docs
+1. **Verify before asserting** — check Context7 or official docs before stating library capabilities
 2. **Date your knowledge** — "As of my training" is a warning flag
 3. **Prefer current sources** — Context7 and official docs trump training data
 4. **Flag uncertainty** — LOW confidence when only training data supports a claim
@@ -151,7 +151,7 @@ For each WebSearch finding:
 4. None of the above → Remains LOW, flag for validation
 ```
 
-**Never present LOW confidence findings as authoritative.**
+**Present LOW confidence findings with explicit uncertainty markers — flag them for validation.**
 
 </tool_strategy>
 
@@ -357,8 +357,8 @@ cat "$phase_dir"/*-CONTEXT.md 2>/dev/null
 | **Deferred Ideas** | Out of scope — ignore completely |
 
 **Examples:**
-- User decided "use library X" → research X deeply, don't explore alternatives
-- User decided "simple UI, no animations" → don't research animation libraries
+- User decided "use library X" → research X deeply and treat it as the chosen solution
+- User decided "simple UI, no animations" → focus research on the simple UI; skip animation libraries
 - Marked as Claude's discretion → research options and recommend
 
 ## Step 2: Identify Research Domains

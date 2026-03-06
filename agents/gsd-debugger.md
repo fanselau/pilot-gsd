@@ -42,12 +42,10 @@ The user knows:
 - Error messages they saw
 - When it started / if it ever worked
 
-The user does NOT know (don't ask):
+Ask the user about their experience only. Investigate the cause yourself:
 - What's causing the bug
 - Which file has the problem
 - What the fix should be
-
-Ask about experience. Investigate the cause yourself.
 
 ## Meta-Debugging: Your Own Code
 
@@ -96,7 +94,7 @@ When debugging, return to foundational truths:
 Consider starting over when:
 1. **2+ hours with no progress** - You're likely tunnel-visioned
 2. **3+ "fixes" that didn't work** - Your mental model is wrong
-3. **You can't explain the current behavior** - Don't add changes on top of confusion
+3. **You can't explain the current behavior** - Restart fresh rather than adding changes on top of confusion
 4. **You're debugging the debugger** - Something fundamental is wrong
 5. **The fix works but you don't know why** - This isn't fixed, this is luck
 
@@ -130,7 +128,7 @@ A good hypothesis can be proven wrong. If you can't design an experiment to disp
 ## Forming Hypotheses
 
 1. **Observe precisely:** Not "it's broken" but "counter shows 3 when clicking once, should show 1"
-2. **Ask "What could cause this?"** - List every possible cause (don't judge yet)
+2. **Ask "What could cause this?"** - List every possible cause (list all, evaluate later)
 3. **Make each specific:** Not "state is wrong" but "state is updated twice because handleClick is called twice"
 4. **Identify evidence:** What would support/refute each hypothesis?
 
@@ -170,7 +168,7 @@ Act when you can answer YES to all:
 3. **Have evidence, not just theory?** You've observed directly, not guessing
 4. **Ruled out alternatives?** Evidence contradicts other hypotheses
 
-**Don't act if:** "I think it might be X" or "Let me try changing Y and see"
+**Act only when** you have strong, unambiguous evidence — not when you're in "I think it might be X" or "Let me try changing Y and see" territory
 
 ## Recovery from Wrong Hypotheses
 
@@ -179,11 +177,11 @@ When disproven:
 2. **Extract the learning** - What did this rule out? What new information?
 3. **Revise understanding** - Update mental model
 4. **Form new hypotheses** - Based on what you now know
-5. **Don't get attached** - Being wrong quickly is better than being wrong slowly
+5. **Stay detached from hypotheses** - Being wrong quickly is better than being wrong slowly
 
 ## Multiple Hypotheses Strategy
 
-Don't fall in love with your first hypothesis. Generate alternatives.
+Generate alternatives from the start. Treat your first hypothesis as one candidate among several.
 
 **Strong inference:** Design experiments that differentiate between competing hypotheses.
 
@@ -959,7 +957,7 @@ If inconclusive:
 **Recommendation:** Manual review needed
 ```
 
-**Do NOT proceed to fix_and_verify.**
+**Stop here. Return root cause only. The fix_and_verify step is reserved for find_and_fix mode.**
 </step>
 
 <step name="fix_and_verify">
@@ -998,7 +996,7 @@ INIT=$(node ./.opencode/get-shit-done/bin/gsd-tools.cjs state load)
 
 **Commit the fix:**
 
-Stage and commit code changes (NEVER `git add -A` or `git add .`):
+Stage and commit code changes using individual file paths (stage each file explicitly):
 ```bash
 git add src/path/to/fixed-file.ts
 git add src/path/to/other-file.ts
@@ -1178,7 +1176,7 @@ Check for mode flags in prompt context:
 - Create debug file with status: "investigating" (not "gathering")
 
 **goal: find_root_cause_only**
-- Diagnose but don't fix
+- Diagnose only. Stop after confirming root cause.
 - Stop after confirming root cause
 - Skip fix_and_verify step
 - Return root cause to caller (for plan-phase --gaps to handle)
