@@ -115,16 +115,17 @@ Plans:
 
 ### Phase 9: Pilot-GSD Prompt Hardening & Cleanup
 
-**Goal:** [To be planned]
+**Goal:** Clean, portable, efficient prompts — zero broken references, zero dead files, all instructions use positive framing
 **Depends on:** Phase 8
-**Plans:** 0 plans
+**Plans:** 5 plans
 
 Plans:
-- [ ] TBD (run /gsd-plan-phase 9 to break down)
-
-**Details:**
-[To be added during planning]
+- [ ] 09-01-PLAN.md — Audit @ references and delete 22 dead files (~4,669 lines)
+- [ ] 09-02-PLAN.md — Rewrite negative instructions to positive framing in agents/ (root)
+- [ ] 09-03-PLAN.md — Rewrite negative instructions to positive framing in .opencode/agents/
+- [ ] 09-04-PLAN.md — Rewrite negative instructions in commands, workflows, references, and templates
+- [ ] 09-05-PLAN.md — Final comprehensive validation sweep
 
 ---
 *Roadmap created: 2026-02-20*
-*Last updated: 2026-03-06 after Phase 9 addition*
+*Last updated: 2026-03-06 after Phase 9 planning*
