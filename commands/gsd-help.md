@@ -4,11 +4,7 @@ description: Show available GSD commands and usage guide
 <objective>
 Display the complete GSD command reference.
 
-Output ONLY the reference content below. Do NOT add:
-- Project-specific analysis
-- Git status or file context
-- Next-step suggestions
-- Any commentary beyond the reference
+Output only the reference content below. Omit project-specific analysis, git status, file context, next-step suggestions, and commentary.
 </objective>
 
 <execution_context>
