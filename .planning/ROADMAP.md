@@ -124,10 +124,10 @@ Plans:
 - [x] 09-02-PLAN.md — Rewrite negative instructions to positive framing in agents/ (root) — Complete 2026-03-06
 - [x] 09-03-PLAN.md — Rewrite negative instructions to positive framing in .opencode/agents/ — Complete 2026-03-06
 - [x] 09-04a-PLAN.md — Rewrite negative instructions in command files (commands/ and .opencode/command/) — Complete 2026-03-06
-- [ ] 09-04b-PLAN.md — Rewrite negative instructions in workflows, references, and templates
+- [x] 09-04b-PLAN.md — Rewrite negative instructions in workflows, references, and templates — Complete 2026-03-06
 - [ ] 09-05-PLAN.md — Final comprehensive validation sweep
 - [ ] 09-06-PLAN.md — Deduplicate thick .opencode/command/ files + assess gsd-planner agent overlap
 
 ---
 *Roadmap created: 2026-02-20*
-*Last updated: 2026-03-06 after 09-04a completion*
+*Last updated: 2026-03-06 after 09-04b completion*
