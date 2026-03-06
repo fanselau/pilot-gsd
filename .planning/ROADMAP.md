@@ -134,7 +134,7 @@ Plans:
 **Goal:** Merge upstream/main (707 commits) into dev branch — infrastructure/tooling matches upstream, core prompting flow preserved exactly, system works end-to-end
 **Depends on:** Phase 9
 **Requirements:** requirements/upstream-sync.md
-**Plans:** 1/3 plans executed
+**Plans:** 2/3 plans executed
 
 Plans:
 - [ ] 10-01-PLAN.md — Pre-merge system audit: classify every file (ours-only/upstream-take/ours-modified/shared)

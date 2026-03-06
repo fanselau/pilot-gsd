@@ -6,16 +6,16 @@
 ## Current Position
 
 Phase: 10 (Upstream GSD Sync)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-03-06 - Completed 10-01-PLAN.md (pre-merge system audit)
+Last activity: 2026-03-06 - Completed 10-02-PLAN.md (core merge — upstream/main into dev)
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Phase 10 — Upstream GSD Sync. Plan 01 complete (SYSTEM-AUDIT.md created). Next: Plan 02 (the actual merge), Plan 03 (verification).
+**Current focus:** Phase 10 — Upstream GSD Sync. Plans 01 and 02 complete (audit + merge done). Next: Plan 03 (verification).
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** Milestone complete
@@ -52,9 +52,9 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 
 ### Phase 10: Upstream GSD Sync
 - **Status:** in progress
-- **Plans:** 1/3
+- **Plans:** 2/3
 
-Progress: [████████████████░░░] 18/20 plans (90%)
+Progress: [█████████████████░░] 19/20 plans (95%)
 
 ## Accumulated Context
 
@@ -89,6 +89,9 @@ Progress: [████████████████░░░] 18/20 plan
 | agents/*.md classified as ours-modified: opencode-native frontmatter incompatible with upstream Claude-native | 10-01 | Must keep our model:, color: #HEX, tools: {key: bool} format — upstream uses name:, color: green, tools: Read |
 | gsd-tools.cjs is upstream-take: upstream version has critical bug fixes | 10-01 | Our version (5381 lines) is older; upstream 5324-line version fixes the tooling failures |
 | config.json template is always ours: yolo mode and gates-off config must be preserved | 10-01 | Core to pilot's zero-interactivity operation; upstream default is interactive mode |
+| commands/gsd/ subdirectory: discarded all 17 upstream commands from subdirectory | 10-02 | We have equivalents in flat commands/gsd-*.md; upstream namespace is incompatible |
+| package.json: manual merge — our identity + upstream scripts/deps | 10-02 | Keeps pilot-gsd branding and our repo URLs while taking upstream devDependencies |
+| pause-work.md rename collision: 8-char conflict markers required manual extraction | 10-02 | git checkout --ours failed; manually rewrote file from our version content |
 
 ### Roadmap Evolution
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
@@ -117,9 +120,9 @@ Progress: [████████████████░░░] 18/20 plan
 ## Session Continuity
 
 Last session: 2026-03-06
-Stopped at: Completed 10-01-PLAN.md (SYSTEM-AUDIT.md — pre-merge file classification)
+Stopped at: Completed 10-02-PLAN.md (core merge — upstream/main 707 commits into dev)
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-03-06 after Phase 10 Plan 01 execution*
+*Last updated: 2026-03-06 after Phase 10 Plan 02 execution*
