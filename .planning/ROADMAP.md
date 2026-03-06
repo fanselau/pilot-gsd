@@ -117,15 +117,17 @@ Plans:
 
 **Goal:** Clean, portable, efficient prompts — zero broken references, zero dead files, all instructions use positive framing
 **Depends on:** Phase 8
-**Plans:** 5 plans
+**Plans:** 7 plans
 
 Plans:
 - [ ] 09-01-PLAN.md — Audit @ references and delete 22 dead files (~4,669 lines)
 - [ ] 09-02-PLAN.md — Rewrite negative instructions to positive framing in agents/ (root)
 - [ ] 09-03-PLAN.md — Rewrite negative instructions to positive framing in .opencode/agents/
-- [ ] 09-04-PLAN.md — Rewrite negative instructions in commands, workflows, references, and templates
+- [ ] 09-04a-PLAN.md — Rewrite negative instructions in command files (commands/ and .opencode/command/)
+- [ ] 09-04b-PLAN.md — Rewrite negative instructions in workflows, references, and templates
 - [ ] 09-05-PLAN.md — Final comprehensive validation sweep
+- [ ] 09-06-PLAN.md — Deduplicate thick .opencode/command/ files + assess gsd-planner agent overlap
 
 ---
 *Roadmap created: 2026-02-20*
-*Last updated: 2026-03-06 after Phase 9 planning*
+*Last updated: 2026-03-06 after Phase 9 plan revision*
