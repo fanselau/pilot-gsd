@@ -116,9 +116,9 @@ Plans:
 ### Phase 9: Pilot-GSD Prompt Hardening & Cleanup
 
 **Goal:** Clean, portable, efficient prompts — zero broken references, zero dead files, all instructions use positive framing
-**Status:** Complete (2026-03-06)
+**Status:** Complete (verified 2026-03-06)
 **Depends on:** Phase 8
-**Plans:** 6 plans (09-05 merged into other plans; 09-06 added for command deduplication)
+**Plans:** 7 plans
 
 Plans:
 - [x] 09-01-PLAN.md — Audit @ references and delete 22 dead files (~4,669 lines) — Complete 2026-03-06
@@ -129,6 +129,18 @@ Plans:
 - [x] 09-05-PLAN.md — Final comprehensive validation sweep — Complete 2026-03-06
 - [x] 09-06-PLAN.md — Deduplicate thick .opencode/command/ files + assess gsd-planner agent overlap — Complete 2026-03-06
 
+### Phase 10: Upstream GSD Sync
+
+**Goal:** Merge upstream/main (707 commits) into dev branch — infrastructure/tooling matches upstream, core prompting flow preserved exactly, system works end-to-end
+**Depends on:** Phase 9
+**Requirements:** requirements/upstream-sync.md
+**Plans:** 3 plans
+
+Plans:
+- [ ] 10-01-PLAN.md — Pre-merge system audit: classify every file (ours-only/upstream-take/ours-modified/shared)
+- [ ] 10-02-PLAN.md — Execute git merge upstream/main with audit-guided conflict resolution
+- [ ] 10-03-PLAN.md — Post-merge integrity verification + sync .opencode/ directory
+
 ---
 *Roadmap created: 2026-02-20*
-*Last updated: 2026-03-06 after 09-05 completion (all 6 Phase 9 plans done)*
+*Last updated: 2026-03-06 — Phase 10 added*

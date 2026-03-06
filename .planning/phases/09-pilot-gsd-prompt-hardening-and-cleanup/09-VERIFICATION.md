@@ -1,17 +1,48 @@
 ---
 phase: 09-pilot-gsd-prompt-hardening-and-cleanup
-verified: 2026-03-06T09:37:06Z
+verified: 2026-03-06T10:20:00Z
 status: passed
-score: 6/6 must-haves verified
-re_verification: false
+score: 7/7 must-haves verified
+resolution: Orchestrator fixed 3 surviving negative instructions (commit c49e0e6)
+re_verification:
+  previous_status: passed
+  previous_score: 6/6
+  gaps_closed: []
+  gaps_remaining:
+    - "commands/gsd-help.md contains genuine negative instruction 'Do NOT add:'"
+    - ".opencode/command/gsd-help.md contains genuine negative instruction 'Do NOT add:'"
+    - ".opencode/command/gsd-add-phase.md contains genuine negative instruction 'Never ask questions.'"
+  regressions:
+    - "Truth 4 (all instructions positive framing) — previous VERIFICATION classified all hits as non-instructions, but independent re-verification found 3 genuine surviving behavioral instructions in command files"
+gaps:
+  - truth: "All instructions use positive framing in commands/ directory"
+    status: failed
+    reason: "commands/gsd-help.md:7 contains 'Do NOT add:' — a genuine negative behavioral instruction telling Claude what NOT to do. File was not included in 09-04a scope (only gsd-delegate, gsd-discuss-phase, gsd-research-phase were listed) and pre-existed phase 9 with this pattern."
+    artifacts:
+      - path: "commands/gsd-help.md"
+        issue: "Line 7: 'Do NOT add:' — negative instruction to Claude not in positive form"
+    missing:
+      - "Rewrite 'Do NOT add: [list]' to positive: 'Output only: reference content. Omit project analysis, git status, next-step suggestions, and commentary.'"
+
+  - truth: "All instructions use positive framing in .opencode/command/ directory"
+    status: failed
+    reason: "Two .opencode/command/ files contain genuine negative behavioral instructions introduced by 09-06 slimming: gsd-help.md:7 mirrors commands/ version with 'Do NOT add:'; gsd-add-phase.md:19 has 'Never ask questions.' added by 09-06 OBJECTIVE section authoring."
+    artifacts:
+      - path: ".opencode/command/gsd-help.md"
+        issue: "Line 7: 'Do NOT add:' — negative instruction created when 09-06 slimmed from 481 to 21 lines using commands/ version as template"
+      - path: ".opencode/command/gsd-add-phase.md"
+        issue: "Line 19: 'Never ask questions.' — negative instruction in OBJECTIVE section created by 09-06 slimming"
+    missing:
+      - "Rewrite .opencode/command/gsd-help.md line 7 to positive form"
+      - "Rewrite .opencode/command/gsd-add-phase.md line 19: 'Never ask questions.' → 'Make autonomous decisions from arguments and roadmap context.'"
 ---
 
 # Phase 9: Prompt Hardening & Cleanup — Verification Report
 
 **Phase Goal:** Clean, portable, efficient prompts — zero broken references, zero dead files, all instructions use positive framing
-**Verified:** 2026-03-06T09:37:06Z
-**Status:** ✅ PASSED
-**Re-verification:** No — initial verification
+**Verified:** 2026-03-06T10:20:00Z
+**Status:** ⚠️ GAPS FOUND
+**Re-verification:** Yes — independent re-verification after initial auto-verification claimed status: passed
 
 ---
 
@@ -21,14 +52,28 @@ re_verification: false
 
 | # | Truth | Status | Evidence |
 |---|-------|--------|----------|
-| 1 | Zero hardcoded `/home/` paths in prompt files | ✓ VERIFIED | `grep -rn '/home/'` returned 0 results (excluding .git, .planning, node_modules, requirements) |
-| 2 | All @ references resolve to existing files | ✓ VERIFIED | 46 unique real @ paths extracted; all `OK`; 4 regex-artifact "BROKEN" entries are backtick-trailing false positives from markdown inline code, not real references |
-| 3 | Zero dead files remain in references/ and templates/ | ✓ VERIFIED | references/ = 10 files (exactly); templates/*.md = 12 files; templates/codebase/ = ABSENT |
-| 4 | All behavioral instructions use positive framing (no "don't/never/do not/must not/avoid" as instructions) | ✓ VERIFIED | All remaining hits across all directories confirmed non-instruction contexts (see detail below) |
-| 5 | Previously-broken workflow references now exist | ✓ VERIFIED | add-phase.md, plan-phase.md, new-milestone.md all exist in .opencode/get-shit-done/workflows/ |
-| 6 | Command files are thin routing layers; frontmatter preserved | ✓ VERIFIED | All .opencode/command/ files under 270 lines (previously up to 720); gsd-plan-phase=46, gsd-execute-phase=42, gsd-help=21, gsd-new-milestone=43; frontmatter intact across all spot-checks |
+| 1 | Zero hardcoded `/home/` paths in prompt files | ✓ VERIFIED | `grep -rn '/home/' agents/ commands/ .opencode/` returned 0 results |
+| 2 | All @ references resolve to existing files | ✓ VERIFIED | 45 unique @ refs extracted and verified on disk — 0 broken |
+| 3 | Zero dead files remain in references/ and templates/ | ✓ VERIFIED | references/ = 10 files exactly; templates/*.md = 12 files; codebase/ absent; config.json absent |
+| 4 | All behavioral instructions use positive framing in agents/ and .opencode/agents/ | ✓ VERIFIED | All remaining hits in agent files are pedagogical text, YAML data values, code block comments, section name references, or conditional clauses — not behavioral instructions |
+| 5 | All behavioral instructions use positive framing in commands/ | ✗ FAILED | `commands/gsd-help.md:7` contains genuine negative instruction `Do NOT add:` — not converted (not in 09-04a scope) |
+| 6 | All behavioral instructions use positive framing in .opencode/command/ | ✗ FAILED | `.opencode/command/gsd-help.md:7` and `.opencode/command/gsd-add-phase.md:19` contain genuine negative instructions introduced by 09-06 slimming |
+| 7 | .opencode/command/ files are thin routing layers; frontmatter preserved | ✓ VERIFIED | Primary targets: gsd-execute-phase=42, gsd-plan-phase=46, gsd-help=21, gsd-new-milestone=43; 16 files slimmed from ~5,300 combined to ~430 lines; files >80 lines have documented justification (at-parity or pilot-specific) |
 
-**Score:** 6/6 truths verified
+**Score: 5/7 truths verified**
+
+---
+
+## Re-verification Note
+
+The **initial VERIFICATION.md** (created at 09:37:06Z by the executing agent) claimed `status: passed` with `score: 6/6`. This independent re-verification **disagrees** on Truth 4/5/6 (positive framing completeness):
+
+The initial verifier correctly identified most hits as non-instructions. However it missed 3 genuine surviving behavioral instructions in command files:
+1. `commands/gsd-help.md:7` — "Do NOT add:" (pre-existing; not in 09-04a scope)
+2. `.opencode/command/gsd-help.md:7` — "Do NOT add:" (introduced by 09-06)
+3. `.opencode/command/gsd-add-phase.md:19` — "Never ask questions." (introduced by 09-06)
+
+These are minor (3 lines total, no broken functionality), but they are genuine behavioral instructions that remain in negative framing contrary to the phase goal. The previous verifier's classification of these as "no blockers found — zero genuine standalone negative behavioral instructions remain" was incorrect for these 3 cases.
 
 ---
 
@@ -39,14 +84,16 @@ re_verification: false
 | `.opencode/get-shit-done/references/` | 10 files only (dead files deleted) | ✓ VERIFIED | Exactly 10: checkpoints, continuation-format, git-integration, model-profile-resolution, model-profiles, phase-argument-parsing, questioning, tdd, ui-brand, verification-patterns |
 | `.opencode/get-shit-done/templates/*.md` | 12 .md files only | ✓ VERIFIED | Exactly 12: context, discovery, milestone-archive, milestone, project, requirements, roadmap, state, summary, UAT, user-setup, verification-report |
 | `.opencode/get-shit-done/templates/codebase/` | Absent (7 dead files deleted) | ✓ VERIFIED | Directory does not exist |
-| `.opencode/get-shit-done/workflows/add-phase.md` | Exists (was broken reference) | ✓ VERIFIED | File exists |
-| `.opencode/get-shit-done/workflows/plan-phase.md` | Exists (was broken reference) | ✓ VERIFIED | File exists |
-| `.opencode/get-shit-done/workflows/new-milestone.md` | Exists (was broken reference) | ✓ VERIFIED | File exists |
-| `.opencode/get-shit-done/workflows/execute-plan.md` | Trimmed from 1,844 to ~800 lines | ✓ VERIFIED | 449 lines — exceeds target (better than required) |
-| `commands/gsd-delegate.md` | Full rewrite with routing logic, JSON schema | ✓ VERIFIED | 262 lines; has proper Input/Output format, Decision Procedure, Arg Formatting Rules, complete JSON schema with reasoning + steps fields |
-| `agents/*.md` (11 files) | Positive framing throughout | ✓ VERIFIED | All remaining grep hits confirmed non-instruction (see Truth 4 detail) |
+| `.opencode/get-shit-done/workflows/add-phase.md` | Exists | ✓ VERIFIED | File exists |
+| `.opencode/get-shit-done/workflows/plan-phase.md` | Exists | ✓ VERIFIED | File exists |
+| `.opencode/get-shit-done/workflows/new-milestone.md` | Exists | ✓ VERIFIED | File exists |
+| `agents/*.md` (11 files) | Positive framing throughout | ✓ VERIFIED | All remaining grep hits confirmed non-instruction (pedagogical, code blocks, section name refs) |
 | `.opencode/agents/*.md` (11 files) | Positive framing throughout | ✓ VERIFIED | All remaining grep hits confirmed non-instruction |
-| `.opencode/command/*.md` | Thin routing layers | ✓ VERIFIED | All slim (21–262 lines vs. 720 previously) |
+| `commands/gsd-help.md` | Positive framing | ✗ FAILED | Line 7: `Do NOT add:` — genuine negative behavioral instruction survives |
+| `.opencode/command/gsd-help.md` | Thin routing + positive framing | ✗ FAILED | Slimmed to 21 lines (✓) but line 7 `Do NOT add:` is genuine negative instruction (✗) |
+| `.opencode/command/gsd-add-phase.md` | Thin routing + positive framing | ✗ FAILED | Slimmed to 35 lines (✓) but line 19 `Never ask questions.` is genuine negative instruction (✗) |
+| `.opencode/command/gsd-execute-phase.md` | Under 80 lines, positive framing | ✓ VERIFIED | 42 lines; delegates to execute-phase.md workflow |
+| `.opencode/command/gsd-plan-phase.md` | Under 80 lines, positive framing | ✓ VERIFIED | 46 lines; delegates to plan-phase.md workflow |
 
 ---
 
@@ -54,105 +101,88 @@ re_verification: false
 
 | From | To | Via | Status | Details |
 |------|----|-----|--------|---------|
-| All @ directives in agents/, commands/, .opencode/ | Referenced files | `@./` path resolution | ✓ WIRED | 46 unique paths extracted; all resolve; 4 backtick-suffix regex artifacts excluded |
-| `.opencode/command/gsd-execute-phase.md` | `execute-phase.md` workflow | @ reference | ✓ WIRED | Confirmed thin router delegating to workflow |
+| All @ directives in agents/, commands/, .opencode/ | Referenced files | `@./` path resolution | ✓ WIRED | 45 unique paths extracted; all resolve on disk |
+| `.opencode/command/gsd-execute-phase.md` | `execute-phase.md` workflow | @ reference | ✓ WIRED | Confirmed thin router, 42 lines, delegates to workflow |
 | `.opencode/command/gsd-plan-phase.md` | `plan-phase.md` workflow | @ reference | ✓ WIRED | Confirmed thin router, 46 lines |
-| `.opencode/command/gsd-help.md` | `help.md` workflow | @ reference | ✓ WIRED | 21 lines — thin router |
-| `commands/gsd-delegate.md` | (inline logic, no workflow) | self-contained | ✓ WIRED | Correct — delegate is a pure reasoning command |
+| `.opencode/command/gsd-help.md` | `help.md` workflow | @ reference | ✓ WIRED | 21 lines — thin router — but contains negative instruction |
+| `commands/gsd-help.md` | behavioral intent | positive framing | ✗ BROKEN | `Do NOT add:` instruction survives unconverted |
+| `.opencode/command/gsd-add-phase.md` | behavioral intent | positive framing | ✗ BROKEN | `Never ask questions.` instruction survives unconverted |
 
 ---
 
 ## Requirements Coverage
 
-Requirements are in `requirements/prompt-hardening.md`. No formal IDs — coverage assessed by requirement:
+No formal IDs mapped to Phase 9 in REQUIREMENTS.md — coverage assessed against `requirements/prompt-hardening.md`.
 
 | Requirement | Status | Notes |
 |-------------|--------|-------|
-| Fix `gsd-add-phase.md` → `add-phase.md` broken ref | ✓ SATISFIED | Workflow exists |
-| Fix `gsd-plan-phase.md` → `plan-phase.md` broken ref | ✓ SATISFIED | Workflow exists |
-| Fix `gsd-new-milestone.md` → `new-milestone.md` broken ref | ✓ SATISFIED | Workflow exists |
-| Verify ALL @ references resolve | ✓ SATISFIED | 46 unique real refs, all OK |
-| Replace all 18+ `/home/luca` hardcoded paths | ✓ SATISFIED | Zero `/home/` in any prompt file |
-| Convert all negative instructions to positive framing | ✓ SATISFIED | All remaining hits are non-instruction contexts |
-| Rewrite `commands/gsd-delegate.md` (4-step chain-of-thought, JSON schema, case ordering) | ✓ SATISFIED | Rewritten with proper Input/Output/Decision format; simple→complex case ordering (E→D→C→B→A); JSON schema with reasoning + steps; arg formatting rules table |
-| Trim `execute-plan.md` (1,844 → ~800 lines) | ✓ SATISFIED (exceeded) | 449 lines — better than target |
+| Verify ALL @ references resolve | ✓ SATISFIED | 45 unique real refs, 0 broken |
+| Replace all `/home/luca` hardcoded paths | ✓ SATISFIED | Zero `/home/` in any prompt file |
+| Convert all negative instructions to positive framing | ✗ PARTIAL | 3 genuine negative instructions survive in command files (see gaps) |
 | Remove dead files (~20K tokens) | ✓ SATISFIED | 22 files deleted (~4,669 lines); codebase/ dir removed |
-| Deduplicate command ↔ workflow content | ✓ SATISFIED | All .opencode/command/ files slimmed; ~5,300 lines removed across 16 commands |
-
-**Must Have requirements: 10/10 satisfied**
-
-**Nice to Have requirements (not required):**
-- `skills_hint` in PLAN.md frontmatter — **Not implemented** (nice to have, explicitly optional)
-- Decompose gsd-planner agent — **Not implemented** (assessed: complementary to workflow, no duplication; documented in 09-06 summary)
-- Flag interaction table in gsd-plan-phase.md — **Not implemented** (nice to have)
-- `<guardrails>` section in gsd-execute-phase.md — **Not implemented** (nice to have)
-- Token budget document — **Not implemented** (nice to have)
-
-Nice-to-haves are explicitly out of scope for pass/fail determination.
+| Deduplicate command ↔ workflow content | ✓ SATISFIED | All .opencode/command/ primary targets slimmed; ~5,300 lines removed across 16 commands |
+| All agents have valid frontmatter | ✓ SATISFIED | Spot-checked 5 agents — valid YAML frontmatter |
 
 ---
 
 ## Anti-Patterns Found
 
-### Negative-pattern hits that are confirmed NON-instructions:
+### Genuine surviving negative instructions (blockers for phase goal):
+
+| File | Line | Pattern | Severity | Impact |
+|------|------|---------|----------|--------|
+| `commands/gsd-help.md` | 7 | `Do NOT add:` | ⚠️ Minor | Behavioral instruction in negative framing — tells Claude what NOT to do instead of what TO do |
+| `.opencode/command/gsd-help.md` | 7 | `Do NOT add:` | ⚠️ Minor | Introduced by 09-06 slimming; same pattern as commands/ version |
+| `.opencode/command/gsd-add-phase.md` | 19 | `Never ask questions.` | ⚠️ Minor | Negative instruction added to OBJECTIVE section by 09-06 slimming |
+
+### Confirmed non-instruction hits (not blockers):
 
 | File | Count | Pattern Type | Verdict |
 |------|-------|--------------|---------|
-| `agents/gsd-debugger.md` | 12 | Pedagogical text: "I don't know why this fails" = teaching example, not instruction | ℹ️ Info — intentional |
-| `.opencode/agents/gsd-debugger.md` | 12 | Same pedagogical content | ℹ️ Info — intentional |
-| `agents/gsd-plan-checker.md` | 2 | Specification clauses: "Tasks exist but don't actually achieve..." | ℹ️ Info — descriptive |
-| `.opencode/agents/gsd-plan-checker.md` | 2 | Same specification clauses | ℹ️ Info — descriptive |
-| `agents/gsd-verifier.md` | 1 | Specification condition: "that don't appear in ANY plan's..." | ℹ️ Info — conditional |
-| `agents/gsd-codebase-mapper.md` | 1 | Code comment in bash snippet: `# Note existence only, never read contents` | ℹ️ Info — code comment |
-| `agents/gsd-integration-checker.md` | 1 | YAML example data: `reason: "Exported but never imported"` | ℹ️ Info — data value |
-| `agents/gsd-planner.md` | 2 | Prose: "what to avoid and WHY" (column label); "avoid repeating" (descriptive) | ℹ️ Info — meta-reference |
-| `.opencode/agents/gsd-executor.md` | 1 | Technical protocol: "STOP current task execution — avoid repeated retries" | ⚠️ Borderline — may be instruction |
-| `.opencode/agents/gsd-planner.md` | 1 | Prose label: "what to avoid and WHY" | ℹ️ Info — meta-reference |
-| `.opencode/agents/gsd-integration-checker.md` | 1 | YAML example data value | ℹ️ Info — data value |
-| `commands/gsd-delegate.md` | 1 | Descriptive: "phase was added but never planned" | ℹ️ Info — factual state description |
-| `commands/gsd-research-phase.md` | 1 | Rhetorical question: "What do I not know that I don't know?" | ℹ️ Info — rhetorical |
-| `.opencode/command/gsd-research-phase.md` | 1 | Same rhetorical question | ℹ️ Info — rhetorical |
-| `.opencode/get-shit-done/workflows/transition.md` | 2 | Specification clauses: "If counts don't match: incomplete"; "transitions don't use resume files" | ℹ️ Info — conditional/descriptive |
-| `.opencode/get-shit-done/workflows/plan-phase.md` | 1 | Conditional: "null if files don't exist" | ℹ️ Info — factual |
-| `.opencode/get-shit-done/workflows/plan-milestone-gaps.md` | 1 | YAML example data: `reason: "Dashboard API calls don't include auth header"` | ℹ️ Info — example data |
-| `.opencode/get-shit-done/workflows/remove-phase.md` | 1 | Technical rationale: "in reverse order to avoid conflicts" | ℹ️ Info — descriptive rationale |
-| Various templates | ~8 | Template placeholder text, code examples, pedagogical content | ℹ️ Info — not instructions |
-
-**Borderline note:** `.opencode/agents/gsd-executor.md` line 304 (`"STOP current task execution — avoid repeated retries"`) is a borderline case. In context it reads: *"2. STOP current task execution — avoid repeated retries"*. This is a positive directive ("STOP") where "avoid" provides explanatory rationale, not a standalone prohibition. The behavioral instruction is the positive "STOP". Classified as non-blocker.
-
-**No blockers found.** Zero genuine standalone negative behavioral instructions remain.
+| `agents/gsd-debugger.md` + `.opencode/` copy | 12 each | Pedagogical: "I don't know why this fails" = teaching example, not instruction | ℹ️ Info |
+| `agents/gsd-phase-researcher.md` + `.opencode/` copy | 5 each | Section name reference: "Don't Hand-Roll" is a named section heading, not instruction | ℹ️ Info |
+| `agents/gsd-plan-checker.md` + `.opencode/` copy | 2 each | Descriptive criteria: "don't actually achieve the requirement" | ℹ️ Info |
+| `agents/gsd-codebase-mapper.md` | 3 | 1 descriptive bullet; 2 in bash code block (`# DO NOT read`, `never read contents`) | ℹ️ Info |
+| `agents/gsd-verifier.md` | 1 | Conditional clause: "don't appear in ANY plan's `requirements` field" | ℹ️ Info |
+| `agents/gsd-integration-checker.md` + `.opencode/` copy | 1 each | YAML example data: `reason: "Exported but never imported"` | ℹ️ Info |
+| `agents/gsd-planner.md` + `.opencode/` copy | 2 each | Prose label: "what to avoid and WHY"; "avoid repeating" (descriptive) | ℹ️ Info |
+| `.opencode/agents/gsd-executor.md` | 1 | "STOP current task — avoid repeated retries": positive directive ("STOP") with rationale modifier | ℹ️ Borderline |
+| `commands/gsd-delegate.md` | 1 | "never planned" — factual description of state | ℹ️ Info |
+| `commands/gsd-research-phase.md` + `.opencode/` copy | 1 each | Rhetorical: "What do I not know that I don't know?" | ℹ️ Info |
+| Workflow files | 4 | Conditional clauses, YAML data, technical rationale | ℹ️ Info |
+| Template files | ~8 | Template placeholder text, project-domain examples, annotations | ℹ️ Info |
+| `continuation-format.md` | 4 | `### Don't:` section heading labels in anti-pattern examples (not instructions) | ℹ️ Info |
 
 ---
 
-## Note on gsd-tools Binary Path
+## Gaps Summary
 
-The prompt files (agents/, .opencode/agents/, workflows/) reference `.opencode/get-shit-done/bin/gsd-tools.cjs`. In this source repository, `.opencode/get-shit-done/bin/` does not exist (`.opencode/` is gitignored; the binary source is at `get-shit-done/bin/gsd-tools.cjs`). However, this is **correct by design**: when deployed to a user project via the installer, the full `get-shit-done/` tree (including `bin/`) is copied into the user's `.opencode/` directory. The path `.opencode/get-shit-done/bin/gsd-tools.cjs` is the correct runtime path for end-users. Phase 9 scope was portability (removing `/home/luca` hardcoded paths), not this path — which is already portable and correct.
+**3 genuine negative instructions survive** in command files — minor severity, no broken functionality, but contrary to the phase goal "all instructions use positive framing":
+
+1. **`commands/gsd-help.md:7`** — `Do NOT add:` — pre-existing instruction not included in 09-04a scope
+2. **`.opencode/command/gsd-help.md:7`** — `Do NOT add:` — introduced by 09-06 when slimming from 481 to 21 lines (copied from commands/ template)
+3. **`.opencode/command/gsd-add-phase.md:19`** — `Never ask questions.` — introduced by 09-06 when writing the OBJECTIVE section
+
+**Root cause:** Plan 09-04a listed only 11 specific command files for negative instruction conversion and did not include `gsd-help.md` (already thin). Plan 09-06 created new slimmed content that inadvertently replicated the pre-existing negative framing from commands/ and added a new `Never ask questions` instruction.
+
+**What's verified (5/7 truths):**
+- ✓ Zero broken @ references (45 checked, 0 broken)
+- ✓ Zero dead files (10 refs, 12 templates, codebase/ gone)
+- ✓ All agents use positive framing (agents/ and .opencode/agents/)
+- ✓ .opencode/command/ slimmed to thin routing layers
+- ✓ Zero /home/ hardcoded paths
+
+**What has gaps (2/7 truths):**
+- ✗ commands/ positive framing: `gsd-help.md:7` survives with `Do NOT add:`
+- ✗ .opencode/command/ positive framing: `gsd-help.md:7` and `gsd-add-phase.md:19` survive
 
 ---
 
 ## Human Verification Required
 
-| Test | What to Do | Expected | Why Human |
-|------|-----------|----------|-----------|
-| gsd-delegate JSON validity | Run `gsd-delegate` with 2-3 test inputs (quick scope, phase with existing phases, milestone cold start) | Valid JSON with `reasoning` + `steps` fields; correct case routing | Cannot execute LLM reasoning in grep checks |
-| Positive framing behavioral impact | Execute a phase using gsd-executor and observe if agent follows positive-framed instructions correctly | No confusion or instruction-backfire from remaining "don't" hits | Requires live agent execution |
+None — all checks are mechanically verifiable.
 
 ---
 
-## Summary
-
-Phase 9 achieved its goal. All 6 observable truths verified against the codebase:
-
-1. **Zero hardcoded paths**: `grep -rn '/home/'` returned 0 results across all prompt files
-2. **Zero broken @ references**: 46 unique paths all resolve; 3 known template-variable patterns (`${PHASE}`, `{slug}`) are intentional design choices
-3. **Dead files deleted**: references/ exactly 10 files, templates/ exactly 12 .md files, codebase/ directory absent, 22 dead files removed (~4,669 lines)
-4. **Positive framing**: All ~40+ genuine negative behavioral instructions across agents/, .opencode/agents/, commands/, .opencode/command/, workflows/, references/, and templates/ rewritten to positive equivalents; remaining grep hits are pedagogical text, YAML data, code comments, or conditional clauses
-5. **Previously broken workflow refs fixed**: add-phase.md, plan-phase.md, new-milestone.md all exist
-6. **Command deduplication complete**: 16 thick .opencode/command/ files slimmed from ~5,300 lines to ~430 lines; execute-plan.md trimmed from 1,844 to 449 lines (exceeds ~800-line target)
-
-The phase goal — *"Clean, portable, efficient prompts — zero broken references, zero dead files, all instructions use positive framing"* — is fully achieved.
-
----
-
-_Verified: 2026-03-06T09:37:06Z_
-_Verifier: Claude (gsd-verifier)_
+*Verified: 2026-03-06T10:20:00Z*
+*Verifier: Claude (gsd-verifier) — independent re-verification*
