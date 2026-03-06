@@ -18,7 +18,6 @@ animation/
 # Internal planning documents
 reports/
 RAILROAD_ARCHITECTURE.md
-.opencode/
 
-# Planning documents — tracked for GSD state visibility
-# .planning/
+# pilot-gsd fork: working copies (gitignored)
+.opencode/

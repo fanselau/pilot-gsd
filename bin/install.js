@@ -1,10 +1,5 @@
 #!/usr/bin/env node
 
-// NOTE (pilot-gsd fork): The Pilot CLI manages installation via symlinks.
-// `pilot setup` symlinks from this repo into project .opencode/ directories.
-// This installer is preserved for standalone/upstream-compatible use.
-// For pilot users: run `pilot setup` instead of this installer.
-
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
@@ -704,7 +699,7 @@ function copyWithPathReplacement(srcDir, destDir, pathPrefix, runtime) {
     if (entry.isDirectory()) {
       copyWithPathReplacement(srcPath, destPath, pathPrefix, runtime);
     } else if (entry.name.endsWith('.md')) {
-      // Replace ./.opencode/ and ./.claude/ with runtime-appropriate paths
+      // Replace ~/.claude/ and ./.claude/ with runtime-appropriate paths
       let content = fs.readFileSync(srcPath, 'utf8');
       const globalClaudeRegex = /~\/\.claude\//g;
       const localClaudeRegex = /\.\/\.claude\//g;
@@ -1429,7 +1424,7 @@ function install(isGlobal, runtime = 'claude') {
     for (const entry of agentEntries) {
       if (entry.isFile() && entry.name.endsWith('.md')) {
         let content = fs.readFileSync(path.join(agentsSrc, entry.name), 'utf8');
-        // Always replace ./.opencode/ as it is the source of truth in the repo
+        // Always replace ~/.claude/ as it is the source of truth in the repo
         const dirRegex = /~\/\.claude\//g;
         content = content.replace(dirRegex, pathPrefix);
         content = processAttribution(content, getCommitAttribution(runtime));

@@ -7,6 +7,7 @@ Read all files referenced by the invoking prompt's execution_context before star
 </required_reading>
 
 <process>
+**Follow the pause-work workflow** from `@~/.claude/get-shit-done/workflows/pause-work.md`.
 
 <step name="detect">
 Find current phase directory from most recently modified files:

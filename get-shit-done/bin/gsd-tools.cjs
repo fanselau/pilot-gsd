@@ -32,7 +32,6 @@
  * Phase Operations:
  *   phase next-decimal <phase>         Calculate next decimal phase number
  *   phase add <description>            Append new phase to roadmap + create dir
- *     [--from-requirement]              Copy file as REQUIREMENT.md in phase dir
  *   phase insert <after> <description> Insert decimal phase after existing
  *   phase remove <phase> [--force]     Remove phase, renumber all subsequent
  *   phase complete <phase>             Mark phase done, update state + roadmap
@@ -2660,7 +2659,7 @@ function cmdRoadmapAnalyze(cwd, raw) {
 
 // ─── Phase Add ────────────────────────────────────────────────────────────────
 
-function cmdPhaseAdd(cwd, description, raw, fromRequirement) {
+function cmdPhaseAdd(cwd, description, raw) {
   if (!description) {
     error('description required for phase add');
   }
@@ -2671,9 +2670,7 @@ function cmdPhaseAdd(cwd, description, raw, fromRequirement) {
   }
 
   const content = fs.readFileSync(roadmapPath, 'utf-8');
-  const resolved = resolveDescriptionFromPath(description);
-  const phaseName = resolved.name;
-  const slug = generateSlugInternal(phaseName);
+  const slug = generateSlugInternal(description);
 
   // Find highest integer phase number
   const phasePattern = /#{2,4}\s*Phase\s+(\d+)(?:\.\d+)?:/gi;
@@ -2693,19 +2690,8 @@ function cmdPhaseAdd(cwd, description, raw, fromRequirement) {
   fs.mkdirSync(dirPath, { recursive: true });
   fs.writeFileSync(path.join(dirPath, '.gitkeep'), '');
 
-  // Copy requirement file into phase directory
-  if (fromRequirement && resolved.filePath) {
-    try {
-      const reqContent = fs.readFileSync(resolved.filePath, 'utf-8');
-      fs.writeFileSync(path.join(dirPath, 'REQUIREMENT.md'), reqContent, 'utf-8');
-    } catch (e) {
-      // Non-fatal: log warning but continue
-      console.error(`Warning: Could not copy requirement file: ${e.message}`);
-    }
-  }
-
   // Build phase entry
-  const phaseEntry = `\n### Phase ${newPhaseNum}: ${phaseName}\n\n**Goal:** [To be planned]\n**Depends on:** Phase ${maxPhase}\n**Plans:** 0 plans\n\nPlans:\n- [ ] TBD (run /gsd:plan-phase ${newPhaseNum} to break down)\n`;
+  const phaseEntry = `\n### Phase ${newPhaseNum}: ${description}\n\n**Goal:** [To be planned]\n**Depends on:** Phase ${maxPhase}\n**Plans:** 0 plans\n\nPlans:\n- [ ] TBD (run /gsd:plan-phase ${newPhaseNum} to break down)\n`;
 
   // Find insertion point: before last "---" or at end
   let updatedContent;
@@ -2721,10 +2707,9 @@ function cmdPhaseAdd(cwd, description, raw, fromRequirement) {
   const result = {
     phase_number: newPhaseNum,
     padded: paddedNum,
-    name: phaseName,
+    name: description,
     slug,
     directory: `.planning/phases/${dirName}`,
-    requirement_file: (fromRequirement && resolved.filePath) ? 'REQUIREMENT.md' : null,
   };
 
   output(result, raw, paddedNum);
@@ -2743,9 +2728,7 @@ function cmdPhaseInsert(cwd, afterPhase, description, raw) {
   }
 
   const content = fs.readFileSync(roadmapPath, 'utf-8');
-  const resolved = resolveDescriptionFromPath(description);
-  const phaseName = resolved.name;
-  const slug = generateSlugInternal(phaseName);
+  const slug = generateSlugInternal(description);
 
   // Normalize input then strip leading zeros for flexible matching
   const normalizedAfter = normalizePhaseName(afterPhase);
@@ -2781,7 +2764,7 @@ function cmdPhaseInsert(cwd, afterPhase, description, raw) {
   fs.writeFileSync(path.join(dirPath, '.gitkeep'), '');
 
   // Build phase entry
-  const phaseEntry = `\n### Phase ${decimalPhase}: ${phaseName} (INSERTED)\n\n**Goal:** [Urgent work - to be planned]\n**Depends on:** Phase ${afterPhase}\n**Plans:** 0 plans\n\nPlans:\n- [ ] TBD (run /gsd:plan-phase ${decimalPhase} to break down)\n`;
+  const phaseEntry = `\n### Phase ${decimalPhase}: ${description} (INSERTED)\n\n**Goal:** [Urgent work - to be planned]\n**Depends on:** Phase ${afterPhase}\n**Plans:** 0 plans\n\nPlans:\n- [ ] TBD (run /gsd:plan-phase ${decimalPhase} to break down)\n`;
 
   // Insert after the target phase section
   const headerPattern = new RegExp(`(#{2,4}\\s*Phase\\s+0*${afterPhaseEscaped}:[^\\n]*\\n)`, 'i');
@@ -2807,7 +2790,7 @@ function cmdPhaseInsert(cwd, afterPhase, description, raw) {
   const result = {
     phase_number: decimalPhase,
     after_phase: afterPhase,
-    name: phaseName,
+    name: description,
     slug,
     directory: `.planning/phases/${dirName}`,
   };
@@ -4031,9 +4014,7 @@ function cmdScaffold(cwd, type, options, raw) {
       if (!phase || !name) {
         error('phase and name required for phase-dir scaffold');
       }
-      const resolved = resolveDescriptionFromPath(name);
-      const resolvedName = resolved.name;
-      const slug = generateSlugInternal(resolvedName);
+      const slug = generateSlugInternal(name);
       const dirName = `${padded}-${slug}`;
       const phasesParent = path.join(cwd, '.planning', 'phases');
       fs.mkdirSync(phasesParent, { recursive: true });
@@ -4114,21 +4095,7 @@ function searchPhaseInDir(baseDir, relBase, normalized) {
   try {
     const entries = fs.readdirSync(baseDir, { withFileTypes: true });
     const dirs = entries.filter(e => e.isDirectory()).map(e => e.name).sort();
-    let match = dirs.find(d => d.startsWith(normalized));
-    let matchStrategy = 'exact';
-
-    if (!match) {
-      // Fuzzy fallback: strip leading zeros from both sides and match on numeric prefix
-      const normalizedNum = normalized.replace(/^0+/, '') || '0';
-      match = dirs.find(d => {
-        const dirNum = d.match(/^0*(\d+(?:\.\d+)?)/);
-        return dirNum && dirNum[1] === normalizedNum;
-      });
-      if (match) {
-        matchStrategy = 'fuzzy';
-      }
-    }
-
+    const match = dirs.find(d => d.startsWith(normalized));
     if (!match) return null;
 
     const dirMatch = match.match(/^(\d+(?:\.\d+)?)-?(.*)/);
@@ -4153,7 +4120,6 @@ function searchPhaseInDir(baseDir, relBase, normalized) {
 
     return {
       found: true,
-      match_strategy: matchStrategy,
       directory: path.join(relBase, match),
       phase_number: phaseNumber,
       phase_name: phaseName,
@@ -4248,27 +4214,6 @@ function pathExistsInternal(cwd, targetPath) {
     return true;
   } catch {
     return false;
-  }
-}
-
-function resolveDescriptionFromPath(description) {
-  // If description contains / or ends with .md, treat as file path
-  if (!description || (!description.includes('/') && !description.endsWith('.md'))) {
-    return { name: description, filePath: null };
-  }
-  try {
-    const content = fs.readFileSync(description, 'utf-8');
-    const headingMatch = content.match(/^#\s+(.+)$/m);
-    if (headingMatch) {
-      return { name: headingMatch[1].trim(), filePath: description };
-    }
-    // No heading — use filename stem
-    const stem = path.basename(description, path.extname(description));
-    return { name: stem, filePath: description };
-  } catch {
-    // File can't be read — use filename stem as fallback
-    const stem = path.basename(description, path.extname(description));
-    return { name: stem, filePath: null };
   }
 }
 
@@ -5220,9 +5165,7 @@ async function main() {
       if (subcommand === 'next-decimal') {
         cmdPhaseNextDecimal(cwd, args[2], raw);
       } else if (subcommand === 'add') {
-        const fromRequirement = args.includes('--from-requirement');
-        const addArgs = args.slice(2).filter(a => a !== '--from-requirement');
-        cmdPhaseAdd(cwd, addArgs.join(' '), raw, fromRequirement);
+        cmdPhaseAdd(cwd, args.slice(2).join(' '), raw);
       } else if (subcommand === 'insert') {
         cmdPhaseInsert(cwd, args[2], args.slice(3).join(' '), raw);
       } else if (subcommand === 'remove') {

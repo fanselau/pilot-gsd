@@ -1,7 +1,3 @@
-> **pilot-gsd fork:** Models are set directly in agent frontmatter (`model:` field).
-> The profile system below is preserved for upstream compatibility but is not used
-> when agents have explicit model assignments. The frontmatter `model:` takes precedence.
-
 # Model Profiles
 
 Model profiles control which Claude model each GSD agent uses. This allows balancing quality vs token spend.
@@ -69,7 +65,7 @@ Overrides take precedence over the profile. Valid values: `opus`, `sonnet`, `hai
 
 ## Switching Profiles
 
-Runtime: `/gsd-set-profile <profile>`
+Runtime: `/gsd:set-profile <profile>`
 
 Per-project default: Set in `.planning/config.json`:
 ```json
@@ -94,7 +90,3 @@ Read-only exploration and pattern extraction. No reasoning required, just struct
 
 **Why `inherit` instead of passing `opus` directly?**
 Claude Code's `"opus"` alias maps to a specific model version. Organizations may block older opus versions while allowing newer ones. GSD returns `"inherit"` for opus-tier agents, causing them to use whatever opus version the user has configured in their session. This avoids version conflicts and silent fallbacks to Sonnet.
-
----
-## pilot-gsd Fork Note
-In the pilot-gsd fork, the `model:` field in agent frontmatter takes precedence over model-profiles. Model profiles still work as a fallback but explicit frontmatter `model:` is the canonical way to assign models to agents.
