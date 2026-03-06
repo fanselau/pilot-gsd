@@ -113,6 +113,18 @@ Plans:
 - [x] 08-01-PLAN.md — Fix slug generation for file paths + add --from-requirement flag to phase add
 - [x] 08-02-PLAN.md — Add fuzzy matching fallback to searchPhaseInDir
 
+### Phase 9: Pilot-GSD Prompt Hardening & Cleanup
+
+**Goal:** [To be planned]
+**Depends on:** Phase 8
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 9 to break down)
+
+**Details:**
+[To be added during planning]
+
 ---
 *Roadmap created: 2026-02-20*
-*Last updated: 2026-03-03 after Phase 8 completion verification*
+*Last updated: 2026-03-06 after Phase 9 addition*

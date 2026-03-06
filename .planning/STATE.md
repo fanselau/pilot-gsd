@@ -71,6 +71,7 @@ Progress: [██████████] 10/10 plans (100%)
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
 - Phase 7 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
 - Phase 8 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
+- Phase 9 added: Pilot-GSD Prompt Hardening & Cleanup
 
 ### Concerns
 (None)
