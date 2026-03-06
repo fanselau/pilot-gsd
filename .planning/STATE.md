@@ -6,16 +6,16 @@
 ## Current Position
 
 Phase: 9 (Pilot-GSD Prompt Hardening & Cleanup)
-Plan: 1 of 2 in current phase
-Status: In progress
-Last activity: 2026-03-06 - Completed 09-01: @ reference audit and dead file deletion
+Plan: 2 of 2 in current phase
+Status: Phase complete
+Last activity: 2026-03-06 - Completed 09-02: negative instruction rewrite (all 11 agent files)
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Phase 9 in progress — prompt hardening and cleanup; 09-01 complete (22 dead files deleted, @ refs verified)
+**Current focus:** Milestone autonomy-fork-v1 complete — all 12 plans across 9 phases done; Phase 9 finished with 09-01 (dead files) and 09-02 (negative instructions rewritten)
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** complete
@@ -47,10 +47,10 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Plans:** 2/2
 
 ### Phase 9: Pilot-GSD Prompt Hardening & Cleanup
-- **Status:** in progress
-- **Plans:** 1/2
+- **Status:** complete
+- **Plans:** 2/2
 
-Progress: [███████████░] 11/12 plans (92%)
+Progress: [████████████] 12/12 plans (100%)
 
 ## Accumulated Context
 
@@ -72,6 +72,8 @@ Progress: [███████████░] 11/12 plans (92%)
 | Exact-then-fuzzy matching for searchPhaseInDir | 08-02 | Handles padding mismatches without breaking existing exact matches |
 | Verify @ by exact path match not keyword search | 09-01 | Prose mentions of file concepts ≠ @ file references; distinguished safely |
 | .opencode/ gitignored — disk deletions not in git | 09-01 | File deletions applied to disk only; empty commits used as task markers |
+| Skip non-instruction occurrences in negative pattern rewrite | 09-02 | Code blocks, quoted examples, descriptive text, section titles, and column headers are not behavioral instructions |
+| anti_patterns sections renamed to guardrails | 09-02 | Consistent with positive framing throughout; two files updated (gsd-plan-checker, gsd-roadmapper) |
 
 ### Roadmap Evolution
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
@@ -98,10 +100,10 @@ Progress: [███████████░] 11/12 plans (92%)
 
 ## Session Continuity
 
-Last session: 2026-03-06T08:31:13Z
-Stopped at: Completed 09-01-PLAN.md (@ reference audit + 22 dead files deleted)
+Last session: 2026-03-06
+Stopped at: Completed 09-02-PLAN.md (negative instruction rewrite — all 11 agent files)
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-03-06 after 09-01 completion*
+*Last updated: 2026-03-06 after 09-02 completion*
