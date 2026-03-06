@@ -6,16 +6,16 @@
 ## Current Position
 
 Phase: 9 (Pilot-GSD Prompt Hardening & Cleanup)
-Plan: 3 of 3 in current phase
+Plan: 4 of 4 in current phase
 Status: Phase complete
-Last activity: 2026-03-06 - Completed 09-03: negative instruction rewrite (.opencode/agents/ — all 11 files)
+Last activity: 2026-03-06 - Completed 09-04a: negative instruction rewrite (commands/ + .opencode/command/ — 11 files)
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Milestone autonomy-fork-v1 complete — all 13 plans across 9 phases done; Phase 9 finished with 09-01 (dead files), 09-02 (root agents/ negative instructions), and 09-03 (.opencode/agents/ negative instructions)
+**Current focus:** Milestone autonomy-fork-v1 complete — all 14 plans across 9 phases done; Phase 9 finished with 09-01 (dead files), 09-02 (root agents/), 09-03 (.opencode/agents/), and 09-04a (commands/ + .opencode/command/ negative instructions)
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** complete
@@ -48,9 +48,9 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 
 ### Phase 9: Pilot-GSD Prompt Hardening & Cleanup
 - **Status:** complete
-- **Plans:** 3/3
+- **Plans:** 4/4
 
-Progress: [█████████████] 13/13 plans (100%)
+Progress: [██████████████] 14/14 plans (100%)
 
 ## Accumulated Context
 
@@ -75,6 +75,8 @@ Progress: [█████████████] 13/13 plans (100%)
 | Skip non-instruction occurrences in negative pattern rewrite | 09-02 | Code blocks, quoted examples, descriptive text, section titles, and column headers are not behavioral instructions |
 | anti_patterns sections renamed to guardrails | 09-02 | Consistent with positive framing throughout; two files updated (gsd-plan-checker, gsd-roadmapper) |
 | Non-instruction negative words preserved in .opencode/agents/ | 09-03 | Code blocks, quoted strings, descriptive text, column headers, YAML example strings are not behavioral instructions |
+| anti_patterns sections renamed to constraints in command files | 09-04a | Consistent with positive framing; gsd-verify-auto, gsd-verify-work, gsd-remove-phase updated |
+| Non-instruction negatives preserved in commands/ and .opencode/command/ | 09-04a | YAML reason: fields, rhetorical questions, rationale text, backtick-quoted section names are not behavioral instructions |
 
 ### Roadmap Evolution
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
@@ -102,9 +104,9 @@ Progress: [█████████████] 13/13 plans (100%)
 ## Session Continuity
 
 Last session: 2026-03-06
-Stopped at: Completed 09-03-PLAN.md (negative instruction rewrite — .opencode/agents/ all 11 files)
+Stopped at: Completed 09-04a-PLAN.md (negative instruction rewrite — commands/ + .opencode/command/ 11 files)
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-03-06 after 09-02 completion*
+*Last updated: 2026-03-06 after 09-04a completion*
