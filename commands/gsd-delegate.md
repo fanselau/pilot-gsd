@@ -47,7 +47,7 @@ Use `"steps": []` when no work is needed (e.g., phase already complete).
 | `plan-phase` | `<phase-number> @<requirement-path>` | Plan a phase. Phase number required. Optional `@path` for context. |
 | `execute-phase` | `<phase-number>` | Execute all plans in a phase. |
 
-**Note:** `verify-phase` is handled automatically by the runner after every `execute-phase`. You never output it.
+**Note:** `verify-phase` is handled automatically by the runner after every `execute-phase`. Omit it from your steps — the runner adds it.
 
 ---
 

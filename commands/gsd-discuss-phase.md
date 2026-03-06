@@ -46,7 +46,7 @@ Context files are resolved in-workflow using `init phase-op` and roadmap/state t
 - Phase boundary from ROADMAP.md is FIXED
 - Discussion clarifies HOW to implement, not WHETHER to add more
 - If user suggests new capabilities: "That's its own phase. I'll note it for later."
-- Capture deferred ideas — don't lose them, don't act on them
+- Capture deferred ideas — record them for later, keep them out of current scope
 
 **Domain-aware gray areas:**
 Gray areas depend on what's being built. Analyze the phase goal:
@@ -64,7 +64,7 @@ Generate 3-4 **phase-specific** gray areas, not generic categories.
 - If more → ask 4 more, check again
 - After all areas → "Ready to create context?"
 
-**Do NOT ask about (Claude handles these):**
+**Claude handles these — focus questions on user-facing decisions only:**
 - Technical implementation
 - Architecture choices
 - Performance concerns

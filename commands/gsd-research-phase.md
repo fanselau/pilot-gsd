@@ -63,7 +63,7 @@ ls .planning/phases/${PHASE}-*/RESEARCH.md 2>/dev/null
 
 ## 3. Gather Phase Context
 
-Use paths from INIT (do not inline file contents in orchestrator context):
+Use paths from INIT (pass them to the agent — keep orchestrator context lean):
 - `requirements_path`
 - `context_path`
 - `state_path`
@@ -111,7 +111,7 @@ Mode: ecosystem
 Your RESEARCH.md will be loaded by `/gsd-plan-phase` which uses specific sections:
 - `## Standard Stack` → Plans use these libraries
 - `## Architecture Patterns` → Task structure follows these
-- `## Don't Hand-Roll` → Tasks NEVER build custom solutions for listed problems
+- `## Don't Hand-Roll` → Tasks always use the library/service listed here instead of building from scratch
 - `## Common Pitfalls` → Verification steps check for these
 - `## Code Examples` → Task actions reference these patterns
 
