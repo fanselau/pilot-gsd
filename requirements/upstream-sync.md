@@ -1,48 +1,79 @@
 # Upstream GSD Sync
 
 ## Problem
-pilot-gsd is a fork of [get-shit-done](https://github.com/punchlab-dev/get-shit-done) (v1.20.5), currently 707 commits behind upstream. The upstream has significant improvements:
-- Context-proxy orchestration flow
-- STATE.md regeneration fixes
-- Project CLAUDE.md + skill discovery for subagent spawn points
-- gsd-tools.cjs fixes and simplifications
-- Executor ROADMAP.md/REQUIREMENTS.md per-plan updates
-- Milestone audit tightening
-- Various bug fixes (#657, #671, #672, #217)
+pilot-gsd is a fork of [get-shit-done](https://github.com/punchlab-dev/get-shit-done) (v1.20.5), currently 707 commits behind upstream. The upstream has significant improvements to tooling, bug fixes, and infrastructure — but our core prompting is intentionally diverged and must be preserved.
 
-pilot currently fails on the gsd-tools.cjs JavaScript script that upstream bundles — our fork's version is outdated and diverged.
+pilot currently fails on the gsd-tools.cjs JavaScript script that upstream bundles — our fork's version is outdated.
 
 ## Goal
-Merge upstream/main into our fork's dev branch, resolving conflicts while preserving our autonomy-focused prompt modifications. After merge:
-- gsd-tools.cjs matches upstream (or is a clean superset)
-- All upstream bug fixes are incorporated
-- Our custom prompt hardening, frontmatter migrations, and interactivity stripping are preserved
-- `node get-shit-done/bin/gsd-tools.cjs help` works without errors
+Merge upstream/main into our fork's dev branch. After merge:
+- Infrastructure/tooling files match upstream (gsd-tools.cjs, install.js, etc.)
+- Our core prompting flow (quick → phase → milestone → delegation) is preserved exactly
+- The system still works end-to-end as documented
+
+## Strategy — Three-Phase with Subagents
+
+**This is a complex merge. Use subagents heavily for each phase.**
+
+### Phase A: Document Current System (Pre-Merge Audit)
+Spawn a subagent to produce a comprehensive document of how pilot-gsd currently works:
+- What each file does and its role in the system
+- The core flow: delegation → planning → execution → verification
+- Which files contain OUR custom prompting vs which are vanilla upstream
+- File-by-file classification: `ours-only` | `upstream-take` | `ours-modified` | `shared`
+- Save as `.planning/phases/XX-upstream-sync/SYSTEM-AUDIT.md`
+
+### Phase B: The Merge
+Use the audit to guide conflict resolution:
+- **`ours-only` files**: Keep as-is, no merge needed
+- **`upstream-take` files**: Accept upstream version entirely (gsd-tools.cjs, install.js, bin/*, any supporting scripts, new utility files)
+- **`ours-modified` files**: These are the hard ones. Our prompts win, but incorporate upstream structural improvements (new sections, better formatting) where they don't conflict with our intent
+- **`shared` files**: Merge carefully, preferring upstream for infrastructure, ours for prompting
+
+Conflict resolution priority:
+1. Our delegation prompt (`gsd-delegate.md`) — ALWAYS ours
+2. Our agent prompts (agents/*.md) — ALWAYS ours  
+3. Our workflow prompts (workflows/*.md) — ours for prompting, upstream for tooling/infrastructure improvements
+4. Commands (commands/*.md) — ours for frontmatter format, upstream for new commands we don't have
+5. References (references/*.md) — merge both, upstream improvements welcome
+6. Scripts/tooling (bin/*, *.cjs, *.js) — ALWAYS upstream
+
+### Phase C: Post-Merge Verification (Integrity Check)
+Spawn a second subagent that takes the SYSTEM-AUDIT.md as input and verifies:
+- Does the merged codebase still match the documented system architecture?
+- Are all our core flows intact (delegation, planning, execution, verification)?
+- Do the file roles still align with the audit's classification?
+- Does `node get-shit-done/bin/gsd-tools.cjs help` work?
+- Are there any broken `@` references?
+- Flag any regressions or drift from our intended design
 
 ## Requirements
 
 ### Must Have
-- [ ] Merge upstream/main into dev branch with conflict resolution
+- [ ] SYSTEM-AUDIT.md produced before any merge work begins
+- [ ] `git merge upstream/main` completed with all conflicts resolved
 - [ ] gsd-tools.cjs works: `node get-shit-done/bin/gsd-tools.cjs help` exits 0
-- [ ] All upstream workflow/reference improvements incorporated
-- [ ] Our autonomy modifications preserved (yolo mode, auto-advance, no AskUserQuestion in autonomous paths)
+- [ ] Our delegation flow preserved (gsd-delegate.md is ours)
+- [ ] Our agent prompts preserved (agents/*.md are ours)
 - [ ] Our frontmatter format preserved (opencode-native, not claude-native)
-- [ ] `git diff upstream/main -- commands/` shows only our intentional divergences
+- [ ] Our autonomy modifications preserved (yolo mode, auto-advance, no AskUserQuestion in autonomous paths)
 - [ ] No merge conflict markers left in any file
+- [ ] Post-merge integrity check passes against SYSTEM-AUDIT.md
 
 ### Nice to Have
-- [ ] Document which files are intentionally diverged from upstream and why
-- [ ] Create a FORK-STATUS.md tracking divergence points
+- [ ] FORK-STATUS.md tracking which files diverge from upstream and why
+- [ ] New upstream commands/references integrated where useful
 
 ## Technical Notes
-- Upstream remote: `upstream` → `https://github.com/punchlab-dev/get-shit-done.git`
+- Upstream remote: `upstream` → `github.com/punchlab-dev/get-shit-done.git`
 - Our fork: `origin` → `github.com/lucafanselau/pilot-gsd.git`
 - Branch: `dev`
-- Key divergence areas: commands/ (frontmatter format), agents/ (model assignments), workflows/ (interactivity stripping), get-shit-done/bin/gsd-tools.cjs
-- The fork was taken at v1.20.5 but the commit history diverged much earlier due to rebasing
+- Upstream remote already configured and fetched
+- PAT token at `~/.pilot_github_token` for push access
 
 ## Do NOT
 - Overwrite our custom agent prompts with upstream defaults
 - Re-introduce AskUserQuestion calls in autonomous code paths
 - Change our frontmatter format back to claude-native
 - Break the .planning/ state or phase history
+- Skip the pre-merge audit — it's the foundation for everything else
