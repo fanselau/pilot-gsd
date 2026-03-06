@@ -1,21 +1,21 @@
 # State
 
 ## Current Milestone: autonomy-fork-v1
-## Current Phase: 9
+## Current Phase: 10
 
 ## Current Position
 
-Phase: 9 (Pilot-GSD Prompt Hardening & Cleanup)
-Plan: 7 of 7 in current phase
-Status: Phase complete — verified ✓
-Last activity: 2026-03-06 - Phase 9 verified (7/7 must-haves, 3 gap fixes by orchestrator)
+Phase: 10 (Upstream GSD Sync)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-03-06 - Completed 10-01-PLAN.md (pre-merge system audit)
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Phase 9 verified complete — prompt hardening done (22 dead files removed, ~110 negative instructions rewritten, 16 commands deduplicated, validation sweep passes). Next: Phase 10 (Upstream GSD Sync)
+**Current focus:** Phase 10 — Upstream GSD Sync. Plan 01 complete (SYSTEM-AUDIT.md created). Next: Plan 02 (the actual merge), Plan 03 (verification).
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** Milestone complete
@@ -50,7 +50,11 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Status:** complete (verified)
 - **Plans:** 7/7
 
-Progress: [████████████████] 17/17 plans (100%)
+### Phase 10: Upstream GSD Sync
+- **Status:** in progress
+- **Plans:** 1/3
+
+Progress: [████████████████░░░] 18/20 plans (90%)
 
 ## Accumulated Context
 
@@ -82,6 +86,9 @@ Progress: [████████████████] 17/17 plans (100%)
 | gsd-planner agent and plan-phase.md workflow are complementary, not duplicated | 09-06 | Agent is planning METHODOLOGY (task sizing, wave design, specificity); workflow is ORCHESTRATION (spawn order, context loading, revision loop) |
 | gsd-verify-auto, gsd-delegate, gsd-research-phase, gsd-debug left unchanged | 09-06 | At parity with commands/ counterparts or pilot-specific inline implementations with no workflow target |
 | Remaining negative-pattern hits confirmed as non-instruction contexts | 09-05 | Code comments, YAML data values, pedagogical text, conditional clauses are not behavioral instructions |
+| agents/*.md classified as ours-modified: opencode-native frontmatter incompatible with upstream Claude-native | 10-01 | Must keep our model:, color: #HEX, tools: {key: bool} format — upstream uses name:, color: green, tools: Read |
+| gsd-tools.cjs is upstream-take: upstream version has critical bug fixes | 10-01 | Our version (5381 lines) is older; upstream 5324-line version fixes the tooling failures |
+| config.json template is always ours: yolo mode and gates-off config must be preserved | 10-01 | Core to pilot's zero-interactivity operation; upstream default is interactive mode |
 
 ### Roadmap Evolution
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
@@ -110,9 +117,9 @@ Progress: [████████████████] 17/17 plans (100%)
 ## Session Continuity
 
 Last session: 2026-03-06
-Stopped at: Phase 9 verified complete — all 7 plans executed, 7/7 must-haves verified
+Stopped at: Completed 10-01-PLAN.md (SYSTEM-AUDIT.md — pre-merge file classification)
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-03-06 after Phase 9 verification*
+*Last updated: 2026-03-06 after Phase 10 Plan 01 execution*
