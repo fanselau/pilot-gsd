@@ -183,7 +183,7 @@ Format completion message (changelog was already shown in confirmation step):
 
 ⚠️  Restart Claude Code to pick up the new commands.
 
-[View full changelog](https://github.com/glittercowboy/get-shit-done/blob/main/CHANGELOG.md)
+[View full changelog](https://github.com/lucafanselau/pilot-gsd/blob/main/CHANGELOG.md)
 ```
 </step>
 
