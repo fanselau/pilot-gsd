@@ -127,6 +127,16 @@ pilot setup
 > [!NOTE]
 > The `get-shit-done-cc` bin name in `package.json` is inherited from upstream for compatibility with the shared installer infrastructure. This does not affect how pilot-gsd is used — it's always accessed through the Pilot CLI.
 
+## Development
+
+**Run tests:**
+
+```bash
+npm test
+```
+
+Tests use Node's built-in test runner (`node --test`). Vitest is not used — if you run `npx vitest run` it will exit cleanly with no tests (this is expected).
+
 ## Attribution
 
 Forked from [get-shit-done](https://github.com/gsd-build/get-shit-done) v1.20.5 by TÂCHES (Lex Christopherson). The original GSD project is the foundation this system is built on — its meta-prompting design, phased workflow architecture, and context engineering patterns are what make pilot-gsd possible.
