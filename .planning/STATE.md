@@ -1,21 +1,21 @@
 # State
 
 ## Current Milestone: autonomy-fork-v1
-## Current Phase: 10
+## Current Phase: 11
 
 ## Current Position
 
-Phase: 10 (Upstream GSD Sync)
-Plan: 3 of 3 in current phase
-Status: Phase complete
-Last activity: 2026-03-06 - Completed 10-03-PLAN.md (post-merge integrity verification + .opencode/ sync)
+Phase: 11 (Fork Release Cleanup — Identity, Attribution, Security Hygiene, and README)
+Plan: 1 of 3 in current phase
+Status: In progress
+Last activity: 2026-03-07 - Completed 11-01-PLAN.md (identity & attribution cleanup)
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Phase 10 — COMPLETE. All 3 plans done: audit + merge + integrity verification. Upstream sync fully verified.
+**Current focus:** Phase 11 — In progress. Plan 1/3 done: identity & attribution cleanup. Version 0.1.0, all metadata files updated.
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** Milestone complete
@@ -54,7 +54,12 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Status:** complete
 - **Plans:** 3/3
 
-Progress: [████████████████████] 20/20 plans (100%)
+### Phase 11: Fork Release Cleanup — Identity, Attribution, Security Hygiene, and README
+- **Status:** in progress
+- **Plans:** 1/3
+- **Requirements:** IDENT-01, IDENT-02, IDENT-03, IDENT-04, IDENT-05, HYGIENE-05
+
+Progress: [████████████████████░] 21/23 plans (91%)
 
 ## Accumulated Context
 
@@ -93,6 +98,8 @@ Progress: [████████████████████] 20/20 p
 | package.json: manual merge — our identity + upstream scripts/deps | 10-02 | Keeps pilot-gsd branding and our repo URLs while taking upstream devDependencies |
 | pause-work.md rename collision: 8-char conflict markers required manual extraction | 10-02 | git checkout --ours failed; manually rewrote file from our version content |
 - [Phase 10-upstream-gsd-sync]: AskUserQuestion in discuss-phase and settings workflows are guarded: all pass autonomy check — All instances have If interactive:/If auto mode: guards or are user-facing workflows not in autonomous pipeline
+| Installer banner/bin name preserved for upstream compatibility | 11-01 | Shared upstream infrastructure; README will explain |
+| Installer fork comment (INST-01) not found; likely lost in Phase 10 sync | 11-01 | Not re-added since installer is shared upstream infrastructure |
 
 ### Roadmap Evolution
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
@@ -100,6 +107,7 @@ Progress: [████████████████████] 20/20 p
 - Phase 8 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
 - Phase 9 added: Pilot-GSD Prompt Hardening & Cleanup
 - Phase 10 added: Upstream GSD Sync
+- Phase 11 added: Fork Release Cleanup — Identity, Attribution, Security Hygiene, and README
 
 ### Concerns
 (None)
@@ -121,10 +129,10 @@ Progress: [████████████████████] 20/20 p
 
 ## Session Continuity
 
-Last session: 2026-03-06
-Stopped at: Completed quick task 4 (gsd-judge.md command for execution verdict)
+Last session: 2026-03-07
+Stopped at: Completed 11-01-PLAN.md (identity & attribution cleanup)
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-03-06 after quick task 4 (gsd-judge.md command)*
+*Last updated: 2026-03-07 after completing 11-01-PLAN.md*
