@@ -10,9 +10,9 @@ body:
   - type: input
     id: version
     attributes:
-      label: GSD Version
-      description: "Run: npm list -g get-shit-done-cc"
-      placeholder: "e.g., 1.18.0"
+      label: pilot-gsd Version
+      description: "Run: cat package.json | grep version"
+      placeholder: "e.g., 0.1.0"
     validations:
       required: true
   - type: dropdown
@@ -45,7 +45,7 @@ body:
       label: Steps to reproduce
       description: How can we reproduce this?
       placeholder: |
-        1. Run /gsd:...
+        1. Run /gsd-...
         2. ...
     validations:
       required: true

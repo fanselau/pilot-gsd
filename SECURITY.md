@@ -4,7 +4,7 @@
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, please report them via email to: **security@gsd.build** (or DM @glittercowboy on Discord/Twitter if email bounces)
+Instead, please report them through [GitHub Security Advisories](https://github.com/lucafanselau/pilot-gsd/security/advisories/new) for this repository.
 
 Include:
 - Description of the vulnerability
@@ -23,10 +23,14 @@ Include:
 
 ## Scope
 
-Security issues in the GSD codebase that could:
+Security issues in the pilot-gsd codebase that could:
 - Execute arbitrary code on user machines
 - Expose sensitive data (API keys, credentials)
 - Compromise the integrity of generated plans/code
+
+## Upstream GSD Project
+
+For vulnerabilities in the upstream GSD project, report to the original project at https://github.com/gsd-build/get-shit-done.
 
 ## Recognition
 
