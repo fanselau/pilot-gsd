@@ -117,7 +117,7 @@ pilot-gsd/
 
 ## Installation
 
-This repo is used as a git submodule of [Pilot](https://github.com/lucafanselau/pilot) — you don't install it directly.
+This repo ([lucafanselau/pilot-gsd](https://github.com/lucafanselau/pilot-gsd)) is used as a git submodule of [Pilot](https://github.com/lucafanselau/pilot) — you don't install it directly.
 
 ```bash
 # Managed by pilot setup — you don't need to do this manually
