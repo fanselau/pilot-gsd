@@ -6,6 +6,38 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-03-07
+
+### pilot-gsd Fork Release
+
+This is the first independent release of pilot-gsd, forked from [get-shit-done](https://github.com/gsd-build/get-shit-done) v1.20.5.
+
+#### Added (fork)
+- Zero-interactivity: all AskUserQuestion calls removed or guarded with auto-mode bypasses
+- Explicit model assignments in agent frontmatter (opus for creators, sonnet for checkers)
+- Autonomous config defaults (yolo mode, all gates off, auto_advance)
+- gsd-delegate command for Pilot runner integration
+- gsd-judge command for execution verdict
+- Upstream GSD sync (v1.20.5 merged)
+- Prompt hardening: positive framing, dead file cleanup, @ reference validation
+
+#### Changed (fork)
+- Frontmatter format: opencode-native (model:, color: hex, tools: YAML object)
+- Path convention: .opencode/ instead of ~/.claude/
+- Slash commands: /gsd-* instead of /gsd:*
+- All workflows have auto-mode guards for autonomous pipeline operation
+
+#### Attribution
+Forked from get-shit-done v1.20.5 by TÂCHES (Lex Christopherson).
+See upstream changelog entries below for pre-fork history.
+
+---
+
+*Upstream changelog entries below are preserved for historical reference.*
+*Release links point to the original project repository.*
+
+---
+
 ## [1.20.5] - 2026-02-19
 
 ### Fixed
@@ -1319,7 +1351,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - YOLO mode for autonomous execution
 - Interactive mode with checkpoints
 
-[Unreleased]: https://github.com/glittercowboy/get-shit-done/compare/v1.20.5...HEAD
+[Unreleased]: https://github.com/lucafanselau/pilot-gsd/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/lucafanselau/pilot-gsd/releases/tag/v0.1.0
 [1.20.5]: https://github.com/glittercowboy/get-shit-done/releases/tag/v1.20.5
 [1.20.4]: https://github.com/glittercowboy/get-shit-done/releases/tag/v1.20.4
 [1.20.3]: https://github.com/glittercowboy/get-shit-done/releases/tag/v1.20.3

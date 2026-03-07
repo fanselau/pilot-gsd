@@ -1,7 +1,7 @@
 {
   "name": "pilot-gsd",
-  "version": "1.20.5",
-  "description": "GSD command definitions and agent prompts for the pilot autonomous development pipeline. Fork of get-shit-done v1.20.5.",
+  "version": "0.1.0",
+  "description": "Autonomy-first GSD system for the Pilot development pipeline. Forked from get-shit-done, adapted for zero-interactivity.",
   "bin": {
     "get-shit-done-cc": "bin/install.js"
   },
