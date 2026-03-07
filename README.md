@@ -1,14 +1,36 @@
 # pilot-gsd
 
-GSD command definitions and agent prompts for the [pilot](https://github.com/lucafanselau/pilot) autonomous development pipeline. Fork of [get-shit-done](https://github.com/gsd-build/get-shit-done) v1.20.5, adapted for zero-interactivity.
+An autonomy-first development system for the [Pilot](https://github.com/lucafanselau/pilot) autonomous development pipeline, forked from [Get Shit Done](https://github.com/gsd-build/get-shit-done) by [TÂCHES](https://github.com/gsd-build).
 
 ## What This Is
 
-This repo provides the slash commands, agent definitions, and workflow prompts that power pilot's phased development pipeline. It's a fork of GSD (Get Shit Done) modified for fully autonomous operation — no interactive prompts, explicit model assignments, and auto-mode defaults throughout.
+pilot-gsd is built on top of GSD (Get Shit Done), the meta-prompting and context engineering framework by TÂCHES (Lex Christopherson). GSD provides a structured system for AI-driven phased development — research, planning, execution, and verification — using slash commands, agent definitions, and workflow orchestration.
 
-## How It Works With Pilot
+The key difference: **GSD is designed for human-interactive use** with Claude Code, OpenCode, or Gemini CLI. A human sits at the terminal, answers questions, makes decisions at checkpoints, and steers direction. **pilot-gsd strips all interactivity** and makes every workflow autonomous — designed to be driven by a machine ([Pilot](https://github.com/lucafanselau/pilot)), not a human at a terminal.
 
-Pilot uses this as a git submodule. `pilot setup` symlinks from this repo into project `.opencode/` directories. The commands become available as `/gsd-*` slash commands. The delegation prompt (`commands/gsd-delegate.md`) is the brain — it reads project state and outputs execution plans for the runner.
+This is a real fork, not a thin wrapper. It modifies agent behavior, workflow control flow, frontmatter format, path conventions, and default configuration. The changes touch dozens of files across commands, agents, workflows, references, and templates.
+
+## Key Differences from Upstream GSD
+
+| Aspect | Upstream GSD | pilot-gsd |
+|--------|-------------|-----------|
+| Interactivity | `AskUserQuestion` prompts for human input | All removed or guarded — agents never block on stdin |
+| Model assignment | Inherited or implicit | Explicit `model:` field (opus for creators, sonnet for checkers) |
+| Frontmatter format | Claude-native (`name:`, `color: green`, `tools: Read`) | opencode-native (`model:`, `color: #HEX`, `tools: {key: bool}`) |
+| Config defaults | Interactive mode with confirmation gates | Yolo mode, all gates off, `auto_advance: true` |
+| Path convention | `~/.claude/` | `.opencode/` |
+| Slash commands | `/gsd:*` (colon) | `/gsd-*` (hyphen) |
+| New commands | — | `gsd-delegate` (runner integration), `gsd-judge` (execution verdict) |
+| Checkpoint handling | Blocks for human verification/decisions | Auto-approves verify, auto-selects first option for decisions |
+
+## How It Works
+
+pilot-gsd is used as a git submodule by [Pilot](https://github.com/lucafanselau/pilot):
+
+1. `pilot setup` symlinks from this repo into the target project's `.opencode/` directories
+2. Commands become available as `/gsd-*` slash commands
+3. The delegation prompt (`commands/gsd-delegate.md`) reads project state and outputs JSON execution plans for the Pilot runner
+4. The runner spawns agents that execute plans autonomously through the full GSD lifecycle
 
 ## Repository Structure
 
@@ -34,14 +56,15 @@ pilot-gsd/
 | `/gsd-new-project [--auto]` | Initialize project: research, requirements, roadmap |
 | `/gsd-plan-phase <N> [--auto]` | Research + plan + verify for a phase |
 | `/gsd-execute-phase <N>` | Execute all plans in parallel waves |
-| `/gsd-verify-phase <N>` | Automated phase goal verification |
+| `/gsd-verify-work <N>` | Automated phase goal verification |
 | `/gsd-quick [desc]` | Ad-hoc task with GSD guarantees |
 
 ### Delegation
 
 | Command | Description |
 |---------|-------------|
-| `/gsd-delegate` | Reads project state, outputs JSON execution plan for pilot runner |
+| `/gsd-delegate` | Reads project state, outputs JSON execution plan for Pilot runner |
+| `/gsd-judge` | Reads execution results and produces a verdict |
 
 ### Phase Management
 
@@ -92,26 +115,23 @@ pilot-gsd/
 > [!NOTE]
 > Opus handles creation and deep reasoning (executor, planner, researcher, debugger). Sonnet handles verification and analysis (checker, verifier, synthesizer, mapper).
 
-## Fork Differences from Upstream
-
-- All `AskUserQuestion` calls removed — agents never block on stdin
-- Explicit `model:` field in agent frontmatter (opus for creators, sonnet for checkers)
-- `tools:` as YAML object format (not comma-separated string)
-- Default config: yolo mode, all gates off, `auto_advance: true`
-- Auto-mode guards on all workflow decision points
-
 ## Installation
 
-This repo ([lucafanselau/pilot-gsd](https://github.com/lucafanselau/pilot-gsd)) is used as a submodule of [pilot](https://github.com/lucafanselau/pilot). You don't install it directly.
+This repo is used as a git submodule of [Pilot](https://github.com/lucafanselau/pilot) — you don't install it directly.
 
 ```bash
 # Managed by pilot setup — you don't need to do this manually
 pilot setup
 ```
 
-## Upstream
+> [!NOTE]
+> The `get-shit-done-cc` bin name in `package.json` is inherited from upstream for compatibility with the shared installer infrastructure. This does not affect how pilot-gsd is used — it's always accessed through the Pilot CLI.
 
-Forked from [get-shit-done](https://github.com/gsd-build/get-shit-done) v1.20.5 by TÂCHES. See [upstream README](https://github.com/gsd-build/get-shit-done#readme) for the original project.
+## Attribution
+
+Forked from [get-shit-done](https://github.com/gsd-build/get-shit-done) v1.20.5 by TÂCHES (Lex Christopherson). The original GSD project is the foundation this system is built on — its meta-prompting design, phased workflow architecture, and context engineering patterns are what make pilot-gsd possible.
+
+See the [upstream README](https://github.com/gsd-build/get-shit-done#readme) for the original project documentation.
 
 ## License
 
