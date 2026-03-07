@@ -142,6 +142,18 @@ Plans:
 - [x] 10-02-PLAN.md — Execute git merge upstream/main with audit-guided conflict resolution — Complete 2026-03-06
 - [x] 10-03-PLAN.md — Post-merge integrity verification + sync .opencode/ directory — Complete 2026-03-06
 
+### Phase 11: Fork Release Cleanup — Identity, Attribution, Security Hygiene, and README
+
+**Goal:** pilot-gsd reads as an intentional, polished fork product — clean identity across all metadata, distinct versioning, honest README positioning, no tracked secrets, no confusing upstream references
+**Depends on:** Phase 10
+**Requirements:** requirements/fork-release-cleanup-and-readme.md
+**Plans:** 3 plans
+
+Plans:
+- [ ] 11-01-PLAN.md — Update project metadata and adopt fork versioning (SECURITY.md, CODEOWNERS, FUNDING.yml, package.json, CHANGELOG.md)
+- [ ] 11-02-PLAN.md — Security scan + fork hygiene audit (secrets, interactive patterns, stale links, deprecated artifacts)
+- [ ] 11-03-PLAN.md — README rewrite with fork positioning + final verification (tests, consistency)
+
 ---
 *Roadmap created: 2026-02-20*
-*Last updated: 2026-03-06 — Phase 10 complete (upstream sync done)*
+*Last updated: 2026-03-07 — Phase 11 planned (3 plans in 2 waves)*
