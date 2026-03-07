@@ -6,16 +6,16 @@
 ## Current Position
 
 Phase: 11 (Fork Release Cleanup — Identity, Attribution, Security Hygiene, and README)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-03-07 - Completed 11-01-PLAN.md (identity & attribution cleanup)
+Last activity: 2026-03-07 - Completed 11-02-PLAN.md (security scan & fork hygiene audit)
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Phase 11 — In progress. Plan 1/3 done: identity & attribution cleanup. Version 0.1.0, all metadata files updated.
+**Current focus:** Phase 11 — In progress. Plan 2/3 done: security scan & fork hygiene audit. Version 0.1.0, all metadata files updated.
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** Milestone complete
@@ -56,10 +56,10 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 
 ### Phase 11: Fork Release Cleanup — Identity, Attribution, Security Hygiene, and README
 - **Status:** in progress
-- **Plans:** 1/3
-- **Requirements:** IDENT-01, IDENT-02, IDENT-03, IDENT-04, IDENT-05, HYGIENE-05
+- **Plans:** 2/3
+- **Requirements:** IDENT-01, IDENT-02, IDENT-03, IDENT-04, IDENT-05, HYGIENE-01, HYGIENE-02, HYGIENE-03, HYGIENE-04, HYGIENE-05, SEC-01, SEC-02, SEC-03, SEC-04
 
-Progress: [████████████████████░] 21/23 plans (91%)
+Progress: [█████████████████████] 22/23 plans (96%)
 
 ## Accumulated Context
 
@@ -100,6 +100,9 @@ Progress: [████████████████████░] 21/2
 - [Phase 10-upstream-gsd-sync]: AskUserQuestion in discuss-phase and settings workflows are guarded: all pass autonomy check — All instances have If interactive:/If auto mode: guards or are user-facing workflows not in autonomous pipeline
 | Installer banner/bin name preserved for upstream compatibility | 11-01 | Shared upstream infrastructure; README will explain |
 | Installer fork comment (INST-01) not found; likely lost in Phase 10 sync | 11-01 | Not re-added since installer is shared upstream infrastructure |
+| package-lock.json base64 hits are npm integrity hashes, not secrets | 11-02 | SHA-512 checksums for npm packages — no remediation needed |
+| discuss-phase.md AskUserQuestion usage is intentional | 11-02 | Inherently interactive workflow not in autonomous pipeline |
+| auto-label-issues.yml retained for fork | 11-02 | Generic issue labeling applicable to any repository |
 
 ### Roadmap Evolution
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
@@ -130,9 +133,9 @@ Progress: [████████████████████░] 21/2
 ## Session Continuity
 
 Last session: 2026-03-07
-Stopped at: Completed 11-01-PLAN.md (identity & attribution cleanup)
+Stopped at: Completed 11-02-PLAN.md (security scan & fork hygiene audit)
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-03-07 after completing 11-01-PLAN.md*
+*Last updated: 2026-03-07 after completing 11-02-PLAN.md*
