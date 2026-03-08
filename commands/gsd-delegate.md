@@ -46,8 +46,12 @@ Use `"steps": []` when no work is needed (e.g., phase already complete).
 | `add-phase` | `<Human-Readable Title>` | Add a phase to the roadmap. Args = title text only (extracted from the requirement's `# Heading`). |
 | `plan-phase` | `<phase-number> @<requirement-path>` | Plan a phase. Phase number required. Optional `@path` for context. |
 | `execute-phase` | `<phase-number>` | Execute all plans in a phase. |
+| `setup-agents` | `[project-path]` | Analyze codebase and generate minimal AGENTS.md. Run when no AGENTS.md exists or user wants to regenerate. |
+| `lessons` | `[project-path]` | Extract actionable lessons from build history into candidate buffer. Run after phases complete, especially after failures. |
 
 **Note:** `verify-phase` is handled automatically by the runner after every `execute-phase`. Omit it from your steps — the runner adds it.
+
+**Standalone commands:** `quick`, `setup-agents`, and `lessons` are standalone — they produce artifacts directly without the plan/execute ceremony. Output them as single-step plans.
 
 ---
 
@@ -79,6 +83,34 @@ Output a single step. The `args` must be the full, self-contained task descripti
   "reasoning": "Quick scope — passing full description as a single task.",
   "steps": [
     { "command": "quick", "args": "Add a health-check endpoint at GET /healthz that returns { status: 'ok' } with a 200 response" }
+  ]
+}
+```
+
+---
+
+### Standalone: `setup-agents`
+
+Route here when the job description mentions "AGENTS.md", "agent instructions", "setup agents", or the project has no AGENTS.md and the user wants one generated.
+
+```json
+{
+  "reasoning": "Project needs AGENTS.md generated from codebase analysis.",
+  "steps": [
+    { "command": "setup-agents", "args": "" }
+  ]
+}
+```
+
+### Standalone: `lessons`
+
+Route here when the job description mentions "lessons", "extract lessons", "what went wrong", or after a phase with failures that should be captured.
+
+```json
+{
+  "reasoning": "Extracting actionable lessons from recent build history.",
+  "steps": [
+    { "command": "lessons", "args": "" }
   ]
 }
 ```
