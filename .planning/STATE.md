@@ -6,16 +6,16 @@
 ## Current Position
 
 Phase: 12 (AGENTS.md Management — Setup, Lessons, and Health)
-Plan: 1 of 2 in current phase
-Status: In Progress
-Last activity: 2026-03-08 - Completed 12-01: Setup Agents & Lessons commands
+Plan: 2 of 2 in current phase
+Status: Complete
+Last activity: 2026-03-08 - Completed 12-02: Delegate routing update
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Phase 12 — In progress. 1/2 plans done: gsd-setup-agents and gsd-lessons commands created.
+**Current focus:** Phase 12 — Complete. 2/2 plans done: commands created, delegate routing updated.
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** Milestone complete
@@ -60,11 +60,11 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Requirements:** IDENT-01, IDENT-02, IDENT-03, IDENT-04, IDENT-05, HYGIENE-01, HYGIENE-02, HYGIENE-03, HYGIENE-04, HYGIENE-05, SEC-01, SEC-02, SEC-03, SEC-04, README-01, README-02, README-03, README-04, VERIFY-01, VERIFY-02, VERIFY-03
 
 ### Phase 12: AGENTS.md Management — Setup, Lessons, and Health
-- **Status:** in progress
-- **Plans:** 1/2
-- **Requirements:** AGENTS-SETUP-01, AGENTS-SETUP-02, AGENTS-SETUP-03, AGENTS-SETUP-04, AGENTS-LESSONS-01, AGENTS-LESSONS-02, AGENTS-LESSONS-03, AGENTS-LESSONS-04
+- **Status:** complete
+- **Plans:** 2/2
+- **Requirements:** AGENTS-SETUP-01, AGENTS-SETUP-02, AGENTS-SETUP-03, AGENTS-SETUP-04, AGENTS-LESSONS-01, AGENTS-LESSONS-02, AGENTS-LESSONS-03, AGENTS-LESSONS-04, AGENTS-DELEGATE-01
 
-Progress: [██████████████████████░] 24/25 plans (96%)
+Progress: [████████████████████████] 25/25 plans (100%)
 
 ## Accumulated Context
 
@@ -113,6 +113,8 @@ Progress: [██████████████████████░
 | Substantive attribution section with credit beyond a link | 11-03 | Acknowledges GSD as the foundation this system is built on |
 | No bash tool in setup-agents or lessons commands | 12-01 | Pure analysis + file generation per requirements; no side effects |
 | guardrails section naming in new commands | 12-01 | Consistent with Phase 9 positive-framing conventions |
+| setup-agents and lessons as standalone commands in delegate | 12-02 | Bypass plan/execute ceremony like quick — direct artifact production |
+| Keyword-based routing triggers for new commands | 12-02 | Job description keywords like "AGENTS.md", "lessons" route to correct command |
 
 ### Roadmap Evolution
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
@@ -145,9 +147,9 @@ Progress: [██████████████████████░
 ## Session Continuity
 
 Last session: 2026-03-08
-Stopped at: Completed 12-01-PLAN.md
+Stopped at: Completed 12-02-PLAN.md (Phase 12 complete)
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-03-08 after completing 12-01*
+*Last updated: 2026-03-08 after completing 12-02*
