@@ -154,6 +154,25 @@ Plans:
 - [ ] 11-02-PLAN.md — Security scan + fork hygiene audit (secrets, interactive patterns, stale links, deprecated artifacts)
 - [ ] 11-03-PLAN.md — README rewrite with fork positioning + final verification (tests, consistency)
 
+### Phase 12: AGENTS.md Management — Setup, Lessons, and Health
+
+**Goal:** Two new GSD commands (`gsd-setup-agents`, `gsd-lessons`) that give Pilot smart, AI-powered AGENTS.md management — scaffold from codebase analysis and extract lessons from build sessions
+**Depends on:** Phase 11
+**Requirements:** requirements/agents-md-management.md
+**Plans:** 2 plans
+
+Plans:
+- [ ] 12-01-PLAN.md — Create gsd-setup-agents and gsd-lessons command files
+- [ ] 12-02-PLAN.md — Update delegate routing and validate all deliverables
+
+**Success Criteria:**
+- `commands/gsd-setup-agents.md` exists with codebase analysis + AGENTS.md generation prompt
+- `commands/gsd-lessons.md` exists with build history analysis + lesson extraction prompt
+- Both commands use tools: read, glob, grep, write (no bash)
+- `commands/gsd-delegate.md` routes to both new commands
+- Generated AGENTS.md targets 20-40 lines (max 60), never auto-commits
+- Lessons go to `.planning/LESSONS-CANDIDATES.md` buffer, never auto-commit to AGENTS.md
+
 ---
 *Roadmap created: 2026-02-20*
-*Last updated: 2026-03-07 — Phase 11 planned (3 plans in 2 waves)*
+*Last updated: 2026-03-08 — Phase 12 planned (2 plans in 2 waves)*
