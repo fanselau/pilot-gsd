@@ -1,21 +1,21 @@
 # State
 
 ## Current Milestone: autonomy-fork-v1
-## Current Phase: 11
+## Current Phase: 12
 
 ## Current Position
 
-Phase: 11 (Fork Release Cleanup — Identity, Attribution, Security Hygiene, and README)
-Plan: 3 of 3 in current phase
-Status: Complete
-Last activity: 2026-03-07 - Completed quick task 005: Test Runner Alignment — Make Verification Commands Consistent
+Phase: 12 (AGENTS.md Management — Setup, Lessons, and Health)
+Plan: 1 of 2 in current phase
+Status: In Progress
+Last activity: 2026-03-08 - Completed 12-01: Setup Agents & Lessons commands
 
 ## Project Reference
 
 See: .planning/PROJECT.md (updated 2026-02-20)
 
 **Core value:** Zero interactivity — no AskUserQuestion call should ever block on stdin
-**Current focus:** Phase 11 — Complete. All 3/3 plans done: identity cleanup, security hygiene, README rewrite. Version 0.1.0, all docs consistent.
+**Current focus:** Phase 12 — In progress. 1/2 plans done: gsd-setup-agents and gsd-lessons commands created.
 
 ### Phase 1: Agent Frontmatter Migration
 - **Status:** Milestone complete
@@ -59,7 +59,12 @@ See: .planning/PROJECT.md (updated 2026-02-20)
 - **Plans:** 3/3
 - **Requirements:** IDENT-01, IDENT-02, IDENT-03, IDENT-04, IDENT-05, HYGIENE-01, HYGIENE-02, HYGIENE-03, HYGIENE-04, HYGIENE-05, SEC-01, SEC-02, SEC-03, SEC-04, README-01, README-02, README-03, README-04, VERIFY-01, VERIFY-02, VERIFY-03
 
-Progress: [██████████████████████] 23/23 plans (100%)
+### Phase 12: AGENTS.md Management — Setup, Lessons, and Health
+- **Status:** in progress
+- **Plans:** 1/2
+- **Requirements:** AGENTS-SETUP-01, AGENTS-SETUP-02, AGENTS-SETUP-03, AGENTS-SETUP-04, AGENTS-LESSONS-01, AGENTS-LESSONS-02, AGENTS-LESSONS-03, AGENTS-LESSONS-04
+
+Progress: [██████████████████████░] 24/25 plans (96%)
 
 ## Accumulated Context
 
@@ -106,6 +111,8 @@ Progress: [██████████████████████] 2
 | README comparison table format over prose list | 11-03 | Makes scope of fork changes clearer at a glance |
 | Explicit "not a thin wrapper" statement in README | 11-03 | Sets honest expectations about depth of changes |
 | Substantive attribution section with credit beyond a link | 11-03 | Acknowledges GSD as the foundation this system is built on |
+| No bash tool in setup-agents or lessons commands | 12-01 | Pure analysis + file generation per requirements; no side effects |
+| guardrails section naming in new commands | 12-01 | Consistent with Phase 9 positive-framing conventions |
 
 ### Roadmap Evolution
 - Phase 6 added: Workflow Enforcement - Execute-Phase & Plan-Phase Must Use gsd-tools
@@ -137,10 +144,10 @@ Progress: [██████████████████████] 2
 
 ## Session Continuity
 
-Last session: 2026-03-07
-Stopped at: Completed quick task 005 (test runner alignment)
+Last session: 2026-03-08
+Stopped at: Completed 12-01-PLAN.md
 Resume file: None
 
 ---
 *State initialized: 2026-02-20*
-*Last updated: 2026-03-07 after completing quick task 005*
+*Last updated: 2026-03-08 after completing 12-01*

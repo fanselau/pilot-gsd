@@ -159,7 +159,7 @@ Plans:
 **Goal:** Two new GSD commands (`gsd-setup-agents`, `gsd-lessons`) that give Pilot smart, AI-powered AGENTS.md management — scaffold from codebase analysis and extract lessons from build sessions
 **Depends on:** Phase 11
 **Requirements:** requirements/agents-md-management.md
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 
 Plans:
 - [ ] 12-01-PLAN.md — Create gsd-setup-agents and gsd-lessons command files
