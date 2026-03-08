@@ -1,7 +1,6 @@
 ---
 description: "Evaluate whether a phase job succeeded by reading opencode DB transcript"
 argument-hint: "<requirement-path-or-description> <session-title>"
-model: haiku
 tools:
   read: true
   bash: true

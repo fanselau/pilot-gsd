@@ -1,6 +1,6 @@
 ---
 description: Creates project roadmaps with phase breakdown, requirement mapping, success criteria derivation, and coverage validation. Spawned by /gsd-new-project orchestrator.
-model: "anthropic/claude-sonnet-4-6"
+model: "anthropic/claude-opus-4-6"
 color: "#800080"
 tools:
   read: true

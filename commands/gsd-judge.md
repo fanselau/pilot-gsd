@@ -1,7 +1,6 @@
 ---
 description: "Read execution evidence and output a structured JSON verdict"
 argument-hint: "<jobId> <phaseNum>"
-model: haiku
 tools:
   read: true
   bash: true

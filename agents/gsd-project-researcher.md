@@ -1,6 +1,6 @@
 ---
 description: Researches domain ecosystem before roadmap creation. Produces files in .planning/research/ consumed during roadmap creation. Spawned by /gsd-new-project or /gsd-new-milestone orchestrators.
-model: "anthropic/claude-sonnet-4-6"
+model: "anthropic/claude-opus-4-6"
 color: "#00FFFF"
 tools:
   read: true
