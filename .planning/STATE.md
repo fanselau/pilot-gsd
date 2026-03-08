@@ -114,6 +114,7 @@ Progress: [██████████████████████] 2
 - Phase 9 added: Pilot-GSD Prompt Hardening & Cleanup
 - Phase 10 added: Upstream GSD Sync
 - Phase 11 added: Fork Release Cleanup — Identity, Attribution, Security Hygiene, and README
+- Phase 12 added: AGENTS.md Management — Setup, Lessons, and Health
 
 ### Concerns
 (None)
