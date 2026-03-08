@@ -8,8 +8,11 @@ tools:
   task: true
 ---
 <context>
-**Flags:**
+Arguments: $ARGUMENTS
+
+Parse `$ARGUMENTS` for flags:
 - `--auto` — Automatic mode. After config questions, runs research → requirements → roadmap without further interaction. Expects idea document via @ reference.
+- **Default is interactive mode.** Only activate `--auto` when it is explicitly present in the arguments above.
 </context>
 
 <objective>

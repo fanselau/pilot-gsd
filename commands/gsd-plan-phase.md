@@ -25,13 +25,16 @@ Create executable phase prompts (PLAN.md files) for a roadmap phase with integra
 </execution_context>
 
 <context>
-Phase number: $ARGUMENTS (optional — auto-detects next unplanned phase if omitted)
+Arguments: $ARGUMENTS
 
-**Flags:**
-- `--research` — Force re-research even if RESEARCH.md exists
-- `--skip-research` — Skip research, go straight to planning
-- `--gaps` — Gap closure mode (reads VERIFICATION.md, skips research)
-- `--skip-verify` — Skip verification loop
+Parse `$ARGUMENTS` to extract the phase number and any flags:
+- Phase number is the first token (optional — auto-detects next unplanned phase if omitted)
+- Flags are only active if their literal string appears in `$ARGUMENTS`:
+  - `--research` — Force re-research even if RESEARCH.md exists
+  - `--skip-research` — Skip research, go straight to planning
+  - `--gaps` — Gap closure mode (reads VERIFICATION.md, skips research)
+  - `--skip-verify` — Skip verification loop
+- **Default is normal mode with no flags.** Only activate a flag when it is explicitly present in the arguments above.
 
 Normalize phase input in step 2 before any directory lookups.
 </context>

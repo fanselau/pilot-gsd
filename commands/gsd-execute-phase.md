@@ -27,8 +27,10 @@ Context budget: ~15% orchestrator, 100% fresh per subagent.
 <context>
 Phase: $ARGUMENTS
 
-**Flags:**
-- `--gaps-only` — Execute only gap closure plans (plans with `gap_closure: true` in frontmatter). Use after verify-work creates fix plans.
+Parse `$ARGUMENTS` to extract the phase number and any flags:
+- The phase number is always the first token (e.g. "3" or "03")
+- If the literal string `--gaps-only` appears in `$ARGUMENTS`, set gaps-only mode. Otherwise, run in normal mode (execute ALL incomplete plans).
+- **Default is normal mode.** Only activate gaps-only when `--gaps-only` is explicitly present in the arguments above.
 
 Context files are resolved inside the workflow via `gsd-tools init execute-phase` and per-subagent `<files_to_read>` blocks.
 </context>
